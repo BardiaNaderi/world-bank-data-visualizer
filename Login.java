@@ -4,23 +4,46 @@ import java.util.*;
 public class Login {
 
     public static void main(String[] args) throws IOException {
+
+        // setting file path to the csv file
         String filePath = "users.csv";
+
+        // asking the user for their name, email and password
         try (Scanner input = new Scanner(System.in)) {
             System.out.println("Please enter username");
             String user = input.nextLine();
 
+            System.out.println("Please enter email");
+            String email = input.nextLine();
+
             System.out.println("Please enter password");
             String pass = input.nextLine();
 
-            if (verify(user, pass, filePath)) {
+            // generating id number based on the number of lines in the file
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
+            String x;
+            int id = 0;
+            while ((x = bufferedReader.readLine()) != null) {
+                id++;
+            }
+
+            // creating user object
+            User account = new User(user, id, email, pass);
+
+            // checking if user already has an account, if not registering them
+            if (verify(account.getEmail(), account.getPassword(), filePath)) {
                 System.out.println("You are logged in");
             } else {
                 File file = new File(filePath);
                 try (FileWriter printWriter = new FileWriter(file, true)) {
                     StringBuilder stringBuilder = new StringBuilder();
-                    stringBuilder.append(user);
-                    stringBuilder.append(',');
-                    stringBuilder.append(pass);
+                    stringBuilder.append(account.getName());
+                    stringBuilder.append(", ");
+                    stringBuilder.append(account.getId());
+                    stringBuilder.append(", ");
+                    stringBuilder.append(account.getEmail());
+                    stringBuilder.append(", ");
+                    stringBuilder.append(account.getPassword());
                     stringBuilder.append('\n');
                     printWriter.write(stringBuilder.toString());
                 }
@@ -29,7 +52,7 @@ public class Login {
         }
     }
 
-    public static boolean verify(String user, String pass, String filePath) throws FileNotFoundException {
+    public static boolean verify(String email, String pass, String filePath) throws FileNotFoundException {
         boolean found = false;
         String tempUser = "";
         String tempPass = "";
@@ -40,12 +63,11 @@ public class Login {
             tempUser = x.next();
             tempPass = x.next();
 
-            if (tempUser.trim().equals(user.trim()) && tempPass.trim().equals(pass.trim())) {
+            if (tempUser.trim().equals(email.trim()) && tempPass.trim().equals(pass.trim())) {
                 found = true;
             }
         }
         x.close();
         return (found);
     }
-
 }
