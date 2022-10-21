@@ -1,35 +1,43 @@
-package AnalysisStrategies;
+package analysisStrategies;
 
+import java.util.HashMap;
+import java.util.Map;
 import com.google.gson.JsonArray;
 
-public class Ratio implements Analysis {
+import analysisFactory.DataFetcher;
 
-	public void processJSON(JsonArray[] jsonArray, String[] analysisType, String country) {
-		float valueA = 0;
-		float valueB = 0;
-		float ratio = 0;
-		int sizeOfResults = jsonArray[0].get(1).getAsJsonArray().size();
-		int year;
-
-		for (int i = sizeOfResults - 1; i >= 0; i--) {
-			year = jsonArray[0].get(1).getAsJsonArray().get(i).getAsJsonObject().get("date").getAsInt();
-			
-			// Values for first JSON array
-			if (jsonArray[0].get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull())
-				valueA = 0;
-			else
-				valueA = jsonArray[0].get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsFloat(); 
-			
-			// Values for second JSON array
-			if (jsonArray[1].get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull())
-				valueB = 0;
-			else
-				valueB = jsonArray[1].get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsFloat(); 
-			
-			ratio = valueA / valueB;
-			
-			System.out.println("The ratio of " + analysisType[0] + " to " + analysisType[1] + " for " + country + " in " + year + " is " + ratio);
-		}
-	}
+public class Ratio extends DataFetcher implements AnalysisStrategy {
 	
+	public Map<Integer, Float> execute(JsonArray[] data) {
+		
+		Map<Integer, Float> values = new HashMap<Integer, Float>();
+		JsonArray firstData = data[0];
+		JsonArray secondData = data[1];
+		
+		float firstValue = 0;
+		float secondValue = 0;
+		int sizeOfResults = data[0].get(1).getAsJsonArray().size();
+		int year;
+		float ratio;
+		
+		for (int i = sizeOfResults - 1; i >= 0; i--) {
+			
+			year = firstData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("date").getAsInt();
+			
+			if (firstData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull())
+				firstValue = 0;
+			else
+				firstValue = firstData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsFloat();  
+			
+			if (secondData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull())
+				secondValue  = 0;
+			else
+				secondValue  = secondData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsFloat(); 
+			
+			ratio = firstValue / secondValue;
+			values.put(year, ratio);				
+		}	
+		
+		return values;
+	}
 }
