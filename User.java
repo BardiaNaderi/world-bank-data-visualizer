@@ -4,13 +4,14 @@ public class User {
     private int id;
     private String email;
     private String pass;
+
     /**
      * User constructor
      * 
-     * @param name, string name value that is passed from user input
-     * @param id, int id value that is passed idCount method
+     * @param name,  string name value that is passed from user input
+     * @param id,    int id value that is passed idCount method
      * @param email, string email value that is passed from user input
-     * @param pass, string password value that is passed from user input
+     * @param pass,  string password value that is passed from user input
      */
     public User(String name, int id, String email, String pass) {
         this.name = name;
