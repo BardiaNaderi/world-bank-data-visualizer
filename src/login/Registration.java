@@ -3,14 +3,15 @@ import java.io.*;
 import java.util.*;
 
 public class Registration {
-
+	
     /**
-     * main method where we collect user login, verify or allow for sign up
+     * Application method where we collect user login, verify or allow for sign up
+     * This method may be modified/removed during deliverables 2 and 3
      * 
      * @param args, the command line inputs
      * @throws IOException when a file cannot be read or found
      */
-    public static void main(String[] args) throws IOException {
+    public static void executeLogin() throws IOException {
         RegistrationContext context = new RegistrationContext();
         State login = new RegistrationLogin();
         State signup = new RegistrationSignup();

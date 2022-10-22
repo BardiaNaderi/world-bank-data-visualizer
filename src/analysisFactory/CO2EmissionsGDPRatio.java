@@ -1,14 +1,13 @@
-package analysisSubclasses;
+package analysisFactory;
 
 import java.util.Arrays;
 import java.util.Map;
 
 import com.google.gson.JsonArray;
 
-import analysisFactory.Analysis;
-import analysisStrategies.Average;
+import analysisStrategies.Ratio;
 
-public class EducationExpenditureAverage extends Analysis {
+public class CO2EmissionsGDPRatio extends Analysis {
 	
 	/**
 	 * Constructor class which sets three parameters dynamically and two statically.
@@ -21,9 +20,9 @@ public class EducationExpenditureAverage extends Analysis {
 	 * @param startYear the year to start the analysis on
 	 * @param endYear the year to end the analysis on
 	 */
-	public EducationExpenditureAverage(String country, int startYear, int endYear) {
-		this.strategy = new Average();
-		this.worldBankCodes = Arrays.asList(EDUCATION_EXPENDITURE, EDUCATION_EXPENDITURE);
+	public CO2EmissionsGDPRatio(String country, int startYear, int endYear) {
+		this.strategy = new Ratio();
+		this.worldBankCodes = Arrays.asList(CO2_EMISSIONS, GDP_PER_CAPITA);
 		this.country = country;
 		this.startYear = startYear;
 		this.endYear = endYear;
@@ -34,8 +33,8 @@ public class EducationExpenditureAverage extends Analysis {
 	 * the results to the console
 	 */
 	public void executeAnalysis() {	
-		String[] educationCode = this.getWorldBankCodes().get(0);
-		JsonArray[] educationData = {fetchData(this, educationCode)};
+		String[] co2Code = this.getWorldBankCodes().get(0);
+		String[] gdpCode = this.getWorldBankCodes().get(1);
 		
 		/*
 		 *  It is assumed that the data being fetched will need to be returned in some manner in order
@@ -43,8 +42,11 @@ public class EducationExpenditureAverage extends Analysis {
 		 *  to the console, but the following lines are subject to change depending on the requirements 
 		 *  of Deliverables 2 and 3.
 		*/
-		Map<Integer, Float> educationValues = this.strategy.execute(educationData);
-		System.out.println("The average " + educationCode[1] + " for " + this.getCountry() + " from " 
-				+ this.getStartYear() + " to " + this.getEndYear() + " is " + educationValues.get(1));
+		JsonArray[] data = {fetcher.fetchData(this, co2Code), fetcher.fetchData(this, gdpCode)};
+		Map<Integer, Float> values = this.strategy.execute(data);
+		
+		for (Map.Entry<Integer, Float> entry: values.entrySet()) {
+			System.out.println("The ratio of " + co2Code[1] + " to " + gdpCode[1] + " for " + country + " in " + entry.getKey() + " is " + entry.getValue());
+		}
 	}
 }

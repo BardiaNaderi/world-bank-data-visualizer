@@ -3,8 +3,9 @@ package analysisFactory;
 import java.util.List;
 
 import analysisStrategies.AnalysisStrategy;
+import dataFetcher.DataFetcher;
 
-abstract public class Analysis extends DataFetcher {
+abstract public class Analysis {
 	
 	// World Bank API indicator codes used for data fetching
 	final static protected String[] POPULATION = {"SP.POP.TOTL", "Total Population"};
@@ -21,6 +22,11 @@ abstract public class Analysis extends DataFetcher {
 	final static protected String[] INFANT_MORTALITY = {"SP.DYN.IMRT.IN", "Mortality rate, infant (per 1,000 live births)"};
 	final static protected String[] ACCESSING_HEALTH_CARE = {"SH.ACS.MONY.Q1.ZS", "Problems in accessing health care (% of women): Q1 (lowest)"};
 	
+	/* 
+	 * The DataFetcher is set at the top level for all subclass implementations.
+	 * The remaining attributes are set when the subclasses are instantiated. 
+	 */
+	protected DataFetcher fetcher = DataFetcher.getFetcher(); 
 	protected AnalysisStrategy strategy;
 	protected List<String[]> worldBankCodes;
 	protected String country;

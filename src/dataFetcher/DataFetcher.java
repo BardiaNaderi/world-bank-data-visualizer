@@ -1,4 +1,4 @@
-package analysisFactory;
+package dataFetcher;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -8,7 +8,33 @@ import java.util.Scanner;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 
-abstract public class DataFetcher {
+import analysisFactory.Analysis;
+
+public class DataFetcher {
+	
+	private static DataFetcher fetcher = null;
+	private String worldBankURL;
+	
+	/**
+	 * Private constructor class for the Singleton DataFetcher. Instantiates the fetcher with the
+	 * string of the World Bank's URL address.  
+	 */
+	private DataFetcher() {
+		worldBankURL = "http://api.worldbank.org/v2/country/%s/indicator/%s?date=%s:%s&format=json";
+	}
+	
+	/**
+	 * Getter method for the single instance of the DataFetcher class. If an instance has not
+	 * been created yet, a new on in instantiated. The instance is then returned.
+	 * 
+	 * @return the single instance of the DataFetcher class
+	 */
+	public static DataFetcher getFetcher() {
+		if (fetcher == null) {
+			fetcher = new DataFetcher();
+		}
+		return fetcher;
+	}
 	
 	/**
 	 * This method is used by the Analysis subclasses to fetch data from the World Bank's API
@@ -39,8 +65,7 @@ abstract public class DataFetcher {
 	 */
 	private JsonArray getJSON(String country, String[] code, int startYear, int endYear) {
 		JsonArray jsonArray = null;
-		String urlString = String.format(
-				"http://api.worldbank.org/v2/country/%s/indicator/%s?date=%s:%s&format=json", country, code[0], startYear, endYear);
+		String urlString = String.format(worldBankURL, country, code[0], startYear, endYear);
 		try {
 			URL url = new URL(urlString);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();

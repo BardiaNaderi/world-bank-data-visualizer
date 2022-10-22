@@ -1,11 +1,10 @@
-package analysisSubclasses;
+package analysisFactory;
 
 import java.util.Arrays;
 import java.util.Map;
 
 import com.google.gson.JsonArray;
 
-import analysisFactory.Analysis;
 import analysisStrategies.Average;
 
 public class ForestAreaAverage extends Analysis {
@@ -35,7 +34,7 @@ public class ForestAreaAverage extends Analysis {
 	 */
 	public void executeAnalysis() {	
 		String[] forestCode = this.getWorldBankCodes().get(0);
-		JsonArray[] forestData = {fetchData(this, forestCode)};
+		JsonArray[] forestData = {fetcher.fetchData(this, forestCode)};
 		
 		/*
 		 *  It is assumed that the data being fetched will need to be returned in some manner in order

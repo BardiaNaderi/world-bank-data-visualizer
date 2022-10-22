@@ -1,14 +1,5 @@
 package analysisFactory;
 
-import analysisSubclasses.AccessingHealthCareInfantMortalityAnnualPercentage;
-import analysisSubclasses.CO2EmissionaEnergyUsePollutionAnnualPercentage;
-import analysisSubclasses.CO2EmissionsGDPRatio;
-import analysisSubclasses.EducationExpenditureAverage;
-import analysisSubclasses.EducationExpenditureHealthExpenditureAnnualPercentage;
-import analysisSubclasses.ForestAreaAverage;
-import analysisSubclasses.HealthExpenditureHospitalBedsRatio;
-import analysisSubclasses.PollutionForestAreaAnnualPercentage;
-
 public class AnalysisFactory {
 		
 	/**

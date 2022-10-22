@@ -1,14 +1,13 @@
-package analysisSubclasses;
+package analysisFactory;
 
 import java.util.Arrays;
 import java.util.Map;
 
 import com.google.gson.JsonArray;
 
-import analysisFactory.Analysis;
 import analysisStrategies.AnnualPercentageChange;
 
-public class CO2EmissionaEnergyUsePollutionAnnualPercentage extends Analysis {
+public class EducationExpenditureHealthExpenditureAnnualPercentage extends Analysis {
 	
 	/**
 	 * Constructor class which sets three parameters dynamically and two statically.
@@ -21,9 +20,9 @@ public class CO2EmissionaEnergyUsePollutionAnnualPercentage extends Analysis {
 	 * @param startYear the year to start the analysis on
 	 * @param endYear the year to end the analysis on
 	 */
-	public CO2EmissionaEnergyUsePollutionAnnualPercentage(String country, int startYear, int endYear) {
+	public EducationExpenditureHealthExpenditureAnnualPercentage(String country, int startYear, int endYear) {
 		this.strategy = new AnnualPercentageChange();
-		this.worldBankCodes = Arrays.asList(CO2_EMISSIONS, ENERGY_USE, AIR_POLLUTION);
+		this.worldBankCodes = Arrays.asList(EDUCATION_EXPENDITURE, HEALTH_EXPENDITURE);
 		this.country = country;
 		this.startYear = startYear -1;
 		this.endYear = endYear;
@@ -34,13 +33,11 @@ public class CO2EmissionaEnergyUsePollutionAnnualPercentage extends Analysis {
 	 * the results to the console
 	 */
 	public void executeAnalysis() {	
-		String[] co2Code = this.getWorldBankCodes().get(0);
-		String[] energyCode = this.getWorldBankCodes().get(1);
-		String[] pollutionCode = this.getWorldBankCodes().get(2);
+		String[] educationCode = this.getWorldBankCodes().get(0);
+		String[] healthCode = this.getWorldBankCodes().get(1);
 		
-		JsonArray[] co2Data = {fetchData(this, co2Code)};
-		JsonArray[] energyData = {fetchData(this, energyCode)};
-		JsonArray[] pollutionData = {fetchData(this, pollutionCode)};
+		JsonArray[] educationData = {fetcher.fetchData(this, educationCode)};
+		JsonArray[] healthData = {fetcher.fetchData(this, healthCode)};
 		
 		/*
 		 *  It is assumed that the data being fetched will need to be returned in some manner in order
@@ -48,21 +45,17 @@ public class CO2EmissionaEnergyUsePollutionAnnualPercentage extends Analysis {
 		 *  to the console, but the following lines are subject to change depending on the requirements 
 		 *  of Deliverables 2 and 3.
 		*/
-		Map<Integer, Float> co2Values = this.strategy.execute(co2Data);
-		Map<Integer, Float> energyValues = this.strategy.execute(energyData);
-		Map<Integer, Float> pollutionValues = this.strategy.execute(pollutionData);
+		Map<Integer, Float> educationValues = this.strategy.execute(educationData);
+		Map<Integer, Float> healthValues = this.strategy.execute(healthData);
 		
-		for (Map.Entry<Integer, Float> entry: co2Values.entrySet()) {
-			System.out.println("The annual percent change of " + co2Code[1] + " for " + country + " from " +  
+		for (Map.Entry<Integer, Float> entry: educationValues.entrySet()) {
+			System.out.println("The annual percent change of " + educationCode[1] + " for " + country + " from " +  
 					(entry.getKey() - 1) + " to " +  entry.getKey() + " is " +  entry.getValue());
 		}
-		for (Map.Entry<Integer, Float> entry: energyValues.entrySet()) {
-			System.out.println("The annual percent change of " + energyCode[1] + " for " + country + " from " +  
-					(entry.getKey() - 1) + " to " +  entry.getKey() + " is " +  entry.getValue());
-		}
-		for (Map.Entry<Integer, Float> entry: pollutionValues.entrySet()) {
-			System.out.println("The annual percent change of " + pollutionCode[1] + " for " + country + " from " +  
+		for (Map.Entry<Integer, Float> entry: healthValues.entrySet()) {
+			System.out.println("The annual percent change of " + healthCode[1] + " for " + country + " from " +  
 					(entry.getKey() - 1) + " to " +  entry.getKey() + " is " +  entry.getValue());
 		}
 	}
 }
+

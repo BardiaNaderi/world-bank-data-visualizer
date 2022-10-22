@@ -1,14 +1,13 @@
-package analysisSubclasses;
+package analysisFactory;
 
 import java.util.Arrays;
 import java.util.Map;
 
 import com.google.gson.JsonArray;
 
-import analysisFactory.Analysis;
 import analysisStrategies.Ratio;
 
-public class CO2EmissionsGDPRatio extends Analysis {
+public class HealthExpenditureHospitalBedsRatio extends Analysis {
 	
 	/**
 	 * Constructor class which sets three parameters dynamically and two statically.
@@ -21,9 +20,9 @@ public class CO2EmissionsGDPRatio extends Analysis {
 	 * @param startYear the year to start the analysis on
 	 * @param endYear the year to end the analysis on
 	 */
-	public CO2EmissionsGDPRatio(String country, int startYear, int endYear) {
+	public HealthExpenditureHospitalBedsRatio(String country, int startYear, int endYear) {
 		this.strategy = new Ratio();
-		this.worldBankCodes = Arrays.asList(CO2_EMISSIONS, GDP_PER_CAPITA);
+		this.worldBankCodes = Arrays.asList(HEALTH_EXPENDITURE, HOSPITAL_BEDS);
 		this.country = country;
 		this.startYear = startYear;
 		this.endYear = endYear;
@@ -34,8 +33,10 @@ public class CO2EmissionsGDPRatio extends Analysis {
 	 * the results to the console
 	 */
 	public void executeAnalysis() {	
-		String[] co2Code = this.getWorldBankCodes().get(0);
-		String[] gdpCode = this.getWorldBankCodes().get(1);
+		String[] healthCode = this.getWorldBankCodes().get(0);
+		String[] hospitalCode = this.getWorldBankCodes().get(1);
+	
+		JsonArray[] data = {fetcher.fetchData(this, healthCode), fetcher.fetchData(this, hospitalCode)};
 		
 		/*
 		 *  It is assumed that the data being fetched will need to be returned in some manner in order
@@ -43,11 +44,11 @@ public class CO2EmissionsGDPRatio extends Analysis {
 		 *  to the console, but the following lines are subject to change depending on the requirements 
 		 *  of Deliverables 2 and 3.
 		*/
-		JsonArray[] data = {fetchData(this, co2Code), fetchData(this, gdpCode)};
 		Map<Integer, Float> values = this.strategy.execute(data);
 		
 		for (Map.Entry<Integer, Float> entry: values.entrySet()) {
-			System.out.println("The ratio of " + co2Code[1] + " to " + gdpCode[1] + " for " + country + " in " + entry.getKey() + " is " + entry.getValue());
+			System.out.println("The ratio of " + healthCode[1] + " to " + hospitalCode[1] + " for " + country + " in " + entry.getKey() + " is " + entry.getValue());
 		}
 	}
 }
+

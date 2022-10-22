@@ -1,11 +1,10 @@
-package analysisSubclasses;
+package analysisFactory;
 
 import java.util.Arrays;
 import java.util.Map;
 
 import com.google.gson.JsonArray;
 
-import analysisFactory.Analysis;
 import analysisStrategies.AnnualPercentageChange;
 
 public class AccessingHealthCareInfantMortalityAnnualPercentage extends Analysis {
@@ -37,8 +36,8 @@ public class AccessingHealthCareInfantMortalityAnnualPercentage extends Analysis
 		String[] healthCode = this.getWorldBankCodes().get(0);
 		String[] mortalityCode = this.getWorldBankCodes().get(1);
 		
-		JsonArray[] healthData = {fetchData(this, healthCode)};
-		JsonArray[] mortalityData = {fetchData(this, mortalityCode)};
+		JsonArray[] healthData = {fetcher.fetchData(this, healthCode)};
+		JsonArray[] mortalityData = {fetcher.fetchData(this, mortalityCode)};
 		
 		/*
 		 *  It is assumed that the data being fetched will need to be returned in some manner in order
