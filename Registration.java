@@ -32,5 +32,16 @@ public class Registration {
                 System.out.println("Selected option not available.");
             }
         }
+
+        Analysis analysis = new Analysis();
+        Subscriber viewers = new Subscriber("Viewers");
+        analysis.subscribe(viewers);
+        viewers.subscribeAnalysis(analysis);
+
+        analysis.select("Mortality vs GDP");
+        analysis.select("Mortality vs GDP");
+        analysis.select("Mortality vs GDP");
+        analysis.select("Mortality vs GDP");
+
     }
 }
