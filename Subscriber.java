@@ -11,6 +11,9 @@ public class Subscriber implements Observer {
     @Override
     public void update(){
         System.out.println(analysis.name + " analysis has been selected.");
+        if(analysis.name.equals("Mortality vs GDP")){
+            System.out.println("Pie chart is not available.");
+        }
     }
 
     @Override
