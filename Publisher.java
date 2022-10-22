@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Analysis implements Subject{
+public class Publisher implements Subject{
     String name;
     private List<Subscriber> subs = new ArrayList<>();
 

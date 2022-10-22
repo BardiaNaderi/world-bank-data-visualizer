@@ -1,7 +1,7 @@
 public class Subscriber implements Observer {
 
     private String name;
-    private Analysis analysis = new Analysis();
+    private Publisher analysis = new Publisher();
 
     public Subscriber(String name){
         super();
@@ -10,14 +10,14 @@ public class Subscriber implements Observer {
 
     @Override
     public void update(){
-        System.out.println(analysis.name + " analysis has been selected.");
+        // this is just an example for something we would eventually check between the different analysis' and add or remove viewers from the list        
         if(analysis.name.equals("Mortality vs GDP")){
             System.out.println("Pie chart is not available.");
         }
     }
 
     @Override
-    public void subscribeAnalysis(Analysis an){
+    public void subscribePublisher(Publisher an){
         analysis = an;
     }
     
