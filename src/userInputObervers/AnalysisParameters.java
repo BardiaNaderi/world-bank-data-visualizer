@@ -26,20 +26,20 @@ public class AnalysisParameters {
 		return params;
 	}
     
-    public void setCountry(String input) {
-    	this.country = input;
+    public void setCountry(String county) {
+    	this.country = county;
     }
     
-    public void setStartYear(int input) {
-    	this.startYear = input;
+    public void setStartYear(int startYear) {
+    	this.startYear = startYear;
     }
     
-    public void setEndYear(int input) {
-    	this.endYear = input;
+    public void setEndYear(int endYear) {
+    	this.endYear = endYear;
     }
     
-    public void setAnalysis(int input) {
-    	this.analysis = input;
+    public void setAnalysis(int analysis) {
+    	this.analysis = analysis;
     }
     
     // This method triggers the AnalysisFactory to run a new analysis with the selected parameters
