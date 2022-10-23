@@ -26,8 +26,8 @@ public class AnalysisParameters {
 		return params;
 	}
     
-    public void setCountry(String county) {
-    	this.country = county;
+    public void setCountry(String country) {
+    	this.country = country;
     }
     
     public void setStartYear(int startYear) {
