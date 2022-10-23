@@ -4,6 +4,7 @@ public class CountryValidator implements Validator {
 
     public void update(int analysis, String country, int startYear, int endYear, String viewer) {
         // TODO: implement validation logic
+    	validateCountry(country);
     	
     	// If country is valid:
     	AnalysisParameters.getParams().setCountry(country);
@@ -12,7 +13,7 @@ public class CountryValidator implements Validator {
     	// Trigger an error message
     }
     
-    public void validateCountry(String country) {
+    private void validateCountry(String country) {
     	// TODO: implement helper method
     }
    
