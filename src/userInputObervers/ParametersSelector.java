@@ -62,7 +62,7 @@ public class ParametersSelector implements Selector{
         notifySubs();
     }
     
-    public void removeViewer(int endYear){
+    public void removeViewer(String viewer){
         // logic to remove viewer from display
     }
 }
