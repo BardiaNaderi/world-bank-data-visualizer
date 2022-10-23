@@ -3,17 +3,7 @@ package viewBuilders;
 import javax.swing.JPanel;
 
 public class Director {
-	
-	private ViewBuilder builder;
-	
-	public Director(ViewBuilder builder) {
-		this.builder = builder;
-	}
-	
-	public View getView() {
-		return this.builder.getView();
-	}
-	
+		
 	/* 
 	 * Each of the following methods will omit whichever chart views are not
 	 * available for the current analysis. The constructRatioView has all of the
