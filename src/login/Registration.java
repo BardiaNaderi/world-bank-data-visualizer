@@ -1,9 +1,15 @@
 package login;
+
 import java.io.*;
-import java.util.*;
+
+import java.awt.event.*;
+import javax.swing.*;
 
 public class Registration {
-	
+
+    private static JButton loginButton;
+    private static JButton signupButton;
+
     /**
      * Application method where we collect user login, verify or allow for sign up
      * This method may be modified/removed during deliverables 2 and 3
@@ -16,23 +22,39 @@ public class Registration {
         State login = new RegistrationLogin();
         State signup = new RegistrationSignup();
 
-        // asking the user for their username, email and password
-        try (Scanner input = new Scanner(System.in)) {
-            System.out.println("1 - Login");
-            System.out.println("2 - Sign Up");
-            System.out.println("-----------");
-            System.out.print("Your selected option is: ");
-            String state = input.nextLine();
+        // creating the frame and panel using java swing
+        JFrame frame = new JFrame();
+        JPanel panel = new JPanel();
 
-            if (state.equals("1")) {
+        // setting the size of the frame and centering it in the users screen
+        frame.setSize(200, 100);
+        frame.setLocationRelativeTo(null);
+        frame.add(panel);
+
+        // creating login and sign up buttons, depending on which one is clicked the
+        // correct window will be displayed
+        loginButton = new JButton("Login");
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
                 context.setState(login);
                 context.doAction();
-            } else if (state.equals("2")) {
+            }
+        });
+        panel.add(loginButton);
+
+        signupButton = new JButton("Signup");
+        signupButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
                 context.setState(signup);
                 context.doAction();
-            } else {
-                System.out.println("Selected option not available.");
             }
-        }
+        });
+        panel.add(signupButton);
+
+        frame.setVisible(true);
     }
 }
