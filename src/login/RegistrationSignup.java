@@ -1,11 +1,25 @@
 package login;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
 public class RegistrationSignup implements State {
+
+    private static JLabel username;
+    private static JTextField usernameInput;
+    private static JLabel email;
+    private static JTextField emailInput;
+    private static JLabel password;
+    private static JPasswordField passwordInput;
+    private static JLabel empty;
+    private static JButton button;
 
     /**
      * doAction method to grab user input and sign them up and add their information
@@ -13,39 +27,77 @@ public class RegistrationSignup implements State {
      */
     @Override
     public void doAction() {
-        // setting the file path to the csv file
-        String filePath = "src/login/users.csv";
 
-        try (Scanner input = new Scanner(System.in)) {
-            System.out.println("Please enter username");
-            String user = input.nextLine();
+        // creating the frame and panel using java swing
+        JFrame frame = new JFrame();
+        JPanel panel = new JPanel();
+        
+        // setting the size of the frame and centering it in the users screen
+        frame.setSize(400, 200);
+        frame.setLocationRelativeTo(null);
+        frame.add(panel);
+        panel.setLayout(new GridLayout(0, 2));
 
-            System.out.println("Please enter email");
-            String email = input.nextLine();
+        // creating the labels and text fields for the user to input the values
+        username = new JLabel("Username", SwingConstants.CENTER);
+        panel.add(username);
 
-            System.out.println("Please enter password");
-            String pass = input.nextLine();
+        usernameInput = new JTextField(20);
+        panel.add(usernameInput);
 
-            // generating id number
-            int id = 0;
-            try {
-                id = idCount(filePath);
-            } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+        email = new JLabel("Email", SwingConstants.CENTER);
+        panel.add(email);
+
+        emailInput = new JTextField(20);
+        panel.add(emailInput);
+
+        password = new JLabel("Password", SwingConstants.CENTER);
+        panel.add(password);
+
+        passwordInput = new JPasswordField(20);
+        passwordInput.setEchoChar('*');
+        panel.add(passwordInput);
+
+        // empty label to push button into next grid box
+        empty = new JLabel("");
+        panel.add(empty);
+
+        // creating sign up button, when clicked the user will be signed up and added to the csv file
+        button = new JButton("Sign Up");
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String usernameFinal = usernameInput.getText();
+                String emailFinal = emailInput.getText();
+                String passwordFinal = String.valueOf(passwordInput.getPassword());
+                // setting the file path to the csv file
+                String filePath = "src/login/users.csv";
+
+                // generating id number
+                int id = 0;
+                try {
+                    id = idCount(filePath);
+                } catch (FileNotFoundException x) {
+                    // TODO Auto-generated catch block
+                    x.printStackTrace();
+                }
+
+                // creating user object
+                User account = new User(usernameFinal, id, emailFinal, passwordFinal);
+
+                // sign up the user
+                try {
+                    writeToDB(account, filePath);
+                } catch (IOException x) {
+                    // TODO Auto-generated catch block
+                    x.printStackTrace();
+                }
+                frame.dispose();
             }
+        });
+        panel.add(button);
 
-            // creating user object
-            User account = new User(user, id, email, pass);
-
-            // sign up the user
-            try {
-                writeToDB(account, filePath);
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
+        frame.setVisible(true);
     }
 
     /**

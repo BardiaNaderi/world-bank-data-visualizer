@@ -1,9 +1,21 @@
 package login;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
 public class RegistrationLogin implements State {
+
+    private static JLabel email;
+    private static JTextField emailInput;
+    private static JLabel password;
+    private static JPasswordField passwordInput;
+    private static JLabel empty;
+    private static JButton button;
 
     /**
      * doAction method where we grab the user input and verify their information to
@@ -11,65 +23,63 @@ public class RegistrationLogin implements State {
      */
     @Override
     public void doAction() {
-        // setting file path to the csv file
-        String filePath = "src/login/users.csv";
 
-        try (Scanner input = new Scanner(System.in)) {
-            System.out.println("Please enter username");
-            String user = input.nextLine();
+        // creating the frame and panel using java swing
+        JFrame frame = new JFrame();
+        JPanel panel = new JPanel();
 
-            System.out.println("Please enter email");
-            String email = input.nextLine();
+        // setting the size of the frame and centering it in the users screen
+        frame.setSize(400, 200);
+        frame.setLocationRelativeTo(null);
+        frame.add(panel);
+        panel.setLayout(new GridLayout(0,2));
 
-            System.out.println("Please enter password");
-            String pass = input.nextLine();
+        // creating the labels and text fields for the user to input the values
+        email = new JLabel("Email", SwingConstants.CENTER);
+        panel.add(email);
 
-            // generating id number
-            int id = 0;
-            try {
-                id = idCount(filePath);
-            } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+        emailInput = new JTextField(20);
+        panel.add(emailInput);
 
-            // creating user object
-            User account = new User(user, id, email, pass);
+        password = new JLabel("Password", SwingConstants.CENTER);
+        panel.add(password);
 
-            // checking if user already has an account
-            try {
-                if (!verify(account.getEmail().trim(), account.getPassword().trim(), filePath)) {
-                    System.out.println("You are logged in");
-                } else {
-                    System.out.println("Login failed. Incorrect email or password.");
+        // hidden password
+        passwordInput = new JPasswordField(20);
+        passwordInput.setEchoChar('*');
+        panel.add(passwordInput);
+
+        // empty label to push button into next grid box
+        empty = new JLabel("");
+        panel.add(empty);
+
+        // creating login button, when clicked the user will be verified
+        button = new JButton("Login");
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String emailFinal = emailInput.getText();
+                String passwordFinal = String.valueOf(passwordInput.getPassword());
+                // setting file path to the csv file
+                String filePath = "src/login/users.csv";
+
+                // checking if user already has an account
+                try {
+                    if (!verify(emailFinal.trim(), passwordFinal.trim(), filePath)) {
+                        System.out.println("You are logged in");
+                    } else {
+                        System.out.println("Login failed. Incorrect email or password.");
+                    }
+                } catch (FileNotFoundException x) {
+                    // TODO Auto-generated catch block
+                    x.printStackTrace();
                 }
-            } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                frame.dispose();
             }
-        }
-    }
+        });
+        panel.add(button);
 
-    /**
-     * idCount method where generate the id value for the user by counting the
-     * number of lines in the CSV file
-     * 
-     * @param filePath, the string of the file path
-     * @return id, id value as an integer to be used for creating the user
-     * @throws FileNotFoundException, if the scanner runs into issues finding the
-     *                                file with the given file path
-     */
-    public static int idCount(String filePath) throws FileNotFoundException {
-        // scan the file and initialize the id value
-        Scanner data = new Scanner(new File(filePath));
-        int id = 0;
-
-        // while loop through the text file and increase id counter after each line
-        while (data.hasNextLine()) {
-            data.nextLine();
-            id++;
-        }
-        return id;
+        frame.setVisible(true);
     }
 
     /**
