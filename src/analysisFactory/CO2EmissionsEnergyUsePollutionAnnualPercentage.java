@@ -7,7 +7,7 @@ import com.google.gson.JsonArray;
 
 import analysisStrategies.AnnualPercentageChange;
 
-public class CO2EmissionaEnergyUsePollutionAnnualPercentage extends Analysis {
+public class CO2EmissionsEnergyUsePollutionAnnualPercentage extends Analysis {
 	
 	/**
 	 * Constructor class which sets three parameters dynamically and two statically.
@@ -20,7 +20,7 @@ public class CO2EmissionaEnergyUsePollutionAnnualPercentage extends Analysis {
 	 * @param startYear the year to start the analysis on
 	 * @param endYear the year to end the analysis on
 	 */
-	public CO2EmissionaEnergyUsePollutionAnnualPercentage(String country, int startYear, int endYear) {
+	public CO2EmissionsEnergyUsePollutionAnnualPercentage(String country, int startYear, int endYear) {
 		this.strategy = new AnnualPercentageChange();
 		this.worldBankCodes = Arrays.asList(CO2_EMISSIONS, ENERGY_USE, AIR_POLLUTION);
 		this.country = country;

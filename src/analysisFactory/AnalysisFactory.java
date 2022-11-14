@@ -14,24 +14,24 @@ public class AnalysisFactory {
 	 */
 	public static Analysis createAnalysis(int analysis, String country, int startYear, int endYear) {
 		switch(analysis) {
+		case 0:
+			return new CO2EmissionsEnergyUsePollutionAnnualPercentage(country, startYear, endYear);
 		case 1:
-			return new CO2EmissionaEnergyUsePollutionAnnualPercentage(country, startYear, endYear);
-		case 2:
 			return new PollutionForestAreaAnnualPercentage(country, startYear, endYear);
-		case 3:
+		case 2:
 			return new CO2EmissionsGDPRatio(country, startYear, endYear);
-		case 4:
+		case 3:
 			return new ForestAreaAverage(country, startYear, endYear);
-		case 5:
+		case 4:
 			return new EducationExpenditureAverage(country, startYear, endYear);
-		case 6:
+		case 5:
 			return new HealthExpenditureHospitalBedsRatio(country, startYear, endYear);
-		case 7:
+		case 6:
 			return new AccessingHealthCareInfantMortalityAnnualPercentage(country, startYear, endYear);
-		case 8:
+		case 7:
 			return new EducationExpenditureHealthExpenditureAnnualPercentage(country, startYear, endYear);
 		default:
-			throw new IllegalArgumentException("Unknown Analysis code " + analysis);
+			throw new IllegalArgumentException("Invaid Analysis code: " + analysis);
 		}
 	}
 }

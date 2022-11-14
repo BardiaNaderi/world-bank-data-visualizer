@@ -13,10 +13,10 @@ public class AnalysisParameters {
     private int endYear;
     
     private AnalysisParameters() {
-    	this.analysis = 1;
-    	this.country = "CAN";
-    	this.startYear = 2011;
-    	this.endYear = 2014;
+    	this.analysis = 0;
+    	this.country = "BRA";
+    	this.startYear = 2021;
+    	this.endYear = 2021;
     }
     
     public static AnalysisParameters getParams() {
@@ -40,6 +40,22 @@ public class AnalysisParameters {
     
     public void setAnalysis(int analysis) {
     	this.analysis = analysis;
+    }
+    
+    public String getCountry(String country) {
+    	return this.country;
+    }
+    
+    public int getStartYear(int startYear) {
+    	return this.startYear;
+    }
+    
+    public int getEndYear(int endYear) {
+    	return this.endYear;
+    }
+    
+    public int getAnalysis(int analysis) {
+    	return this.analysis;
     }
     
     // This method triggers the AnalysisFactory to run a new analysis with the selected parameters
