@@ -13,10 +13,10 @@ public class ParametersSelector implements Selector{
     private List<Validator> subs;
     
     public ParametersSelector() {
-    	this.analysis = 1;
-    	this.country = "CAN";
-    	this.startYear = 2011;
-    	this.endYear = 2014;
+    	this.analysis = 0;
+    	this.country = "BRA";
+    	this.startYear = 2021;
+    	this.endYear = 2021;
     	subs = new ArrayList<Validator>();
     }
 
