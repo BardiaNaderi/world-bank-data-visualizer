@@ -67,14 +67,13 @@ public class RegistrationLogin implements State {
                 try {
                     if (!verify(emailFinal.trim(), passwordFinal.trim(), filePath)) {
                         System.out.println("You are logged in");
+                        frame.dispose();
                     } else {
                         System.out.println("Login failed. Incorrect email or password.");
                     }
                 } catch (FileNotFoundException x) {
-                    // TODO Auto-generated catch block
                     x.printStackTrace();
                 }
-                frame.dispose();
             }
         });
         panel.add(button);

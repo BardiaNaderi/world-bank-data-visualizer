@@ -78,7 +78,6 @@ public class RegistrationSignup implements State {
                 try {
                     id = idCount(filePath);
                 } catch (FileNotFoundException x) {
-                    // TODO Auto-generated catch block
                     x.printStackTrace();
                 }
 
@@ -89,7 +88,6 @@ public class RegistrationSignup implements State {
                 try {
                     writeToDB(account, filePath);
                 } catch (IOException x) {
-                    // TODO Auto-generated catch block
                     x.printStackTrace();
                 }
                 frame.dispose();

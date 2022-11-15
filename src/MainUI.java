@@ -570,6 +570,4 @@ public class MainUI extends JFrame {
 		frame.pack();
 		frame.setVisible(true);
 	}
-	// TODO Auto-generated method stub
-
 }
