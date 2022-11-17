@@ -9,10 +9,10 @@ abstract public class Analysis {
 	
 	// World Bank API indicator codes used for data fetching
 	final static protected String[] POPULATION = {"SP.POP.TOTL", "Total Population"};
-	final static protected String[] CO2_EMISSIONS = {"EN.ATM.CO2E.PC", "CO2 emissions (metric tons per capita)"};
-	final static protected String[] AIR_POLLUTION = {"EN.ATM.PM25.MC.M3", "PM2.5 air pollution, mean annual exposure (micrograms per cubic meter)"};
+	final static protected String[] CO2_EMISSIONS = {"EN.ATM.CO2E.PC", "CO2 Emissions (metric tons per capita)"};
+	final static protected String[] AIR_POLLUTION = {"EN.ATM.PM25.MC.M3", "Air pollution (micrograms per cubic meter)"};
 	final static protected String[] FOREST_AREA = {"AG.LND.FRST.ZS", "Forest area (% of land area)"};
-	final static protected String[] ENERGY_USE = {"EG.USE.PCAP.KG.OE", "Energy use (kg of oil equivalent per capita)"};
+	final static protected String[] ENERGY_USE = {"EG.USE.PCAP.KG.OE", "Energy Use (kg of oil equivalent per capita)"};
 	final static protected String[] GDP_PER_CAPITA = {"NY.GDP.PCAP.CD", "GDP per capita (current US$)"};
 	final static protected String[] HOSPITAL_BEDS = {"SH.MED.BEDS.ZS", "Hospital beds (per 1,000 people)"};
 	final static protected String[] EDUCATION_EXPENDITURE = {"SE.XPD.TOTL.GD.ZS", "Government expenditure on education, total (% of GDP)"};

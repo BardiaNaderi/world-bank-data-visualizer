@@ -2,6 +2,8 @@ package userInputObervers;
 
 import analysisFactory.Analysis;
 import analysisFactory.AnalysisFactory;
+import mainGUI.MainUI;
+import viewBuilders.View;
 
 public class AnalysisParameters {
 	
@@ -11,6 +13,7 @@ public class AnalysisParameters {
     private String country;
     private int startYear;
     private int endYear;
+    private View view;
     
     private AnalysisParameters() {
     	this.analysis = 0;
@@ -42,24 +45,36 @@ public class AnalysisParameters {
     	this.analysis = analysis;
     }
     
-    public String getCountry(String country) {
+    public void setView (View view) {
+    	this.view = view;
+    }
+    
+    public String getCountry() {
     	return this.country;
     }
     
-    public int getStartYear(int startYear) {
+    public int getStartYear() {
     	return this.startYear;
     }
     
-    public int getEndYear(int endYear) {
+    public int getEndYear() {
     	return this.endYear;
     }
     
-    public int getAnalysis(int analysis) {
+    public int getAnalysis() {
     	return this.analysis;
+    }
+    
+    public View getView() {
+    	return this.view;
     }
     
     // This method triggers the AnalysisFactory to run a new analysis with the selected parameters
     public void recalculate() {
+    	MainUI gui = MainUI.getInstance();
+    	gui.getWest().removeAll();
+    	gui.setVisible(true);
+    	
     	Analysis newAnalysis = AnalysisFactory.createAnalysis(analysis, country, startYear, endYear);
 		newAnalysis.executeAnalysis();
     }

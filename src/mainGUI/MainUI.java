@@ -1,9 +1,5 @@
-/*************************************************
- * FALL 2022
- * EECS 3311 GUI SAMPLE CODE
- * ONLT AS A REFERENCE TO SEE THE USE OF THE jFree FRAMEWORK
- * THE CODE BELOW DOES NOT DEPICT THE DESIGN TO BE FOLLOWED 
- */
+package mainGUI;
+
 
 
 import java.awt.BasicStroke;
@@ -53,13 +49,12 @@ import login.Registration;
 import userInputObervers.AnalysisParameters;
 import userInputObervers.ParametersSelector;
 import userInputObervers.ViewerValidator;
+import viewBuilders.View;
 import userInputObervers.CountryValidator;
 import userInputObervers.AnalysisYearValidator;
 
 public class MainUI extends JFrame {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	private static MainUI instance;
@@ -68,12 +63,17 @@ public class MainUI extends JFrame {
 	private CountryValidator countryVal = new CountryValidator();
 	private AnalysisYearValidator analysisYearVal = new AnalysisYearValidator();
 	private ViewerValidator viewVal = new ViewerValidator();
-	
+	private JPanel west = new JPanel();
+		
 	public static MainUI getInstance() {
 		if (instance == null)
 			instance = new MainUI();
 
 		return instance;
+	}
+	
+	public JPanel getWest() {
+		return this.west;
 	}
 
 	private MainUI() {
@@ -163,6 +163,8 @@ public class MainUI extends JFrame {
 		// VIEWS SELECTION
 		// ------------------------------
 
+		this.getWest().setLayout(new GridLayout(2, 0));
+		
 		JLabel viewsLabel = new JLabel("Available Views: ");
 
 		Vector<String> viewsNames = new Vector<String>();
@@ -173,13 +175,28 @@ public class MainUI extends JFrame {
 		viewsNames.add("Report");
 		JComboBox<String> viewsList = new JComboBox<String>(viewsNames);
 		JButton addView = new JButton("+");
+		addView.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	params.addViewer(west, viewsList.getSelectedItem().toString());
+            }
+        });
+
 		JButton removeView = new JButton("-");
+		removeView.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                params.removeViewer(west, viewsList.getSelectedItem().toString());
+            }
+        });
+
 		
+
 		// ------------------------------
 		// ANALYSIS SELECTION
 		// ------------------------------
 
-		//TODO: Pull the names dynamically from a CSV file
+		//TODO: Pull the names dynamically from a CSV file?
 		
 		JLabel methodLabel = new JLabel("        Choose analysis method: ");
 		Vector<String> methodsNames = new Vector<String>();
@@ -214,23 +231,23 @@ public class MainUI extends JFrame {
 		JPanel east = new JPanel();
 
 		// Set charts region
-		JPanel west = new JPanel();
-		west.setLayout(new GridLayout(2, 0));
-		createCharts(west);
+//		JPanel west = new JPanel();
+//		west.setLayout(new GridLayout(2, 0));			
+//		createCharts(west);
 
 		getContentPane().add(north, BorderLayout.NORTH);
 		getContentPane().add(east, BorderLayout.EAST);
 		getContentPane().add(south, BorderLayout.SOUTH);
-		getContentPane().add(west, BorderLayout.WEST);
+		getContentPane().add(this.getWest(), BorderLayout.WEST);
 	}
 
 	private void createCharts(JPanel west) {
-		createLine(west);
-		createTimeSeries(west);
-		createBar(west);
-		createPie(west);
-		createScatter(west);
-		createReport(west);
+//		createLine(west);
+//		createTimeSeries(west);
+//		createBar(west);
+//		createPie(west);
+//		createScatter(west);
+//		createReport(west);
 
 	}
 
@@ -561,13 +578,13 @@ public class MainUI extends JFrame {
 
 	}
 
-	public static void main(String[] args) throws IOException {
-		
-		//TODO: execute login module first before displaying GUI
-
-		JFrame frame = MainUI.getInstance();
-		frame.setSize(900, 600);
-		frame.pack();
-		frame.setVisible(true);
-	}
+//	public static void main(String[] args) throws IOException {
+//		
+//		//TODO: execute login module first before displaying GUI
+//
+//		JFrame frame = MainUI.getInstance();
+//		frame.setSize(900, 600);
+//		frame.pack();
+//		frame.setVisible(true);
+//	}
 }

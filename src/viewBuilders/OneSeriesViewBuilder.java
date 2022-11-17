@@ -1,49 +1,50 @@
 package viewBuilders;
 
-import javax.swing.JPanel;
+import java.util.List;
+import java.util.Map;
 
 public class OneSeriesViewBuilder implements ViewBuilder {
 	
 	private View view;
-	JPanel data;
+	//Map<Integer, Float> data;
 
-	public OneSeriesViewBuilder(JPanel data) {		
-		this.reset(data);
+	public OneSeriesViewBuilder() {		
+		this.reset();
 	};
 	
-	public void reset(JPanel data) {
+	public void reset() {
 		this.view = new View();
-		this.data = data;
+		//this.data = null;
 	}
 	
-	public void createLine(JPanel data) {
+	public void createLine(Map<Integer, Float> data) {
 		//TODO add logic for creating a one series line chart
-		this.view.setLine(new Chart());
+		//this.view.setLine(new Chart());
 	}
 	
-	public void createTime(JPanel data) {
+	public void createTime(Map<Integer, Float> data) {
 		// TODO add logic for creating a one series time chart
-		this.view.setTime(new Chart());
+		//this.view.setTime(new Chart());
 	}
 	
-	public void createBar(JPanel data) {
+	public void createBar(Map<Integer, Float> data) {
 		// TODO add logic for creating a one series bar graph
-		this.view.setBar(new Chart());
+		//this.view.setBar(new Chart());
 	}
 	
-	public void createPie(JPanel data) {
+	public void createPie(Map<Integer, Float> data) {
 		// TODO add logic for creating a one series pie chart
-		this.view.setPie(new Chart());
+		//this.view.setPie(new Chart());
 	}
 	
-	public void createScatter(JPanel data) {
+	public void createScatter(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
 		// TODO add logic for creating a one series scatter plot
-		this.view.setScatter(new Chart());
+		//this.view.setScatter(new Chart());
 	}
 	
-	public void createReport(JPanel data) {
+	public void createReport(Map<Integer, Float> data) {
 		// TODO add logic for creating a one series report
-		this.view.setReport(new Chart());
+		//this.view.setReport(new Chart());
 	}
 	
 	public View getView() {

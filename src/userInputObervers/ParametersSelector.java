@@ -3,6 +3,10 @@ package userInputObervers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JPanel;
+
+import mainGUI.MainUI;
+
 public class ParametersSelector implements Selector{
 	
     private int analysis;
@@ -57,12 +61,14 @@ public class ParametersSelector implements Selector{
         notifySubs();
     }
     
-    public void addViewer(String viewer){
+    public void addViewer(JPanel west, String viewer){
         this.viewer = viewer;
         notifySubs();
     }
     
-    public void removeViewer(String viewer){
-        // logic to remove viewer from display
+    public void removeViewer(JPanel west, String viewer){
+    	MainUI gui = MainUI.getInstance();
+    	gui.getWest().remove(AnalysisParameters.getParams().getView().getScatter());
+    	gui.setVisible(true);
     }
 }

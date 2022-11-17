@@ -1,13 +1,15 @@
 package viewBuilders;
 
+import org.jfree.chart.ChartPanel;
+
 public class View {
 	
-	public Chart line;
-	public Chart time;
-	public Chart bar;
-	public Chart pie;
-	public Chart scatter;
-	public Chart report;
+	public ChartPanel line;
+	public ChartPanel time;
+	public ChartPanel bar;
+	public ChartPanel pie;
+	public ChartPanel scatter;
+	public ChartPanel report;
 	
 	public View() {
 		this.line = null;
@@ -18,51 +20,51 @@ public class View {
 		this.report = null;
 	}		
 	
-	public Chart getLine() {
+	public ChartPanel getLine() {
 		return this.line;
 	}
 	
-	public Chart getTime() {
+	public ChartPanel getTime() {
 		return this.time;
 	}
 	
-	public Chart getBar() {
+	public ChartPanel getBar() {
 		return this.bar;
 	}
 	
-	public Chart getPie() {
+	public ChartPanel getPie() {
 		return this.pie;
 	}
 	
-	public Chart getScatter() {
+	public ChartPanel getScatter() {
 		return this.scatter;
 	}
 	
-	public Chart getReport() {
+	public ChartPanel getReport() {
 		return this.report;
 	}
 	
-	public void setLine(Chart line) {
+	public void setLine(ChartPanel line) {
 		this.line = line;
 	}
 	
-	public void setTime(Chart time) {
+	public void setTime(ChartPanel time) {
 		this.time = time;
 	}
 	
-	public void setBar(Chart bar) {
+	public void setBar(ChartPanel bar) {
 		this.bar = bar;
 	}
 	
-	public void setPie(Chart pie) {
+	public void setPie(ChartPanel pie) {
 		this.pie = pie;
 	}
 	
-	public void setScatter(Chart scatter) {
+	public void setScatter(ChartPanel scatter) {
 		this.scatter = scatter;
 	}
 	
-	public void setReport(Chart report) {
+	public void setReport(ChartPanel report) {
 		this.report = report;
 	}
 

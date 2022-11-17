@@ -1,16 +1,17 @@
 package viewBuilders;
 
-import javax.swing.JPanel;
+import java.util.Map;
+import java.util.List;
 
 public interface ViewBuilder {
 
-	public void reset(JPanel data);
-	public void createLine(JPanel data);
-	public void createTime(JPanel data);
-	public void createBar(JPanel data);
-	public void createPie(JPanel data);
-	public void createScatter(JPanel data);
-	public void createReport(JPanel data);
+	public void reset();
+	public void createLine(Map<Integer, Float> data);
+	public void createTime(Map<Integer, Float> data);
+	public void createBar(Map<Integer, Float> data);
+	public void createPie(Map<Integer, Float> data);
+	public void createScatter(List<Map<Integer, Float>> data, List<String[]> labels, String axis);
+	public void createReport(Map<Integer, Float> data);
 	public View getView();
 	
 }

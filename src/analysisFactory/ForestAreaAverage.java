@@ -1,11 +1,15 @@
 package analysisFactory;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.JsonArray;
 
 import analysisStrategies.Average;
+import viewBuilders.Director;
+import viewBuilders.OneSeriesViewBuilder;
+import viewBuilders.ViewBuilder;
 
 public class ForestAreaAverage extends Analysis {
 	
@@ -35,7 +39,7 @@ public class ForestAreaAverage extends Analysis {
 	public void executeAnalysis() {	
 		String[] forestCode = this.getWorldBankCodes().get(0);
 		JsonArray[] forestData = {fetcher.fetchData(this, forestCode)};
-		
+			
 		/*
 		 *  It is assumed that the data being fetched will need to be returned in some manner in order
 		 *  to be displayed to the user. For now the data is being returned as a HashMap and printed
@@ -43,6 +47,12 @@ public class ForestAreaAverage extends Analysis {
 		 *  of Deliverables 2 and 3.
 		*/
 		Map<Integer, Float> forestValues = this.strategy.execute(forestData);	
+		List<Map<Integer, Float>> data = Arrays.asList(forestValues);
+		
+		Director director = new Director();
+		ViewBuilder builder = new OneSeriesViewBuilder();
+		director.constructRatioView(builder, data, this.getWorldBankCodes());
+		
 		System.out.println("The average " + forestCode[1] + " for " + this.getCountry() + " from " 
 				+ this.getStartYear() + " to " + this.getEndYear() + " is " + forestValues.get(1));
 	}
