@@ -1,16 +1,17 @@
 package userInputObervers;
 
-import java.awt.BorderLayout;
-
 import mainGUI.MainUI;
 
 public class ViewerValidator implements Validator {
 	
-    public void update(int analysis, String country, int startYear, int endYear, String viewer) {
-    	MainUI gui = MainUI.getInstance();
+    public void update() {
     	
-    	if (viewer != null) {
-        	switch (viewer) {
+    	MainUI gui = MainUI.getInstance();
+    	ParametersSelector params = gui.getParams();
+    	
+    	if (params.getViewer().value != null) {
+    		params.setViewerValid(true);
+        	switch (params.getViewer().value) {
 //        	case "Line Chart":
 //        		gui.getWest().add(AnalysisParameters.getParams().getView().getLine());
 //        		break;
@@ -24,7 +25,7 @@ public class ViewerValidator implements Validator {
 //        		gui.getWest().add(AnalysisParameters.getParams().getView().getPie());
 //        		break;
         	case "Scatter Chart":
-        		gui.getWest().add(AnalysisParameters.getParams().getView().getScatter());
+        		gui.getWest().add(gui.getView().getScatter());
         		break;
 //        	case "Report":
 //        		gui.getWest().add(AnalysisParameters.getParams().getView().getReport());

@@ -26,9 +26,7 @@ public class AnnualPercentageChange implements AnalysisStrategy {
 		int year;
 
 		// Fetching data from one year before the start year
-		if (firstData.get(1).getAsJsonArray().get(sizeOfResults - 1).getAsJsonObject().get("value").isJsonNull())
-			pastYear = 0;
-		else
+		if (!firstData.get(1).getAsJsonArray().get(sizeOfResults - 1).getAsJsonObject().get("value").isJsonNull())
 			pastYear = firstData.get(1).getAsJsonArray().get(sizeOfResults - 1).getAsJsonObject().get("value").getAsFloat();
 		
 		// Fetching data for the years in the given range
@@ -36,13 +34,15 @@ public class AnnualPercentageChange implements AnalysisStrategy {
 			year = firstData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("date").getAsInt();
 			
 			if (firstData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull())
-				currentYear = 0;
+				continue;
 			else
 				currentYear = firstData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsFloat(); 
 						
-			percentChange = (currentYear - pastYear) / pastYear;
-			pastYear = currentYear;
-			values.put(year, percentChange);				
+			if (pastYear != 0)
+				percentChange = (currentYear - pastYear) / pastYear;
+				pastYear = currentYear;
+				values.put(year, percentChange);			
+				
 		}	
 		
 		return values;

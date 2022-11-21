@@ -19,7 +19,7 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.time.Year;
 
-import userInputObervers.AnalysisParameters;
+import mainGUI.MainUI;
 
 public class TwoSeriesViewBuilder implements ViewBuilder {
 	
@@ -66,43 +66,34 @@ public class TwoSeriesViewBuilder implements ViewBuilder {
 		for (Map.Entry<Integer, Float> entry: data.get(1).entrySet()) {
 			series2.add(new Year(entry.getKey()), entry.getValue());
 		}
-		
-		TimeSeriesCollection dataset1 = new TimeSeriesCollection();
-		dataset1.addSeries(series1);
-		
-		TimeSeriesCollection dataset2 = new TimeSeriesCollection();
-		dataset2.addSeries(series2);
-		
-		
+
+		TimeSeriesCollection dataset = new TimeSeriesCollection();
+		dataset.addSeries(series1);
+		dataset.addSeries(series2);
+
 		XYPlot plot = new XYPlot();
 		XYItemRenderer itemrenderer1 = new XYLineAndShapeRenderer(false, true);
-		XYItemRenderer itemrenderer2 = new XYLineAndShapeRenderer(false, true);
 
+		plot.setDataset(0, dataset);
+		plot.setRenderer(0, itemrenderer1);
 		DateAxis domainAxis = new DateAxis("Year");
 		plot.setDomainAxis(domainAxis);
-		
-		plot.setDataset(0, dataset1);
-		plot.setRenderer(0, itemrenderer1);
-		plot.setRangeAxis(0, new NumberAxis(labels.get(0)[2]));
+		plot.setRangeAxis(new NumberAxis(axis));
 
-		plot.setDataset(1, dataset2);
-		plot.setRenderer(1, itemrenderer2);
-		plot.setRangeAxis(1, new NumberAxis(labels.get(1)[2]));
-		
+
 		plot.mapDatasetToRangeAxis(0, 0);// 1st dataset to 1st y-axis
 		plot.mapDatasetToRangeAxis(1, 1); // 2nd dataset to 2nd y-axis
 
-		JFreeChart scatterChart = new JFreeChart("FIX CO2 ENERGY POLLUTION",
+		JFreeChart scatterChart = new JFreeChart("Title Placeholde",
 				new Font("Serif", java.awt.Font.BOLD, 18), plot, true);
 
 		ChartPanel chartPanel = new ChartPanel(scatterChart);
 		chartPanel.setPreferredSize(new Dimension(400, 300));
 		chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 		chartPanel.setBackground(Color.white);
-
+		
 		this.view.setScatter(chartPanel);
-		AnalysisParameters.getParams().setView(getView());
-		System.out.println("we are here in 3 series");
+		MainUI.getInstance().setView(getView());
 	}
 	
 	public void createReport(Map<Integer, Float> data) {

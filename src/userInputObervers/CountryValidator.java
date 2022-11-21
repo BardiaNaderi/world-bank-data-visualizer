@@ -7,53 +7,37 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import mainGUI.MainUI;
+
 public class CountryValidator implements Validator {
 
-	public void update(int analysis, String country, int startYear, int endYear, String viewer) {
-
-		// TODO: this is temporary for testing, need to implement a way to swap all
-		// country strings for codes, probably as part of the CSV check
-		switch (country) {
-			case "Brazil":
-				country = "BRA";
-				break;
-			case "Canada":
-				country = "CAN";
-				break;
-			case "China":
-				country = "CHN";
-				break;
-			case "France":
-				country = "FRA";
-				break;
-			case "USA":
-				country = "USA";
-				break;
-			default:
-				country = "CAN";
-		}
+	public void update() {
+			
+		MainUI gui = MainUI.getInstance();
+		ParametersSelector params = gui.getParams();
 
 		Boolean valid = true;
 		try {
-			valid = csvValidator(valid, country);
+			valid = csvValidator(valid, params.getCountry().value);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 
 		// checking if country is valid or not
 		if (!valid) {
+			params.setCountryValid(false);
 			JFrame frame = new JFrame("Invalid Selection");
 			JOptionPane.showMessageDialog(frame,
-					"Data fetching is not permitted for " + country + ". Please select another country.",
+					"Data fetching is not permitted for " + params.getCountry().value + ". Please select another country.",
 					"Invalid Selection", JOptionPane.ERROR_MESSAGE);
 		} else {
-			AnalysisParameters.getParams().setCountry(country);
+			params.setCountryValid(true);
 		}
 
 	}
 
 	private boolean csvValidator(boolean valid, String country) throws FileNotFoundException {
-		String filePath = "src/userInputObervers/countries.csv";
+		String filePath = "src/database/InvalidCountries.csv";
 		Scanner x = new Scanner(new File(filePath));
 		while (x.hasNextLine()) {
 			String invalidCountry = x.nextLine();

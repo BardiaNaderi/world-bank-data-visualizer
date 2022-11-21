@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import javax.swing.JFrame;
 
+import com.opencsv.exceptions.CsvException;
+
 import analysisFactory.Analysis;
 import analysisFactory.AnalysisFactory;
 import login.Registration;
@@ -24,8 +26,9 @@ public class Main {
 	 * 
 	 * @param args the command line inputs (not used for this method)
 	 * @throws IOException 
+	 * @throws CsvException 
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, CsvException {
 		
 		JFrame frame = MainUI.getInstance();
 		frame.setSize(900, 600);

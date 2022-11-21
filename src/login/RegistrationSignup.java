@@ -71,7 +71,7 @@ public class RegistrationSignup implements State {
                 String emailFinal = emailInput.getText();
                 String passwordFinal = String.valueOf(passwordInput.getPassword());
                 // setting the file path to the csv file
-                String filePath = "src/login/users.csv";
+                String filePath = "src/database/users.csv";
 
                 // generating id number
                 int id = 0;

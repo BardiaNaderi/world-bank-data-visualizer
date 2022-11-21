@@ -1,7 +1,5 @@
 package mainGUI;
 
-
-
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,7 +8,13 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -45,8 +49,9 @@ import org.jfree.data.time.Year;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-import login.Registration;
-import userInputObervers.AnalysisParameters;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
+
 import userInputObervers.ParametersSelector;
 import userInputObervers.ViewerValidator;
 import viewBuilders.View;
@@ -59,12 +64,16 @@ public class MainUI extends JFrame {
 
 	private static MainUI instance;
 	
-	private ParametersSelector params = new ParametersSelector();
-	private CountryValidator countryVal = new CountryValidator();
-	private AnalysisYearValidator analysisYearVal = new AnalysisYearValidator();
-	private ViewerValidator viewVal = new ViewerValidator();
-	private JPanel west = new JPanel();
-		
+	private ParametersSelector params;
+	private CountryValidator countryVal;
+	private AnalysisYearValidator analysisYearVal;
+	private ViewerValidator viewVal;
+	
+	private View view;
+	private JPanel west;
+	
+	private Map<String, String> countries;
+	
 	public static MainUI getInstance() {
 		if (instance == null)
 			instance = new MainUI();
@@ -72,35 +81,65 @@ public class MainUI extends JFrame {
 		return instance;
 	}
 	
+	public ParametersSelector getParams() {
+		return this.params;
+	}
+	
+	public View getView() {
+		return this.view;
+	}
+	
 	public JPanel getWest() {
 		return this.west;
+	}
+	
+	public void setView(View view) {
+		this.view = view;
+	}
+	
+	public Map<String, String> getCountryList() {
+		return this.countries;
 	}
 
 	private MainUI() {
 		
 		// Set window title
 		super("Country Statistics");
-
+		
+		// Set up the attributes
+		this.params = new ParametersSelector();
+		this.countryVal = new CountryValidator();
+		this.analysisYearVal = new AnalysisYearValidator();
+		this.viewVal = new ViewerValidator();
+		
+		this.view = null;
+		this.west = new JPanel();
+		
 		// Set up the Observer listeners
-		params.subscribe(countryVal);
-		params.subscribe(analysisYearVal);
-		params.subscribe(viewVal);
+		this.params.subscribe(countryVal);
+		this.params.subscribe(analysisYearVal);
+		this.params.subscribe(viewVal);
+		
 		
 		// ------------------------------
 		// COUNTRY SELECTION
 		// ------------------------------
 		
-		//TODO: Pull the names dynamically from a CSV file
-		
+		try {
+			countries = CSVToList.makeList("src/database/countries.csv");
+		} catch (IOException | CsvException e1) {
+			e1.printStackTrace();
+		}
+
 		// Set top bar
 		JLabel chooseCountryLabel = new JLabel("Choose a country: ");
+		
 		Vector<String> countriesNames = new Vector<String>();
-		countriesNames.add("USA");
-		countriesNames.add("Canada");
-		countriesNames.add("France");
-		countriesNames.add("China");
-		countriesNames.add("Brazil");
+		for (Map.Entry<String, String> entry: countries.entrySet()) {
+			countriesNames.add(entry.getKey());
+		}
 		countriesNames.sort(null);
+		
 		JComboBox<String> countriesList = new JComboBox<String>(countriesNames);
 		countriesList.addActionListener(new ActionListener() {
             @Override
@@ -117,7 +156,7 @@ public class MainUI extends JFrame {
 		JLabel from = new JLabel("From");
 		JLabel to = new JLabel("To");
 		Vector<String> years = new Vector<String>();
-		for (int i = 2021; i >= 2010; i--) {
+		for (int i = 2021; i >= 1972; i--) {
 			years.add("" + i);
 		}
 		JComboBox<String> fromList = new JComboBox<String>(years);
@@ -125,7 +164,7 @@ public class MainUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
             	int startYear = Integer.parseInt(fromList.getSelectedItem().toString());
-                params.selectStartYear(startYear);
+                params.selectStartYear(Integer.toString(startYear));
             }
         });
 	
@@ -134,7 +173,7 @@ public class MainUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
             	int endYear = Integer.parseInt(toList.getSelectedItem().toString());
-                params.selectEndYear(endYear);
+                params.selectEndYear(Integer.toString(endYear));
             }
         });
 
@@ -155,7 +194,7 @@ public class MainUI extends JFrame {
 		recalculate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AnalysisParameters.getParams().recalculate();
+               params.recalculate();
             }
         });
 		
@@ -178,7 +217,7 @@ public class MainUI extends JFrame {
 		addView.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	params.addViewer(west, viewsList.getSelectedItem().toString());
+            	params.addViewer(viewsList.getSelectedItem().toString());
             }
         });
 
@@ -186,7 +225,7 @@ public class MainUI extends JFrame {
 		removeView.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                params.removeViewer(west, viewsList.getSelectedItem().toString());
+                params.removeViewer(viewsList.getSelectedItem().toString());
             }
         });
 
@@ -214,7 +253,7 @@ public class MainUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
             	int analysis = methodsList.getSelectedIndex();
-                params.selectAnalysis(analysis);
+                params.selectAnalysis(Integer.toString(analysis));
             }
         });
 

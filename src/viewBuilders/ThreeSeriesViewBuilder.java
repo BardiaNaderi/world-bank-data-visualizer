@@ -3,8 +3,6 @@ package viewBuilders;
 import java.util.Map;
 
 import javax.swing.BorderFactory;
-import javax.swing.JPanel;
-
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.DateAxis;
@@ -15,17 +13,14 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.util.List;
 
 import org.jfree.data.time.Year;
 
 import mainGUI.MainUI;
-import userInputObervers.AnalysisParameters;
 
 public class ThreeSeriesViewBuilder implements ViewBuilder {
 	
@@ -85,7 +80,6 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 
 		XYPlot plot = new XYPlot();
 		XYItemRenderer itemrenderer1 = new XYLineAndShapeRenderer(false, true);
-		XYItemRenderer itemrenderer2 = new XYLineAndShapeRenderer(false, true);
 
 		plot.setDataset(0, dataset);
 		plot.setRenderer(0, itemrenderer1);
@@ -93,14 +87,10 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		plot.setDomainAxis(domainAxis);
 		plot.setRangeAxis(new NumberAxis(axis));
 
-//		plot.setDataset(1, dataset2);
-//		plot.setRenderer(1, itemrenderer2);
-//		plot.setRangeAxis(1, new NumberAxis("US$"));
-
 		plot.mapDatasetToRangeAxis(0, 0);// 1st dataset to 1st y-axis
 		plot.mapDatasetToRangeAxis(1, 1); // 2nd dataset to 2nd y-axis
 
-		JFreeChart scatterChart = new JFreeChart("CO2 vs Energy Use vs Air Pollution",
+		JFreeChart scatterChart = new JFreeChart("Title Placeholder",
 				new Font("Serif", java.awt.Font.BOLD, 18), plot, true);
 
 		ChartPanel chartPanel = new ChartPanel(scatterChart);
@@ -109,7 +99,7 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		chartPanel.setBackground(Color.white);
 		
 		this.view.setScatter(chartPanel);
-		AnalysisParameters.getParams().setView(getView());
+		MainUI.getInstance().setView(getView());
 	}
 	
 	public void createReport(Map<Integer, Float> data) {
