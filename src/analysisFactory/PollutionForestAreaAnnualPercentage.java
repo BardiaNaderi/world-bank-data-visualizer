@@ -1,11 +1,18 @@
 package analysisFactory;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import com.google.gson.JsonArray;
 
 import analysisStrategies.AnnualPercentageChange;
+import viewBuilders.Director;
+import viewBuilders.TwoSeriesViewBuilder;
+import viewBuilders.ViewBuilder;
 
 public class PollutionForestAreaAnnualPercentage extends Analysis {
 	
@@ -47,14 +54,18 @@ public class PollutionForestAreaAnnualPercentage extends Analysis {
 		*/
 		Map<Integer, Float> pollutionValues = this.strategy.execute(pollutionData);
 		Map<Integer, Float> forestValues = this.strategy.execute(forestData);
-		
-		for (Map.Entry<Integer, Float> entry: pollutionValues.entrySet()) {
-			System.out.println("The annual percent change of " + pollutionCode[1] + " for " + country + " from " +  
-					(entry.getKey() - 1) + " to " +  entry.getKey() + " is " +  entry.getValue());
+		List<Map<Integer, Float>> data = Arrays.asList(pollutionValues, forestValues);
+
+		if (pollutionValues.isEmpty() && forestValues.isEmpty()) {
+			JFrame frame = new JFrame("Invalid Selection");
+    		JOptionPane.showMessageDialog(frame, "No data is available for the selected analysis..",
+    	               "No Data", JOptionPane.ERROR_MESSAGE);
 		}
-		for (Map.Entry<Integer, Float> entry: forestValues.entrySet()) {
-			System.out.println("The annual percent change of " + forestCode[1] + " for " + country + " from " +  
-					(entry.getKey() - 1) + " to " +  entry.getKey() + " is " +  entry.getValue());
+			
+		else {
+			Director director = new Director();
+			ViewBuilder builder = new TwoSeriesViewBuilder();
+			director.constructAnnualPercentageView(builder, data, this.getWorldBankCodes());
 		}
 	}
 }

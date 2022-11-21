@@ -61,7 +61,7 @@ public class RegistrationLogin implements State {
                 String emailFinal = emailInput.getText();
                 String passwordFinal = String.valueOf(passwordInput.getPassword());
                 // setting file path to the csv file
-                String filePath = "src/login/users.csv";
+                String filePath = "src/database/users.csv";
 
                 // checking if user already has an account
                 try {

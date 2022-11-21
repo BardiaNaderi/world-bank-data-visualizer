@@ -26,7 +26,7 @@ public class Average implements AnalysisStrategy {
 		
 		for (int i = sizeOfResults - 1; i >= 0; i--) {
 			if (firstData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull())
-				currentYear = 0;
+				continue;
 			else
 				currentYear = firstData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsFloat();
 

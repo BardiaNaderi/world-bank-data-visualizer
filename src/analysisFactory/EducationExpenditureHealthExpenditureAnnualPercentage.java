@@ -1,11 +1,18 @@
 package analysisFactory;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import com.google.gson.JsonArray;
 
 import analysisStrategies.AnnualPercentageChange;
+import viewBuilders.Director;
+import viewBuilders.TwoSeriesViewBuilder;
+import viewBuilders.ViewBuilder;
 
 public class EducationExpenditureHealthExpenditureAnnualPercentage extends Analysis {
 	
@@ -47,14 +54,18 @@ public class EducationExpenditureHealthExpenditureAnnualPercentage extends Analy
 		*/
 		Map<Integer, Float> educationValues = this.strategy.execute(educationData);
 		Map<Integer, Float> healthValues = this.strategy.execute(healthData);
+		List<Map<Integer, Float>> data = Arrays.asList(educationValues, healthValues);
 		
-		for (Map.Entry<Integer, Float> entry: educationValues.entrySet()) {
-			System.out.println("The annual percent change of " + educationCode[1] + " for " + country + " from " +  
-					(entry.getKey() - 1) + " to " +  entry.getKey() + " is " +  entry.getValue());
+		if (educationValues.isEmpty() && healthValues.isEmpty()) {
+			JFrame frame = new JFrame("Invalid Selection");
+    		JOptionPane.showMessageDialog(frame, "No data is available for the selected analysis..",
+    	               "No Data", JOptionPane.ERROR_MESSAGE);
 		}
-		for (Map.Entry<Integer, Float> entry: healthValues.entrySet()) {
-			System.out.println("The annual percent change of " + healthCode[1] + " for " + country + " from " +  
-					(entry.getKey() - 1) + " to " +  entry.getKey() + " is " +  entry.getValue());
+			
+		else {
+			Director director = new Director();
+			ViewBuilder builder = new TwoSeriesViewBuilder();
+			director.constructAnnualPercentageView(builder, data, this.getWorldBankCodes());
 		}
 	}
 }

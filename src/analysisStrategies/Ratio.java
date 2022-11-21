@@ -12,7 +12,7 @@ public class Ratio implements AnalysisStrategy {
 	 * set of years
 	 * 
 	 * @param data a JSON array containing data fetched from the World Bank's API
-	 * @return a HashMap containing the year and ratio values for the current analysi
+	 * @return a HashMap containing the year and ratio values for the current analysis
 	 */
 	public Map<Integer, Float> execute(JsonArray[] data) {
 		
@@ -31,12 +31,12 @@ public class Ratio implements AnalysisStrategy {
 			year = firstData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("date").getAsInt();
 			
 			if (firstData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull())
-				firstValue = 0;
+				continue;
 			else
 				firstValue = firstData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsFloat();  
 			
 			if (secondData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull())
-				secondValue  = 0;
+				continue;
 			else
 				secondValue  = secondData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").getAsFloat(); 
 			
