@@ -1,5 +1,9 @@
 package userInputObervers;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -12,6 +16,14 @@ public class AnalysisYearValidator implements Validator {
 		ParametersSelector params = MainUI.getInstance().getParams();	
 		int startYear = Integer.parseInt(params.getStartYear().value);
 		int endYear = Integer.parseInt(params.getEndYear().value);
+		Boolean valid = true;
+
+		try {
+			valid = csvValidator(valid, params.getAnalysis().value, startYear, endYear);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
     	if (startYear > endYear) {
     		params.setStartYearValid(false);
@@ -20,8 +32,7 @@ public class AnalysisYearValidator implements Validator {
     	               "Invalid Selection", JOptionPane.ERROR_MESSAGE);
     	}
     	
-    	// TODO: this is temporary for testing, need to validate years again analysis in the CSV file
-    	else if (params.getAnalysis().value == "0" && (startYear == 2020 || endYear == 2020)) {
+    	else if (!valid) {
     		params.setAnalysisValid(false);
     		JFrame frame = new JFrame("Invalid Selection");
     		JOptionPane.showMessageDialog(frame, "Analysis is not available for the selected years. Please choose another option.",
@@ -35,6 +46,27 @@ public class AnalysisYearValidator implements Validator {
     	}
     	
     }
+	
+	private boolean csvValidator(boolean valid, String analysisId, int startYear, int endYear) throws IOException {
+		String filePath = "src/database/analysisYear.csv";
+		String invalidYears = "";
+		int year = 0;
+		
+		String analysisYear = Files.readAllLines(Paths.get(filePath)).get(Integer.parseInt(analysisId));
+
+		String[] analysisYearSplit = analysisYear.split(",");
+		invalidYears = analysisYearSplit[2].trim();
+		String[] invalidYear = invalidYears.split("/");
+
+		for(String s: invalidYear){
+			year = Integer.parseInt(s);
+			if (year > startYear && year < endYear){
+				valid = false;
+				break;
+			}
+		}
+		return valid;
+	}
     
 }
 

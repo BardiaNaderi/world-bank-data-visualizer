@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -239,14 +240,12 @@ public class MainUI extends JFrame {
 		
 		JLabel methodLabel = new JLabel("        Choose analysis method: ");
 		Vector<String> methodsNames = new Vector<String>();
-		methodsNames.add("CO2 Emissions vs Energy Use vs Air Pollution");
-		methodsNames.add("Air Pollution vs Forest Area");
-		methodsNames.add("CO2 Emissions vs GDP");
-		methodsNames.add("Forest Area");
-		methodsNames.add("Education Expenditure");
-		methodsNames.add("Health Expenditure vs Hospital Beds");
-		methodsNames.add("Health Care Access vs Infant Mortality");
-		methodsNames.add("Education Expenditure vs Health Expenditure");
+		try {
+			analysisDropDownFiller(methodsNames);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		JComboBox<String> methodsList = new JComboBox<String>(methodsNames);
 		methodsList.addActionListener(new ActionListener() {
@@ -280,6 +279,20 @@ public class MainUI extends JFrame {
 		getContentPane().add(this.getWest(), BorderLayout.WEST);
 	}
 
+	private void analysisDropDownFiller(Vector<String> methodNames) throws FileNotFoundException {
+		String filePath = "src/database/analysisYear.csv";
+		Scanner x = new Scanner(new File(filePath));
+		String analysisTitle = "";
+		while (x.hasNextLine()) {
+			String analysisValues = x.nextLine();
+			String[] userDataValues = analysisValues.split(",");
+            analysisTitle = userDataValues[0].trim();
+
+			methodNames.add(analysisTitle);
+		}
+		x.close();
+	}
+	
 	private void createCharts(JPanel west) {
 //		createLine(west);
 //		createTimeSeries(west);
