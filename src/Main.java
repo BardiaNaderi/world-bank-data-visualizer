@@ -31,9 +31,9 @@ public class Main {
 	public static void main(String[] args) throws IOException, CsvException {
 		
 		JFrame frame = MainUI.getInstance();
-		frame.setSize(900, 600);
+		frame.setSize(1250, 800);
 		frame.pack();
-		frame.setMinimumSize(new Dimension(900, 600));
+		frame.setMinimumSize(new Dimension(1250, 800));
 		frame.setVisible(true);
 		
 //        try (Scanner input = new Scanner(System.in)) {

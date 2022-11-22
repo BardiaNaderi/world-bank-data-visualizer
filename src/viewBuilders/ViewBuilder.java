@@ -6,12 +6,12 @@ import java.util.List;
 public interface ViewBuilder {
 
 	public void reset();
-	public void createLine(Map<Integer, Float> data);
-	public void createTime(Map<Integer, Float> data);
+	public void createLine(List<Map<Integer, Float>> data, List<String[]> labels, String axis);
+	public void createTime(List<Map<Integer, Float>> data, List<String[]> labels, String axis);
 	public void createBar(List<Map<Integer, Float>> data, List<String[]> labels, String axis);
-	public void createPie(Map<Integer, Float> data);
+	public void createPie(List<Map<Integer, Float>> data, List<String[]> labels, String axis);
 	public void createScatter(List<Map<Integer, Float>> data, List<String[]> labels, String axis);
-	public void createReport(Map<Integer, Float> data);
+	public void createReport(List<Map<Integer, Float>> data, List<String[]> labels, String axis);
 	public View getView();
 	
 }
