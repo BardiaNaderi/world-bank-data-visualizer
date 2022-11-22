@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.swing.JPanel;
 
+import org.jfree.data.category.DefaultCategoryDataset;
+
 public class Director {
 			
 	/* 
@@ -25,9 +27,10 @@ public class Director {
 	
 	public void constructAnnualPercentageView(ViewBuilder builder, List<Map<Integer, Float>> data, List<String[]> labels) {
 		builder.createScatter(data, labels, "Annual Percentage Change");
+		builder.createBar(data, labels, "Annual Percentage Change");
 	}
 	
-	public void concstructAverageView(ViewBuilder builder, JPanel data) {
+	public void concstructAverageView(ViewBuilder builder, List<Map<Integer, Float>> data, List<String[]> labels) {
 		// TODO: build appropriate charts
 	}
 

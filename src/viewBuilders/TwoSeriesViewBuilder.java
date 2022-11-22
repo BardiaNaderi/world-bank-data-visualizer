@@ -45,7 +45,7 @@ public class TwoSeriesViewBuilder implements ViewBuilder {
 		//this.view.setTime(new Chart());
 	}
 	
-	public void createBar(Map<Integer, Float> data) {
+	public void createBar(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
 		// TODO add logic for creating a one series bar graph
 		//this.view.setBar(new Chart());
 	}
@@ -92,7 +92,7 @@ public class TwoSeriesViewBuilder implements ViewBuilder {
 		chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 		chartPanel.setBackground(Color.white);
 		
-		this.view.setScatter(chartPanel);
+		this.view.getScatter().setChart(chartPanel);
 		MainUI.getInstance().setView(getView());
 	}
 	

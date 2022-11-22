@@ -1,6 +1,13 @@
 package userInputObervers;
 
+import java.util.List;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import mainGUI.MainUI;
+import viewBuilders.Chart;
+import viewBuilders.View;
 
 public class ViewerValidator implements Validator {
 	
@@ -8,34 +15,33 @@ public class ViewerValidator implements Validator {
     	
     	MainUI gui = MainUI.getInstance();
     	ParametersSelector params = gui.getParams();
-    	
-    	if (params.getViewer().value != null) {
-    		params.setViewerValid(true);
-        	switch (params.getViewer().value) {
-//        	case "Line Chart":
-//        		gui.getWest().add(AnalysisParameters.getParams().getView().getLine());
-//        		break;
-//        	case "Time Chart":
-//        		gui.getWest().add(AnalysisParameters.getParams().getView().getTime());
-//        		break;
-//        	case "Bar Chart":
-//        		gui.getWest().add(AnalysisParameters.getParams().getView().getBar());
-//        		break;
-//        	case "Pie Chart":
-//        		gui.getWest().add(AnalysisParameters.getParams().getView().getPie());
-//        		break;
-        	case "Scatter Chart":
-        		gui.getWest().add(gui.getView().getScatter());
-        		break;
-//        	case "Report":
-//        		gui.getWest().add(AnalysisParameters.getParams().getView().getReport());
-//        		break;
-        	}
+    	View view = gui.getView();
+    		
+    	if (view != null) {
+    		
+    		List<Chart> charts = view.getCharts();
+    		
+			for (Chart chart: charts) {
+				if (chart.getName() == params.getViewer().value && chart.getChart() == null) {
+				JFrame frame = new JFrame("Invalid Selection");
+				JOptionPane.showMessageDialog(frame,
+						params.getViewer().value + " is not permitted for the selected analysis.",
+						"Invalid Selection", JOptionPane.ERROR_MESSAGE);
+				return;
+				}
+	    	}  	
+
+	    	
+	    	gui.getWest().removeAll();	
+	    	gui.revalidate();
+	    	
+			for (Chart chart: charts) {
+				if (chart.getDisplay() == true)
+					gui.getWest().add(chart.getChart());
+			}
+	    	
+			gui.setVisible(true);
+	    	    	
     	}
-
-		//getContentPane().add(gui.getWest(), BorderLayout.WEST);
-		gui.setVisible(true);
-    }
-    
-
+    }      
 }

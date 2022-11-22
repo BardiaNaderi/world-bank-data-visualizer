@@ -5,11 +5,15 @@ import java.util.Map;
 import javax.swing.BorderFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.DateAxis;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 
@@ -46,9 +50,54 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		//this.view.setTime(new Chart());
 	}
 	
-	public void createBar(Map<Integer, Float> data) {
-		// TODO add logic for creating a one series bar graph
-		//this.view.setBar(new Chart());
+	public void createBar(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
+		
+		DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
+		DefaultCategoryDataset dataset2 = new DefaultCategoryDataset();
+		DefaultCategoryDataset dataset3 = new DefaultCategoryDataset();
+		
+		for (Map.Entry<Integer, Float> entry: data.get(0).entrySet()) {
+			dataset1.setValue(entry.getValue(), labels.get(0)[1], entry.getKey());
+		}
+
+		for (Map.Entry<Integer, Float> entry: data.get(1).entrySet()) {
+			dataset2.setValue(entry.getValue(), labels.get(1)[1], entry.getKey());
+		}
+		
+		for (Map.Entry<Integer, Float> entry: data.get(2).entrySet()) {
+			dataset3.setValue(entry.getValue(), labels.get(2)[1], entry.getKey());
+		}
+
+		CategoryPlot plot = new CategoryPlot();
+		BarRenderer barrenderer1 = new BarRenderer();
+		BarRenderer barrenderer2 = new BarRenderer();
+		BarRenderer barrenderer3 = new BarRenderer();
+
+		CategoryAxis domainAxis = new CategoryAxis("Year");
+		plot.setDomainAxis(domainAxis);
+		plot.setRangeAxis(new NumberAxis(axis));
+		
+		plot.setDataset(0, dataset1);
+		plot.setRenderer(0, barrenderer1);
+
+		plot.setDataset(1, dataset2);
+		plot.setRenderer(1, barrenderer2);
+		
+		plot.setDataset(2, dataset3);
+		plot.setRenderer(2, barrenderer3);
+
+		plot.mapDatasetToRangeAxis(0, 0);
+
+		JFreeChart barChart = new JFreeChart("Title Placeholder",
+				new Font("Serif", java.awt.Font.BOLD, 18), plot, true);
+
+		ChartPanel chartPanel = new ChartPanel(barChart);
+		chartPanel.setPreferredSize(new Dimension(400, 300));
+		chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+		chartPanel.setBackground(Color.white);
+		
+		this.view.getBar().setChart(chartPanel);
+		MainUI.getInstance().setView(getView());
 	}
 	
 	public void createPie(Map<Integer, Float> data) {
@@ -98,7 +147,7 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 		chartPanel.setBackground(Color.white);
 		
-		this.view.setScatter(chartPanel);
+		this.view.getScatter().setChart(chartPanel);
 		MainUI.getInstance().setView(getView());
 	}
 	
