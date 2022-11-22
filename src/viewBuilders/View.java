@@ -1,70 +1,82 @@
 package viewBuilders;
 
-import org.jfree.chart.ChartPanel;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class View {
 	
-	public ChartPanel line;
-	public ChartPanel time;
-	public ChartPanel bar;
-	public ChartPanel pie;
-	public ChartPanel scatter;
-	public ChartPanel report;
+	final int NUM_CHARTS = 6;
 	
+	private Chart line;
+	private Chart time;
+	private Chart bar;
+	private Chart pie;
+	private Chart scatter;
+	private Chart report;
+	
+	private List<Chart> charts = new ArrayList<>();
+			
 	public View() {
-		this.line = null;
-		this.time = null;
-		this.bar = null;
-		this.pie = null;
-		this.scatter = null;
-		this.report = null;
+		this.line = new Chart("Line Chart", null, false);
+		this.time = new Chart("Time Chart", null, false);
+		this.bar = new Chart("Bar Chart", null, false);
+		this.pie = new Chart("Pie Chart", null, false);
+		this.scatter = new Chart("Scatter Chart", null, false);
+		this.report = new Chart("Report", null, false);
+		
+		charts = Arrays.asList(getLine(), getTime(), getBar(), getPie(), getScatter(), getReport());
 	}		
 	
-	public ChartPanel getLine() {
+	public Chart getLine() {
 		return this.line;
 	}
 	
-	public ChartPanel getTime() {
+	public Chart getTime() {
 		return this.time;
 	}
 	
-	public ChartPanel getBar() {
+	public Chart getBar() {
 		return this.bar;
 	}
 	
-	public ChartPanel getPie() {
+	public Chart getPie() {
 		return this.pie;
 	}
 	
-	public ChartPanel getScatter() {
+	public Chart getScatter() {
 		return this.scatter;
 	}
 	
-	public ChartPanel getReport() {
+	public Chart getReport() {
 		return this.report;
 	}
 	
-	public void setLine(ChartPanel line) {
+	public List<Chart> getCharts() {
+		return this.charts;
+	}
+	
+	public void setLine(Chart line) {
 		this.line = line;
 	}
 	
-	public void setTime(ChartPanel time) {
+	public void setTime(Chart time) {
 		this.time = time;
 	}
 	
-	public void setBar(ChartPanel bar) {
+	public void setBar(Chart bar) {
 		this.bar = bar;
 	}
 	
-	public void setPie(ChartPanel pie) {
+	public void setPie(Chart pie) {
 		this.pie = pie;
 	}
 	
-	public void setScatter(ChartPanel scatter) {
+	public void setScatter(Chart scatter) {
 		this.scatter = scatter;
 	}
 	
-	public void setReport(ChartPanel report) {
+	public void setReport(Chart report) {
 		this.report = report;
 	}
 

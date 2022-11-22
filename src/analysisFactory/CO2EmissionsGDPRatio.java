@@ -1,11 +1,18 @@
 package analysisFactory;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import com.google.gson.JsonArray;
 
 import analysisStrategies.Ratio;
+import viewBuilders.Director;
+import viewBuilders.TwoSeriesViewBuilder;
+import viewBuilders.ViewBuilder;
 
 public class CO2EmissionsGDPRatio extends Analysis {
 	
@@ -42,11 +49,20 @@ public class CO2EmissionsGDPRatio extends Analysis {
 		 *  to the console, but the following lines are subject to change depending on the requirements 
 		 *  of Deliverables 2 and 3.
 		*/
-		JsonArray[] data = {fetcher.fetchData(this, co2Code), fetcher.fetchData(this, gdpCode)};
-		Map<Integer, Float> values = this.strategy.execute(data);
+		JsonArray[] ratio = {fetcher.fetchData(this, co2Code), fetcher.fetchData(this, gdpCode)};
+		Map<Integer, Float> values = this.strategy.execute(ratio);
+		List<Map<Integer, Float>> data = Arrays.asList(values);
 		
-		for (Map.Entry<Integer, Float> entry: values.entrySet()) {
-			System.out.println("The ratio of " + co2Code[1] + " to " + gdpCode[1] + " for " + country + " in " + entry.getKey() + " is " + entry.getValue());
+		if (data.isEmpty()) {
+			JFrame frame = new JFrame("Invalid Selection");
+    		JOptionPane.showMessageDialog(frame, "No data is available for the selected analysis..",
+    	               "No Data", JOptionPane.ERROR_MESSAGE);
 		}
+			
+		else {
+			Director director = new Director();
+			ViewBuilder builder = new TwoSeriesViewBuilder();
+			director.constructRatioView(builder, data, this.getWorldBankCodes());
+		}	
 	}
 }

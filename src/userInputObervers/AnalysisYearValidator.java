@@ -32,7 +32,8 @@ public class AnalysisYearValidator implements Validator {
     	               "Invalid Selection", JOptionPane.ERROR_MESSAGE);
     	}
     	
-    	else if (!valid) {
+      	else if (!valid) {
+
     		params.setAnalysisValid(false);
     		JFrame frame = new JFrame("Invalid Selection");
     		JOptionPane.showMessageDialog(frame, "Analysis is not available for the selected years. Please choose another option.",
@@ -51,7 +52,7 @@ public class AnalysisYearValidator implements Validator {
 		String filePath = "src/database/analysisYear.csv";
 		String invalidYears = "";
 		int year = 0;
-		
+
 		String analysisYear = Files.readAllLines(Paths.get(filePath)).get(Integer.parseInt(analysisId));
 
 		String[] analysisYearSplit = analysisYear.split(",");

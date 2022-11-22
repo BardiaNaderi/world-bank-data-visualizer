@@ -2,12 +2,18 @@ package userInputObervers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import org.jfree.chart.ChartPanel;
+
 import analysisFactory.Analysis;
 import analysisFactory.AnalysisFactory;
 import mainGUI.MainUI;
+import viewBuilders.Chart;
+import viewBuilders.View;
 
 public class ParametersSelector implements Selector {
 	
@@ -26,9 +32,9 @@ public class ParametersSelector implements Selector {
     
     public ParametersSelector() {    	
     	this.analysis.value = "0";
-    	this.country.value = "Afghanistan";
-    	this.startYear.value = "2021";
-    	this.endYear.value = "2021";
+    	this.country.value = "Canada";
+    	this.startYear.value = "2010";
+    	this.endYear.value = "2016";
     	this.viewer.value = null;
     	
     	this.analysis.valid = true;
@@ -83,15 +89,26 @@ public class ParametersSelector implements Selector {
     }
 
     public void addViewer(String viewer) {
-        this.setViewerValue(viewer);
-        notifySubs();
-        this.setViewerValue(null);
+    	this.setViewerValue(viewer);
+    	modifyDisplay(viewer, true);
+    	notifySubs();
     }
     
-    public void removeViewer(String viewer){
-    	MainUI gui = MainUI.getInstance();
-    	gui.getWest().remove(gui.getView().getScatter());
-    	gui.setVisible(true);
+    public void removeViewer(String viewer) {
+    	this.setViewerValue(viewer);
+    	modifyDisplay(viewer, false);
+    	notifySubs();
+    }
+       
+    private void modifyDisplay(String viewer, Boolean value) {
+    	
+    	if (MainUI.getInstance().getView() != null) {	
+    		List<Chart> charts = MainUI.getInstance().getView().getCharts();
+			for (Chart chart: charts) {
+				if (chart.getName() == viewer)
+					chart.setDisplay(value);
+			}	
+    	}
     }
     
     
