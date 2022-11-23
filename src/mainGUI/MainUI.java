@@ -1,7 +1,6 @@
 package mainGUI;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -13,18 +12,11 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Vector;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.util.TableOrder;
-import org.jfree.data.category.DefaultCategoryDataset;
 
 import com.opencsv.exceptions.CsvException;
 
@@ -266,33 +258,9 @@ public class MainUI extends JFrame {
 		x.close();
 	}
 	
-
-	private void createPie(JPanel west) {
-		// Different way to create pie chart
-		/*
-		 * var dataset = new DefaultPieDataset(); dataset.setValue("Unemployed", 3.837);
-		 * dataset.setValue("Employed", 96.163);
-		 * 
-		 * JFreeChart pieChart = ChartFactory.createPieChart("Women's Unemployment",
-		 * dataset, true, true, false);
-		 */
-
-		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		dataset.addValue(3.946, "Unemployed", "Men");
-		dataset.addValue(96.054, "Employed", "Men");
-		dataset.addValue(3.837, "Unemployed", "Women");
-		dataset.addValue(96.163, "Employed", "Women");
-
-		JFreeChart pieChart = ChartFactory.createMultiplePieChart("Unemployment: Men vs Women", dataset,
-				TableOrder.BY_COLUMN, true, true, false);
-
-		ChartPanel chartPanel = new ChartPanel(pieChart);
-		chartPanel.setPreferredSize(new Dimension(400, 300));
-		chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-		chartPanel.setBackground(Color.white);
-		west.add(chartPanel);
-	}
-
+	/**
+	 * ApplicationGui is a method that gets and instance of the Main application UI and sets the frame and other attributes.
+	 */
 	public static void applicationGui(){
 		JFrame frame = MainUI.getInstance();
 		frame.setSize(1250, 800);

@@ -277,6 +277,12 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 		return this.view;	
 	}
 
+	/**
+	 * analysisTitleGetter is a method that takes in the analysisId and returns the title associated with that analysis.
+	 * @param analysisId
+	 * @return analysisTitle, String
+	 * @throws IOException
+	 */
 	private String analysisTitleGetter(String analysisId) throws IOException {
 		String filePath = "src/database/analysisYear.csv";
 		String analysisTitle = "";
