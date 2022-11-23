@@ -30,7 +30,6 @@ import org.jfree.chart.renderer.xy.XYSplineRenderer;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.chart.util.TableOrder;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.time.Year;
@@ -210,35 +209,47 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		MainUI.getInstance().setView(getView());
 	}
 	
-	public void createPie(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
+	public void createPie(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {		
+		int start = Integer.parseInt(MainUI.getInstance().getParams().getStartYear().value);
+		int end = Integer.parseInt(MainUI.getInstance().getParams().getEndYear().value);
 		
-//		
-//		DefaultPieDataset dataset = new DefaultPieDataset(); 
-//		dataset.setValue("Total", data.get(0).entrySet().stream().findFirst().val);
-//		dataset.setValue("Remaining", 96.163);
-//		
-//		JFreeChart pieChart = ChartFactory.createPieChart("TITLE",
-//		dataset, true, true, false);
-//		
-//
-////		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-////		dataset.addValue(3.946, "Unemployed", "Men");
-////		dataset.addValue(96.054, "Employed", "Men");
-////		dataset.addValue(3.837, "Unemployed", "Women");
-////		dataset.addValue(96.163, "Employed", "Women");
-////
-////		JFreeChart pieChart = ChartFactory.createMultiplePieChart("Unemployment: Men vs Women", dataset,
-////				TableOrder.BY_COLUMN, true, true, false);
-//
-//		ChartPanel chartPanel = new ChartPanel(pieChart);
-//		chartPanel.setPreferredSize(new Dimension(400, 300));
-//		chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-//		chartPanel.setBackground(Color.white);
-//
-//		chartPanel.setBackground(Color.white);
-//		
-//		this.view.getPie().setChart(chartPanel);
-//		MainUI.getInstance().setView(getView());
+		try {
+			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		String title = "Average " + graphTitle + " from " + start + " to " + end;
+		
+		String key1 = labels.get(0)[1];
+		float value1 = data.get(0).get(end);	
+
+		String key2 = labels.get(1)[1];
+		float value2 = data.get(1).get(end);	
+		
+		String key3 = labels.get(2)[1];
+		float value3 = data.get(2).get(end);
+		
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		
+		dataset.addValue(value1, "Average " + graphTitle, key1);
+		dataset.addValue(100-value1, "Remaining", key1);
+		dataset.addValue(value2, "Average " + graphTitle, key2);
+		dataset.addValue(100-value2, "Remaining", key2);
+		dataset.addValue(value3, "Average " + graphTitle, key3);
+		dataset.addValue(100-value3, "Remaining", key3);
+		
+		JFreeChart pieChart = ChartFactory.createMultiplePieChart(title, dataset,
+				TableOrder.BY_COLUMN, true, true, false);
+
+		ChartPanel chartPanel = new ChartPanel(pieChart);
+		chartPanel.setPreferredSize(new Dimension(400, 300));
+		chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+		chartPanel.setBackground(Color.white);
+		
+		this.view.getPie().setChart(chartPanel);
+		MainUI.getInstance().setView(getView());
 	}
 	
 	public void createScatter(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {

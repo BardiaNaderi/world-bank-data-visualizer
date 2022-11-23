@@ -166,14 +166,27 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 		MainUI.getInstance().setView(getView());
 	}
 	
-	public void createPie(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
-		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		for (Map.Entry<Integer, Float> entry: data.get(0).entrySet()) {
-			dataset.addValue(entry.getValue(), labels.get(0)[1], entry.getKey());
-			dataset.addValue(100 - entry.getValue(), labels.get(0)[1], entry.getKey());
+	public void createPie(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {	
+		int start = Integer.parseInt(MainUI.getInstance().getParams().getStartYear().value);
+		int end = Integer.parseInt(MainUI.getInstance().getParams().getEndYear().value);
+		
+		try {
+			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+	
+		String title = "Average " + graphTitle + " from " + start + " to " + end;
+		String key = labels.get(0)[1];
+		float value = data.get(0).get(end);	
 
-		JFreeChart pieChart = ChartFactory.createMultiplePieChart("Unemployment: Men vs Women", dataset,
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		
+		dataset.addValue(value, "Average " + graphTitle, key);
+		dataset.addValue(100-value, "Remaining", key);
+		
+		JFreeChart pieChart = ChartFactory.createMultiplePieChart(title, dataset,
 				TableOrder.BY_COLUMN, true, true, false);
 
 		ChartPanel chartPanel = new ChartPanel(pieChart);

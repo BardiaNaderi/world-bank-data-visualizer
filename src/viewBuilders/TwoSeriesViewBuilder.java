@@ -28,6 +28,7 @@ import org.jfree.chart.renderer.xy.XYItemRenderer;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.chart.renderer.xy.XYSplineRenderer;
 import org.jfree.chart.title.TextTitle;
+import org.jfree.chart.util.TableOrder;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
@@ -188,8 +189,41 @@ public class TwoSeriesViewBuilder implements ViewBuilder {
 	}
 	
 	public void createPie(List<Map<Integer, Float>> data, List<String[]> labels, String axisa) {
-		// TODO add logic for creating a one series pie chart
-		//this.view.setPie(new Chart());
+		int start = Integer.parseInt(MainUI.getInstance().getParams().getStartYear().value);
+		int end = Integer.parseInt(MainUI.getInstance().getParams().getEndYear().value);
+		
+		try {
+			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		String title = "Average " + graphTitle + " from " + start + " to " + end;
+		
+		String key1 = labels.get(0)[1];
+		float value1 = data.get(0).get(end);	
+
+		String key2 = labels.get(1)[1];
+		float value2 = data.get(1).get(end);	
+		
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		
+		dataset.addValue(value1, "Average " + graphTitle, key1);
+		dataset.addValue(100-value1, "Remaining", key1);
+		dataset.addValue(value2, "Average " + graphTitle, key2);
+		dataset.addValue(100-value2, "Remaining", key2);
+		
+		JFreeChart pieChart = ChartFactory.createMultiplePieChart(title, dataset,
+				TableOrder.BY_COLUMN, true, true, false);
+
+		ChartPanel chartPanel = new ChartPanel(pieChart);
+		chartPanel.setPreferredSize(new Dimension(400, 300));
+		chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+		chartPanel.setBackground(Color.white);
+		
+		this.view.getPie().setChart(chartPanel);
+		MainUI.getInstance().setView(getView());
 	}
 	
 	public void createScatter(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
