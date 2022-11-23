@@ -28,10 +28,10 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 import com.opencsv.exceptions.CsvException;
 
-import userInputObervers.AnalysisYearValidator;
-import userInputObervers.CountryValidator;
-import userInputObervers.ParametersSelector;
-import userInputObervers.ViewerValidator;
+import userInputObservers.AnalysisYearValidator;
+import userInputObservers.CountryValidator;
+import userInputObservers.ParametersSelector;
+import userInputObservers.ViewerValidator;
 import viewBuilders.View;
 
 public class MainUI extends JFrame {
@@ -40,14 +40,17 @@ public class MainUI extends JFrame {
 
 	private static MainUI instance;
 	
+	private JPanel north;
+	private JPanel east;
+	private JPanel south;
+	private JPanel west;
+	
 	private ParametersSelector params;
 	private CountryValidator countryVal;
 	private AnalysisYearValidator analysisYearVal;
 	private ViewerValidator viewVal;
 	
 	private View view;
-	private JPanel west;
-	
 	private Map<String, String> countries;
 	
 	public static MainUI getInstance() {
@@ -56,6 +59,22 @@ public class MainUI extends JFrame {
 
 		return instance;
 	}
+		
+	public JPanel getNort() {
+		return this.north;
+	
+	}
+	public JPanel getEast() {
+		return this.east;
+	
+	}
+	public JPanel getSouth() {
+		return this.south;
+	}
+	
+	public JPanel getWest() {
+		return this.west;
+	}
 	
 	public ParametersSelector getParams() {
 		return this.params;
@@ -63,10 +82,6 @@ public class MainUI extends JFrame {
 	
 	public View getView() {
 		return this.view;
-	}
-	
-	public JPanel getWest() {
-		return this.west;
 	}
 	
 	public Map<String, String> getCountryList() {
@@ -79,35 +94,45 @@ public class MainUI extends JFrame {
 
 	private MainUI() {
 		
-		// Set window title
 		super("Country Statistics");
 		
-		// Set up the attributes
+		setUpParameters();
+		renderCountrySelection();
+		renderYearsSelection();
+		renderViewersSelection();
+		renderAnalysisSelection();	
+		
+		getContentPane().add(north, BorderLayout.NORTH);
+		getContentPane().add(east, BorderLayout.EAST);
+		getContentPane().add(south, BorderLayout.SOUTH);
+		getContentPane().add(this.getWest(), BorderLayout.WEST);
+	}
+	
+	private void setUpParameters() {
+		this.north = new JPanel();
+		this.east = new JPanel();
+		this.south = new JPanel();
+		this.west = new JPanel();
+		
+		this.view = null;
+		
 		this.params = new ParametersSelector();
 		this.countryVal = new CountryValidator();
 		this.analysisYearVal = new AnalysisYearValidator();
 		this.viewVal = new ViewerValidator();
 		
-		this.view = null;
-		this.west = new JPanel();
-		
-		// Set up the Observer listeners
 		this.params.subscribe(countryVal);
 		this.params.subscribe(analysisYearVal);
 		this.params.subscribe(viewVal);
+	}
 		
-		
-		// ------------------------------
-		// COUNTRY SELECTION
-		// ------------------------------
-		
+	private void renderCountrySelection() {
 		try {
 			countries = CSVToList.makeList("src/database/countries.csv");
 		} catch (IOException | CsvException e1) {
 			e1.printStackTrace();
 		}
 
-		// Set top bar
 		JLabel chooseCountryLabel = new JLabel("Choose a country: ");
 		
 		Vector<String> countriesNames = new Vector<String>();
@@ -124,11 +149,12 @@ public class MainUI extends JFrame {
                 params.selectCountry(country);
             }
         });
+		
+		north.add(chooseCountryLabel);
+		north.add(countriesList);
+	}
 
-		// ------------------------------
-		// YEARS SELECTION
-		// ------------------------------
-
+	private void renderYearsSelection() {
 		JLabel from = new JLabel("From");
 		JLabel to = new JLabel("To");
 		Vector<String> years = new Vector<String>();
@@ -151,33 +177,15 @@ public class MainUI extends JFrame {
             	int endYear = Integer.parseInt(toList.getSelectedItem().toString());
                 params.selectEndYear(Integer.toString(endYear));
             }
-        });
-
-		JPanel north = new JPanel();
-		north.add(chooseCountryLabel);
-		north.add(countriesList);
+        });	
+		
 		north.add(from);
 		north.add(fromList);
 		north.add(to);
 		north.add(toList);
-		
-		// ------------------------------
-		// RECALCULATE BUTTON
-		// ------------------------------
+	}
 
-		// Set bottom bar
-		JButton recalculate = new JButton("Recalculate");
-		recalculate.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               params.recalculate();
-            }
-        });
-		
-		// ------------------------------
-		// VIEWS SELECTION
-		// ------------------------------
-
+	private void renderViewersSelection() {
 		this.getWest().setLayout(new GridLayout(2, 0));
 		
 		JLabel viewsLabel = new JLabel("Available Views: ");
@@ -205,12 +213,21 @@ public class MainUI extends JFrame {
                 params.removeViewer(viewsList.getSelectedItem().toString());
             }
         });
+		
+		south.add(viewsLabel);
+		south.add(viewsList);
+		south.add(addView);
+		south.add(removeView);
+	}
 
-
-
-		// ------------------------------
-		// ANALYSIS SELECTION
-		// ------------------------------
+	private void renderAnalysisSelection() {
+		JButton recalculate = new JButton("Recalculate");
+		recalculate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               params.recalculate();
+            }
+        });
 		
 		JLabel methodLabel = new JLabel("        Choose analysis method: ");
 		Vector<String> methodsNames = new Vector<String>();
@@ -230,23 +247,9 @@ public class MainUI extends JFrame {
             }
         });
 
-		JPanel south = new JPanel();
-		south.add(viewsLabel);
-		south.add(viewsList);
-		south.add(addView);
-		south.add(removeView);
-
 		south.add(methodLabel);
 		south.add(methodsList);
 		south.add(recalculate);
-
-		JPanel east = new JPanel();
-
-
-		getContentPane().add(north, BorderLayout.NORTH);
-		getContentPane().add(east, BorderLayout.EAST);
-		getContentPane().add(south, BorderLayout.SOUTH);
-		getContentPane().add(this.getWest(), BorderLayout.WEST);
 	}
 
 	private void analysisDropDownFiller(Vector<String> methodNames) throws FileNotFoundException {

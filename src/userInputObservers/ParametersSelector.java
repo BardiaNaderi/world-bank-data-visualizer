@@ -1,4 +1,4 @@
-package userInputObervers;
+package userInputObservers;
 
 import java.util.ArrayList;
 import java.util.List;

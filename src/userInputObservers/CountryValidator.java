@@ -1,4 +1,4 @@
-package userInputObervers;
+package userInputObservers;
 
 import java.io.File;
 import java.io.FileNotFoundException;

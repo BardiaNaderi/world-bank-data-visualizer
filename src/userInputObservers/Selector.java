@@ -1,4 +1,4 @@
-package userInputObervers;
+package userInputObservers;
 
 public interface Selector {
 	

@@ -251,7 +251,7 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		plot.mapDatasetToRangeAxis(0, 0);
 		plot.mapDatasetToRangeAxis(1, 1);
 
-		JFreeChart scatterChart = new JFreeChart("TITLE",
+		JFreeChart scatterChart = new JFreeChart(MainUI.getInstance().getParams().getAnalysis().value,
 				new Font("Serif", java.awt.Font.BOLD, 18), plot, true);
 
 		ChartPanel chartPanel = new ChartPanel(scatterChart);
