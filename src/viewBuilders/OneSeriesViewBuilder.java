@@ -199,7 +199,6 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 	 * @param axis the label for the chart axis
 	 */
 	public void createPie(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {	
-		int start = Integer.parseInt(MainUI.getInstance().getParams().getStartYear().value);
 		int end = Integer.parseInt(MainUI.getInstance().getParams().getEndYear().value);
 		
 		try {
@@ -208,7 +207,7 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 			e.printStackTrace();
 		}
 	
-		String title = "Average " + graphTitle + " from " + start + " to " + end;
+		String title = "Average " + graphTitle;
 		String key = labels.get(0)[1];
 		float value = data.get(0).get(end);	
 

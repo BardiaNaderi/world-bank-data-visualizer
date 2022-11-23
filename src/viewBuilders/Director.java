@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import mainGUI.MainUI;
+
 public class Director {
 	
 	final static private String RATIO = "Ratio";
@@ -67,6 +69,8 @@ public class Director {
 	 * @param labels the labels that correspond to the current analysis type
 	 */
 	public void constructAverageView(ViewBuilder builder, List<Map<Integer, Float>> data, List<String[]> labels) {
+		MainUI.getInstance().getParams().setStartYearValue(MainUI.getInstance().getParams().getEndYear().value);
+		
 		builder.reset();
 		builder.createPie(data, labels, AVERAGE);
 		builder.createReport(data, labels, AVERAGE);
