@@ -36,19 +36,13 @@ public class CO2EmissionsGDPRatio extends Analysis {
 	}
 	
 	/**
-	 * Method to fetch and process the necessary data for the current analysis and print
-	 * the results to the console
+	 * Method to fetch and process the necessary data for the current analysis send
+	 * the results to the Director
 	 */
 	public void executeAnalysis() {	
 		String[] co2Code = this.getWorldBankCodes().get(0);
 		String[] gdpCode = this.getWorldBankCodes().get(1);
 		
-		/*
-		 *  It is assumed that the data being fetched will need to be returned in some manner in order
-		 *  to be displayed to the user. For now the data is being returned as a HashMap and printed
-		 *  to the console, but the following lines are subject to change depending on the requirements 
-		 *  of Deliverables 2 and 3.
-		*/
 		JsonArray[] ratio = {fetcher.fetchData(this, co2Code), fetcher.fetchData(this, gdpCode)};
 		Map<Integer, Float> values = this.strategy.execute(ratio);
 		List<Map<Integer, Float>> data = Arrays.asList(values);

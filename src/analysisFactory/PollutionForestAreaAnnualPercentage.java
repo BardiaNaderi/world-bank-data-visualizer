@@ -36,8 +36,8 @@ public class PollutionForestAreaAnnualPercentage extends Analysis {
 	}
 	
 	/**
-	 * Method to fetch and process the necessary data for the current analysis and print
-	 * the results to the console
+	 * Method to fetch and process the necessary data for the current analysis send
+	 * the results to the Director
 	 */
 	public void executeAnalysis() {	
 		String[] pollutionCode = this.getWorldBankCodes().get(0);
@@ -45,13 +45,7 @@ public class PollutionForestAreaAnnualPercentage extends Analysis {
 		
 		JsonArray[] pollutionData = {fetcher.fetchData(this, pollutionCode)};
 		JsonArray[] forestData = {fetcher.fetchData(this, forestCode)};
-		
-		/*
-		 *  It is assumed that the data being fetched will need to be returned in some manner in order
-		 *  to be displayed to the user. For now the data is being returned as a HashMap and printed
-		 *  to the console, but the following lines are subject to change depending on the requirements 
-		 *  of Deliverables 2 and 3.
-		*/
+
 		Map<Integer, Float> pollutionValues = this.strategy.execute(pollutionData);
 		Map<Integer, Float> forestValues = this.strategy.execute(forestData);
 		List<Map<Integer, Float>> data = Arrays.asList(pollutionValues, forestValues);

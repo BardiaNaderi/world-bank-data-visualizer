@@ -11,6 +11,12 @@ import viewBuilders.View;
 
 public class ViewerValidator implements Validator {
 	
+	/**
+	 * This method is called by the ParametorsSelector whenever a user chooses to add or
+	 * remove a viewer from the current GUI display. If the currently selected chart does not
+	 * exist for the currently analysis, and error message is thrown. If it does exist, the 
+	 * GUI view is redrawn using all of the currently valid viewers and omitted the invalid ones.
+	 */
     public void update() {
     	
     	MainUI gui = MainUI.getInstance();
@@ -31,10 +37,11 @@ public class ViewerValidator implements Validator {
 				}
 	    	}  	
 
-	    	
+	    	// Clear the screen
 	    	gui.getWest().removeAll();	
 	    	gui.revalidate();
 	    	
+	    	// Redraw all of the valid viewers
 			for (Chart chart: charts) {
 				if (chart.getChart() != null && chart.getDisplay() == true)
 					gui.getWest().add(chart.getChart());

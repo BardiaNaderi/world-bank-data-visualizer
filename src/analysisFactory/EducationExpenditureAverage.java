@@ -36,8 +36,8 @@ public class EducationExpenditureAverage extends Analysis {
 	}
 	
 	/**
-	 * Method to fetch and process the necessary data for the current analysis and print
-	 * the results to the console
+	 * Method to fetch and process the necessary data for the current analysis send
+	 * the results to the Director
 	 */
 	public void executeAnalysis() {	
 		String[] educationCode = this.getWorldBankCodes().get(0);

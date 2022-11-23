@@ -11,7 +11,7 @@ import com.google.gson.JsonArray;
 
 import analysisStrategies.Ratio;
 import viewBuilders.Director;
-import viewBuilders.TwoSeriesViewBuilder;
+import viewBuilders.OneSeriesViewBuilder;
 import viewBuilders.ViewBuilder;
 
 public class HealthExpenditureHospitalBedsRatio extends Analysis {
@@ -36,8 +36,8 @@ public class HealthExpenditureHospitalBedsRatio extends Analysis {
 	}
 	
 	/**
-	 * Method to fetch and process the necessary data for the current analysis and print
-	 * the results to the console
+	 * Method to fetch and process the necessary data for the current analysis send
+	 * the results to the Director
 	 */
 	public void executeAnalysis() {	
 		String[] healthCode = this.getWorldBankCodes().get(0);
@@ -55,7 +55,7 @@ public class HealthExpenditureHospitalBedsRatio extends Analysis {
 			
 		else {
 			Director director = new Director();
-			ViewBuilder builder = new TwoSeriesViewBuilder();
+			ViewBuilder builder = new OneSeriesViewBuilder();
 			director.constructRatioView(builder, data, this.getWorldBankCodes());
 		}
 	}

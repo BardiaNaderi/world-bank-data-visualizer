@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -46,10 +45,21 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 		this.reset();
 	};
 	
+	/**
+	 * Method to clear the current view from the builder
+	 */
 	public void reset() {
 		this.view = new View();
 	}
 	
+	/**
+	 * Method to generate a One Series List Chart based on the provided attributes
+	 * This method will only process one set of data for the chart
+	 * 
+	 * @param data the data to be used for the chart
+	 * @param labels the labels to assign the chart values
+	 * @param axis the label for the chart axis
+	 */
 	public void createLine(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
 		XYSeries series1 = new XYSeries(labels.get(0)[1]);
 		for (Map.Entry<Integer, Float> entry: data.get(0).entrySet()) {
@@ -62,7 +72,6 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 		try {
 			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -99,6 +108,15 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 		MainUI.getInstance().setView(getView());
 	}
 	
+	
+	/**
+	 * Method to generate a One Series Time Chart based on the provided attributes
+	 * This method will only process one set of data for the chart
+	 * 
+	 * @param data the data to be used for the chart
+	 * @param labels the labels to assign the chart values
+	 * @param axis the label for the chart axis
+	 */
 	public void createTime(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
 		TimeSeries series1 = new TimeSeries(labels.get(0)[1]);
 		
@@ -125,7 +143,6 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 		try {
 			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -141,6 +158,14 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 		MainUI.getInstance().setView(getView());
 	}
 	
+	/**
+	 * Method to generate a One Series Bar Chart based on the provided attributes
+	 * This method will only process one set of data for the chart
+	 * 
+	 * @param data the data to be used for the chart
+	 * @param labels the labels to assign the chart values
+	 * @param axis the label for the chart axis
+	 */
 	public void createBar(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		for (Map.Entry<Integer, Float> entry: data.get(0).entrySet()) {
@@ -150,7 +175,6 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 		try {
 			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -166,6 +190,14 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 		MainUI.getInstance().setView(getView());
 	}
 	
+	/**
+	 * Method to generate a One Series Pie Chart based on the provided attributes
+	 * This method will only process one set of data for the chart
+	 * 
+	 * @param data the data to be used for the chart
+	 * @param labels the labels to assign the chart values
+	 * @param axis the label for the chart axis
+	 */
 	public void createPie(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {	
 		int start = Integer.parseInt(MainUI.getInstance().getParams().getStartYear().value);
 		int end = Integer.parseInt(MainUI.getInstance().getParams().getEndYear().value);
@@ -173,7 +205,6 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 		try {
 			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
@@ -198,6 +229,14 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 		MainUI.getInstance().setView(getView());
 	}
 	
+	/**
+	 * Method to generate a One Series Scatter Chart based on the provided attributes
+	 * This method will only process one set of data for the chart
+	 * 
+	 * @param data the data to be used for the chart
+	 * @param labels the labels to assign the chart values
+	 * @param axis the label for the chart axis
+	 */
 	public void createScatter(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
 		TimeSeries series1 = new TimeSeries(labels.get(0)[1]);
 		
@@ -223,7 +262,6 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 		try {
 			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -239,31 +277,39 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 		MainUI.getInstance().setView(getView());
 	}
 	
+	/**
+	 * Method to generate a One Series Report based on the provided attributes
+	 * This method will only process one set of data for the chart
+	 * 
+	 * @param data the data to be used for the chart
+	 * @param labels the labels to assign the chart values
+	 * @param axis the label for the chart axis
+	 */
 	public void createReport(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
 		JTextArea report = new JTextArea();
 		report.setEditable(false);
 		report.setPreferredSize(new Dimension(400, 250));
 		report.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 		report.setBackground(Color.white);
-		String reportMessage;
 		
-		Map<Integer, Float> map = data.get(0);
-		Collection<Integer> keys = data.get(0).keySet();		
-		Integer[] years = keys.toArray(new Integer[0]);
-				
-		String label1 = labels.get(0)[1];
+		String reportMessage;
+		Map<Integer, Float> map = data.get(0);		
+		String label = labels.get(0)[1];
+
+		
+		int start = Integer.parseInt(MainUI.getInstance().getParams().getStartYear().value);
+		int end = Integer.parseInt(MainUI.getInstance().getParams().getEndYear().value);
 
 		try {
 			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		reportMessage = graphTitle + "\n" + "==============================\n"; 
-		for (int i = 0; i < years.length; i++) {
-			reportMessage += "\nYear " + years[i] + ":\n"
-				 	+ label1 + " => " + map.get(years[i]) + "\n";
+		for (int i = start; i <= end; i++) {
+				reportMessage += "\nYear " + i + ":\n"
+					 	+ label + " => " + map.getOrDefault(i, (float) 0) + "\n";
 		}
 
 		report.setText(reportMessage);
@@ -273,14 +319,18 @@ public class OneSeriesViewBuilder implements ViewBuilder {
 		MainUI.getInstance().setView(getView());
 	}
 	
+	/**
+	 * Getter method for the View object
+	 * @return the current View
+	 */
 	public View getView() {
 		return this.view;	
 	}
 
 	/**
 	 * analysisTitleGetter is a method that takes in the analysisId and returns the title associated with that analysis.
-	 * @param analysisId
-	 * @return analysisTitle, String
+	 * @param analysisId the id to be processed
+	 * @return analysisTitle, String the name that corresponds with the provided id
 	 * @throws IOException
 	 */
 	private String analysisTitleGetter(String analysisId) throws IOException {

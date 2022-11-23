@@ -13,6 +13,13 @@ public class AnalysisYearValidator implements Validator {
 	
 	private int invalid;
 	
+	/**
+	 * This method is called by the ParametorsSelector whenever a user chooses new
+	 * parameters from the drop down menus. It checks to see if the currently selected
+	 * years are valid for the currently selected analysis. If they are valid, the valid 
+	 * flags are turns on for the corresponding parameters. If they are invalid, an
+	 * error message is thrown. 
+	 */
 	public void update() {
 		
 		ParametersSelector params = MainUI.getInstance().getParams();	
@@ -52,11 +59,12 @@ public class AnalysisYearValidator implements Validator {
 	
 	/**
 	 * csvValidator is a method that takes in certain parameters and returns the validity state of the selected years on the selected analysis.
-	 * @param valid
-	 * @param analysisId
-	 * @param startYear
-	 * @param endYear
-	 * @return valid, boolean
+	 * 
+	 * @param valid a Boolean value to hold the result of the analysis
+	 * @param analysisId the id value of the currently selected analysis type
+	 * @param startYear the start year of the currently selected analysis type
+	 * @param endYear the end year of the currently selected analysis type
+	 * @return valid returns true of the parameters are valid, and false if they are not
 	 * @throws IOException
 	 */
 	private boolean csvValidator(boolean valid, String analysisId, int startYear, int endYear) throws IOException {

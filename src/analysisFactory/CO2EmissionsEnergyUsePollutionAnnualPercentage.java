@@ -42,8 +42,8 @@ public class CO2EmissionsEnergyUsePollutionAnnualPercentage extends Analysis {
 	}
 	
 	/**
-	 * Method to fetch and process the necessary data for the current analysis and print
-	 * the results to the console
+	 * Method to fetch and process the necessary data for the current analysis send
+	 * the results to the Director
 	 */
 	public void executeAnalysis() {	
 		String[] co2Code = this.getWorldBankCodes().get(0);
@@ -54,12 +54,6 @@ public class CO2EmissionsEnergyUsePollutionAnnualPercentage extends Analysis {
 		JsonArray[] energyData = {fetcher.fetchData(this, energyCode)};
 		JsonArray[] pollutionData = {fetcher.fetchData(this, pollutionCode)};
 		
-		/*
-		 *  It is assumed that the data being fetched will need to be returned in some manner in order
-		 *  to be displayed to the user. For now the data is being returned as a HashMap and printed
-		 *  to the console, but the following lines are subject to change depending on the requirements 
-		 *  of Deliverables 2 and 3.
-		*/
 		Map<Integer, Float> co2Values = this.strategy.execute(co2Data);
 		Map<Integer, Float> energyValues = this.strategy.execute(energyData);
 		Map<Integer, Float> pollutionValues = this.strategy.execute(pollutionData);

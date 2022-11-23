@@ -2,6 +2,7 @@ package userInputObservers;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
@@ -11,6 +12,12 @@ import mainGUI.MainUI;
 
 public class CountryValidator implements Validator {
 
+	/**
+	 * This method is called by the ParametorsSelector whenever a user chooses new
+	 * parameters from the drop down menus. It checks to see if the currently selected
+	 * country is available for data fetching. If it is, the valid flag is turne on
+	 * for the country parameter. If it is invalid, an error message is displayed.
+	 */
 	public void update() {
 			
 		MainUI gui = MainUI.getInstance();
@@ -22,8 +29,7 @@ public class CountryValidator implements Validator {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-
-		// checking if country is valid or not
+		
 		if (!valid) {
 			params.setCountryValid(false);
 			JFrame frame = new JFrame("Invalid Selection");
@@ -37,11 +43,12 @@ public class CountryValidator implements Validator {
 	}
 
 	/**
-	 * csvValidator is a method that takes in certain params and returns the validity of the selected country based on the list of invalid countries in the database.
-	 * @param valid
-	 * @param country
-	 * @return valid, boolean
-	 * @throws FileNotFoundException
+	 * csvValidator is a method that takes in certain parameters and returns the validity state of the selected years on the selected analysis.
+	 * 
+	 * @param valid a Boolean value to hold the result of the analysis
+	 * @param country the country currently selected analysis type
+	 * @return valid returns true of the parameters are valid, and false if they are not
+	 * @throws IOException
 	 */
 	private boolean csvValidator(boolean valid, String country) throws FileNotFoundException {
 		String filePath = "src/database/InvalidCountries.csv";

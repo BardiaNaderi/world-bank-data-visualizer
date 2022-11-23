@@ -36,8 +36,8 @@ public class EducationExpenditureHealthExpenditureAnnualPercentage extends Analy
 	}
 	
 	/**
-	 * Method to fetch and process the necessary data for the current analysis and print
-	 * the results to the console
+	 * Method to fetch and process the necessary data for the current analysis send
+	 * the results to the Director
 	 */
 	public void executeAnalysis() {	
 		String[] educationCode = this.getWorldBankCodes().get(0);
@@ -46,12 +46,6 @@ public class EducationExpenditureHealthExpenditureAnnualPercentage extends Analy
 		JsonArray[] educationData = {fetcher.fetchData(this, educationCode)};
 		JsonArray[] healthData = {fetcher.fetchData(this, healthCode)};
 		
-		/*
-		 *  It is assumed that the data being fetched will need to be returned in some manner in order
-		 *  to be displayed to the user. For now the data is being returned as a HashMap and printed
-		 *  to the console, but the following lines are subject to change depending on the requirements 
-		 *  of Deliverables 2 and 3.
-		*/
 		Map<Integer, Float> educationValues = this.strategy.execute(educationData);
 		Map<Integer, Float> healthValues = this.strategy.execute(healthData);
 		List<Map<Integer, Float>> data = Arrays.asList(educationValues, healthValues);

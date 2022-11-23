@@ -71,6 +71,9 @@ public class RegistrationLogin implements State {
                         frame.dispose();
                         MainUI.applicationGui();
                     } else {
+                		JFrame frame = new JFrame("Invalid Credentials");
+                		JOptionPane.showMessageDialog(frame, "Username or password is incorrect.",
+                	               "Invalid Credentials", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (FileNotFoundException x) {
                     x.printStackTrace();

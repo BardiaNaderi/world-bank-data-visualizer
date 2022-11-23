@@ -3,7 +3,7 @@ package analysisFactory;
 import java.util.List;
 
 import analysisStrategies.AnalysisStrategy;
-import dataFetcher.DataFetcher;
+import database.DataFetcher;
 
 abstract public class Analysis {
 	

@@ -14,7 +14,7 @@ public class Average implements AnalysisStrategy {
 	 * to extract the cumulative average of a particular value over a specific set of years.
 	 * 
 	 * @param data a JSON array containing data fetched from the World Bank's API
-	 * @return a HashMap containing a dummy key value and the cumulative average value
+	 * @return a HashMap containing the final year and the cumulative average value
 	 */
 	public Map<Integer, Float> execute(JsonArray[] data) {
 		

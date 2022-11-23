@@ -12,6 +12,16 @@ import com.opencsv.exceptions.CsvException;
 
 public class CSVToList {
 	
+	/**
+	 * A helper class used by the MainUI in order to parse through a two column CSV file and 
+	 * returns the results as a Map. 
+	 * 
+	 * @param file the CSV file containing two columns of data
+	 * @return the data from the CSV file as a Map
+	 * @throws FileNotFoundException when a file cannot be found
+	 * @throws IOException when a file cannot be read
+	 * @throws CsvException when errors occur with the CSV file parsing
+	 */
 	public static Map<String, String> makeList(String file) throws FileNotFoundException, IOException, CsvException {
 		
 		List<String[]> list;

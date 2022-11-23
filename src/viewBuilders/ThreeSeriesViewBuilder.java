@@ -7,8 +7,6 @@ import java.awt.Font;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -47,10 +45,22 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		this.reset();
 	};
 	
+	/**
+	 * Method to clear the current view from the builder
+	 */
 	public void reset() {
 		this.view = new View();
 	}
 	
+	
+	/**
+	 * Method to generate a Three Series List Chart based on the provided attributes
+	 * This method will process three sets of data for the chart
+	 * 
+	 * @param data the data to be used for the chart
+	 * @param labels the labels to assign the chart values
+	 * @param axis the label for the chart axis
+	 */
 	public void createLine(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
 		XYSeries series1 = new XYSeries(labels.get(0)[1]);
 		for (Map.Entry<Integer, Float> entry: data.get(0).entrySet()) {
@@ -75,7 +85,6 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		try {
 			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -112,6 +121,14 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		MainUI.getInstance().setView(getView());
 	}
 	
+	/**
+	 * Method to generate a Three Series Time Chart based on the provided attributes
+	 * This method will process three sets of data for the chart
+	 * 
+	 * @param data the data to be used for the chart
+	 * @param labels the labels to assign the chart values
+	 * @param axis the label for the chart axis
+	 */
 	public void createTime(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
 		TimeSeries series1 = new TimeSeries(labels.get(0)[1]);
 		TimeSeries series2 = new TimeSeries(labels.get(1)[1]);
@@ -160,7 +177,6 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		try {
 			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -176,6 +192,14 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		MainUI.getInstance().setView(getView());
 	}
 	
+	/**
+	 * Method to generate a Three Series Bar Chart based on the provided attributes
+	 * This method will process three sets of data for the chart
+	 * 
+	 * @param data the data to be used for the chart
+	 * @param labels the labels to assign the chart values
+	 * @param axis the label for the chart axis
+	 */
 	public void createBar(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		for (Map.Entry<Integer, Float> entry: data.get(0).entrySet()) {
@@ -193,7 +217,6 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		try {
 			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -209,6 +232,14 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		MainUI.getInstance().setView(getView());
 	}
 	
+	/**
+	 * Method to generate a Three Series Pie Chart based on the provided attributes
+	 * This method will process three sets of data for the chart
+	 * 
+	 * @param data the data to be used for the chart
+	 * @param labels the labels to assign the chart values
+	 * @param axis the label for the chart axis
+	 */
 	public void createPie(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {		
 		int start = Integer.parseInt(MainUI.getInstance().getParams().getStartYear().value);
 		int end = Integer.parseInt(MainUI.getInstance().getParams().getEndYear().value);
@@ -216,7 +247,6 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		try {
 			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
@@ -252,6 +282,14 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		MainUI.getInstance().setView(getView());
 	}
 	
+	/**
+	 * Method to generate a Three Series Scatter Chart based on the provided attributes
+	 * This method will process three sets of data for the chart
+	 * 
+	 * @param data the data to be used for the chart
+	 * @param labels the labels to assign the chart values
+	 * @param axis the label for the chart axis
+	 */
 	public void createScatter(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
 		TimeSeries series1 = new TimeSeries(labels.get(0)[1]);
 		TimeSeries series2 = new TimeSeries(labels.get(1)[1]);
@@ -289,7 +327,6 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		try {
 			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -305,60 +342,46 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		MainUI.getInstance().setView(getView());
 	}
 	
+	/**
+	 * Method to generate a Three Series Report based on the provided attributes
+	 * This method will process three sets of data for the chart
+	 * 
+	 * @param data the data to be used for the chart
+	 * @param labels the labels to assign the chart values
+	 * @param axis the label for the chart axis
+	 */
 	public void createReport(List<Map<Integer, Float>> data, List<String[]> labels, String axis) {
 		JTextArea report = new JTextArea();
 		report.setEditable(false);
 		report.setPreferredSize(new Dimension(400, 250));
 		report.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 		report.setBackground(Color.white);
+		
 		String reportMessage;
 		
 		Map<Integer, Float> map1 = data.get(0);
 		Map<Integer, Float> map2 = data.get(1);
 		Map<Integer, Float> map3 = data.get(2);
-		
-		HashSet<Integer> unionKeys1 = new HashSet<>(map1.keySet());
-		unionKeys1.addAll(map2.keySet());
-		unionKeys1.addAll(map3.keySet());
-		unionKeys1.removeAll(map1.keySet());
-		
-		HashSet<Integer> unionKeys2 = new HashSet<>(map2.keySet());
-		unionKeys2.addAll(map1.keySet());
-		unionKeys2.addAll(map3.keySet());
-		unionKeys2.removeAll(map2.keySet());
-		
-		HashSet<Integer> unionKeys3 = new HashSet<>(map3.keySet());
-		unionKeys3.addAll(map1.keySet());
-		unionKeys3.addAll(map2.keySet());
-		unionKeys3.removeAll(map3.keySet());
-		
-		HashSet<Integer> completeYears = new HashSet<>();
-		completeYears.addAll(unionKeys1);
-		completeYears.addAll(unionKeys2);
-		completeYears.addAll(unionKeys3);
-		
-		Collection<Integer> keys = data.get(0).keySet();		
-		Integer[] years = keys.toArray(new Integer[0]);
 				
 		String label1 = labels.get(0)[1];
 		String label2 = labels.get(1)[1];
 		String label3 = labels.get(2)[1];
+		
+		int start = Integer.parseInt(MainUI.getInstance().getParams().getStartYear().value);
+		int end = Integer.parseInt(MainUI.getInstance().getParams().getEndYear().value);
 
 		try {
 			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		reportMessage = graphTitle + "\n" + "==============================\n"; 
-		for (int i = 0; i < years.length; i++) {
-			if (!completeYears.contains(years[i])) {
-				reportMessage += "\nYear " + years[i] + ":\n"
-					 	+ label1 + " => " + map1.get(years[i]) + "\n"
-						+ label2 + " => " + map2.get(years[i]) + "\n"
-						+ label3 + " => " + map3.get(years[i]) + "\n";
-			}
+		for (int i = start; i <= end; i++) {
+				reportMessage += "\nYear " + i + ":\n"
+					 	+ label1 + " => " + map1.getOrDefault(i, (float) 0) + "\n"
+						+ label2 + " => " + map2.getOrDefault(i, (float) 0) + "\n"
+						+ label3 + " => " + map3.getOrDefault(i, (float) 0) + "\n";
 		}
 
 		report.setText(reportMessage);
@@ -368,14 +391,18 @@ public class ThreeSeriesViewBuilder implements ViewBuilder {
 		MainUI.getInstance().setView(getView());
 	}
 	
+	/**
+	 * Getter method for the View object
+	 * @return the current View
+	 */
 	public View getView() {
 		return this.view;	
 	}
 
 	/**
 	 * analysisTitleGetter is a method that takes in the analysisId and returns the title associated with that analysis.
-	 * @param analysisId
-	 * @return analysisTitle, String
+	 * @param analysisId the id to be processed
+	 * @return analysisTitle, String the name that corresponds with the provided id
 	 * @throws IOException
 	 */
 	private String analysisTitleGetter(String analysisId) throws IOException {
