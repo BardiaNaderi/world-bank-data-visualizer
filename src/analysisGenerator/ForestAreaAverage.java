@@ -1,0 +1,62 @@
+package analysisGenerator;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import com.google.gson.JsonArray;
+
+import calculations.Average;
+import graphBuilders.Director;
+import graphBuilders.OneSeriesViewBuilder;
+import graphBuilders.ViewBuilder;
+
+public class ForestAreaAverage extends Analysis {
+	
+	/**
+	 * Constructor class which sets three parameters dynamically and two statically.
+	 * The strategy and worldBankCodes parameters are determined during the creation 
+	 * of an Analysis subclass based on what kind of analysis is to be performed. The
+	 * country, startYear and endYear can all be dynamically changed at run time to 
+	 * produce different analysis results.
+	 * 
+	 * @param country the country selected for the analysis
+	 * @param startYear the year to start the analysis on
+	 * @param endYear the year to end the analysis on
+	 */
+	public ForestAreaAverage(String country, int startYear, int endYear) {
+		this.strategy = new Average();
+		this.worldBankCodes = Arrays.asList(FOREST_AREA, FOREST_AREA);
+		this.country = country;
+		this.startYear = startYear;
+		this.endYear = endYear;
+	}
+	
+	/**
+	 * Method to fetch and process the necessary data for the current analysis send
+	 * the results to the Director
+	 */
+	public void executeAnalysis() {	
+		String[] forestCode = this.getWorldBankCodes().get(0);
+		JsonArray[] forestData = {fetcher.fetchData(this, forestCode)};
+
+		Map<Integer, Float> forestValues = this.strategy.execute(forestData);	
+		List<Map<Integer, Float>> data = Arrays.asList(forestValues);
+		
+		if (forestValues.isEmpty()) {
+			JFrame frame = new JFrame("Invalid Selection");
+    		JOptionPane.showMessageDialog(frame, "No data is available for the selected analysis..",
+    	               "No Data", JOptionPane.ERROR_MESSAGE);
+		}
+			
+		else {
+			Director director = new Director();
+			ViewBuilder builder = new OneSeriesViewBuilder();
+			director.constructAverageView(builder, data, this.getWorldBankCodes());
+		}
+
+	}
+}
