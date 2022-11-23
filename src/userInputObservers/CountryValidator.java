@@ -36,6 +36,13 @@ public class CountryValidator implements Validator {
 
 	}
 
+	/**
+	 * csvValidator is a method that takes in certain params and returns the validity of the selected country based on the list of invalid countries in the database.
+	 * @param valid
+	 * @param country
+	 * @return valid, boolean
+	 * @throws FileNotFoundException
+	 */
 	private boolean csvValidator(boolean valid, String country) throws FileNotFoundException {
 		String filePath = "src/database/InvalidCountries.csv";
 		Scanner x = new Scanner(new File(filePath));

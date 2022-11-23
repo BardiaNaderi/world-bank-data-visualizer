@@ -50,6 +50,15 @@ public class AnalysisYearValidator implements Validator {
     	
     }
 	
+	/**
+	 * csvValidator is a method that takes in certain parameters and returns the validity state of the selected years on the selected analysis.
+	 * @param valid
+	 * @param analysisId
+	 * @param startYear
+	 * @param endYear
+	 * @return valid, boolean
+	 * @throws IOException
+	 */
 	private boolean csvValidator(boolean valid, String analysisId, int startYear, int endYear) throws IOException {
 		String filePath = "src/database/analysisYear.csv";
 		String invalidYears = "";
