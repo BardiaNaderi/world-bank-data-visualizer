@@ -10,6 +10,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import mainGUI.MainUI;
+
 public class RegistrationSignup implements State {
 
     private static JLabel username;
@@ -91,6 +93,7 @@ public class RegistrationSignup implements State {
                     x.printStackTrace();
                 }
                 frame.dispose();
+                MainUI.applicationGui();
             }
         });
         panel.add(button);

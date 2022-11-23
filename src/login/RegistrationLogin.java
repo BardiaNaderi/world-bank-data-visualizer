@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import mainGUI.MainUI;
+
 public class RegistrationLogin implements State {
 
     private static JLabel email;
@@ -66,10 +68,9 @@ public class RegistrationLogin implements State {
                 // checking if user already has an account
                 try {
                     if (!verify(emailFinal.trim(), passwordFinal.trim(), filePath)) {
-                        System.out.println("You are logged in");
                         frame.dispose();
+                        MainUI.applicationGui();
                     } else {
-                        System.out.println("Login failed. Incorrect email or password.");
                     }
                 } catch (FileNotFoundException x) {
                     x.printStackTrace();
