@@ -293,16 +293,11 @@ public class MainUI extends JFrame {
 		west.add(chartPanel);
 	}
 
-
-		
-
-//	public static void main(String[] args) throws IOException {
-//		
-//		//TODO: execute login module first before displaying GUI
-//
-//		JFrame frame = MainUI.getInstance();
-//		frame.setSize(900, 600);
-//		frame.pack();
-//		frame.setVisible(true);
-//	}
+	public static void applicationGui(){
+		JFrame frame = MainUI.getInstance();
+		frame.setSize(1250, 800);
+		frame.pack();
+		frame.setMinimumSize(new Dimension(1250, 800));
+		frame.setVisible(true);
+	}
 }
