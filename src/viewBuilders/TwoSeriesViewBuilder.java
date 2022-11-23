@@ -4,6 +4,9 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -37,6 +40,7 @@ import mainGUI.MainUI;
 public class TwoSeriesViewBuilder implements ViewBuilder {
 	
 	private View view;
+	String graphTitle = "";
 
 	public TwoSeriesViewBuilder() {		
 		this.reset();
@@ -61,7 +65,14 @@ public class TwoSeriesViewBuilder implements ViewBuilder {
 		dataset.addSeries(series1);
 		dataset.addSeries(series2);
 
-		JFreeChart chart = ChartFactory.createXYLineChart("TITLE", "Year", axis, dataset,
+		try {
+			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		JFreeChart chart = ChartFactory.createXYLineChart(graphTitle, "Year", axis, dataset,
 				PlotOrientation.VERTICAL, true, true, false);
 
 		XYPlot plot = chart.getXYPlot();
@@ -82,7 +93,7 @@ public class TwoSeriesViewBuilder implements ViewBuilder {
 		chart.getLegend().setFrame(BlockBorder.NONE);
 
 		chart.setTitle(
-				new TextTitle("TITLE", 
+				new TextTitle(graphTitle, 
 						new Font("Serif", java.awt.Font.BOLD, 18)));
 
 		ChartPanel chartPanel = new ChartPanel(chart);
@@ -128,7 +139,14 @@ public class TwoSeriesViewBuilder implements ViewBuilder {
 
 		plot.mapDatasetToRangeAxis(0, 0);
 
-		JFreeChart chart = new JFreeChart("TITLE",
+		try {
+			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		JFreeChart chart = new JFreeChart(graphTitle,
 				new Font("Serif", java.awt.Font.BOLD, 18), plot, true);
 
 		ChartPanel chartPanel = new ChartPanel(chart);
@@ -149,8 +167,15 @@ public class TwoSeriesViewBuilder implements ViewBuilder {
 		for (Map.Entry<Integer, Float> entry: data.get(1).entrySet()) {
 			dataset.setValue(entry.getValue(), labels.get(1)[1], entry.getKey());
 		}
+
+		try {
+			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		JFreeChart barChart = ChartFactory.createBarChart("TITLE", "Year",
+		JFreeChart barChart = ChartFactory.createBarChart(graphTitle, "Year",
 				axis, dataset, PlotOrientation.VERTICAL, true, true, false);
 	 
 		ChartPanel chartPanel = new ChartPanel(barChart);
@@ -196,7 +221,14 @@ public class TwoSeriesViewBuilder implements ViewBuilder {
 		plot.mapDatasetToRangeAxis(0, 0);
 		plot.mapDatasetToRangeAxis(1, 1);
 
-		JFreeChart scatterChart = new JFreeChart("TITLE",
+		try {
+			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		JFreeChart scatterChart = new JFreeChart(graphTitle,
 				new Font("Serif", java.awt.Font.BOLD, 18), plot, true);
 
 		ChartPanel chartPanel = new ChartPanel(scatterChart);
@@ -228,8 +260,15 @@ public class TwoSeriesViewBuilder implements ViewBuilder {
 				
 		String label1 = labels.get(0)[1];
 		String label2 = labels.get(1)[1];
+
+		try {
+			graphTitle = analysisTitleGetter(MainUI.getInstance().getParams().getAnalysis().value);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		reportMessage = "TITLE\n" + "==============================\n"; 
+		reportMessage = graphTitle + "\n" + "==============================\n"; 
 		for (int i = 0; i < years.length; i++) {
 			if (!completeYears.contains(years[i])) {
 				reportMessage += "\nYear " + years[i] + ":\n"
@@ -249,5 +288,14 @@ public class TwoSeriesViewBuilder implements ViewBuilder {
 		return this.view;	
 	}
 
+	private String analysisTitleGetter(String analysisId) throws IOException {
+		String filePath = "src/database/analysisYear.csv";
+		String analysisTitle = "";
 
+		String analysisLine = Files.readAllLines(Paths.get(filePath)).get(Integer.parseInt(analysisId));
+
+		String[] analysisLineSplit = analysisLine.split(",");
+		analysisTitle = analysisLineSplit[0].trim();
+		return analysisTitle;
+	}
 }
