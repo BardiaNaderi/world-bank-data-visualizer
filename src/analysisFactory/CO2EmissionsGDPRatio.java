@@ -11,7 +11,7 @@ import com.google.gson.JsonArray;
 
 import analysisStrategies.Ratio;
 import viewBuilders.Director;
-import viewBuilders.TwoSeriesViewBuilder;
+import viewBuilders.OneSeriesViewBuilder;
 import viewBuilders.ViewBuilder;
 
 public class CO2EmissionsGDPRatio extends Analysis {
@@ -53,7 +53,7 @@ public class CO2EmissionsGDPRatio extends Analysis {
 		Map<Integer, Float> values = this.strategy.execute(ratio);
 		List<Map<Integer, Float>> data = Arrays.asList(values);
 		
-		if (data.isEmpty()) {
+		if (values.isEmpty()) {
 			JFrame frame = new JFrame("Invalid Selection");
     		JOptionPane.showMessageDialog(frame, "No data is available for the selected analysis..",
     	               "No Data", JOptionPane.ERROR_MESSAGE);
@@ -61,7 +61,7 @@ public class CO2EmissionsGDPRatio extends Analysis {
 			
 		else {
 			Director director = new Director();
-			ViewBuilder builder = new TwoSeriesViewBuilder();
+			ViewBuilder builder = new OneSeriesViewBuilder();
 			director.constructRatioView(builder, data, this.getWorldBankCodes());
 		}	
 	}

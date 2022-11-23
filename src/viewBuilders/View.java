@@ -18,12 +18,12 @@ public class View {
 	private List<Chart> charts = new ArrayList<>();
 			
 	public View() {
-		this.line = new Chart("Line Chart", null, false);
-		this.time = new Chart("Time Chart", null, false);
-		this.bar = new Chart("Bar Chart", null, false);
-		this.pie = new Chart("Pie Chart", null, false);
-		this.scatter = new Chart("Scatter Chart", null, false);
-		this.report = new Chart("Report", null, false);
+		this.line = new Chart("Line Chart", null, null, false);
+		this.time = new Chart("Time Chart", null, null, false);
+		this.bar = new Chart("Bar Chart", null, null, false);
+		this.pie = new Chart("Pie Chart", null, null, false);
+		this.scatter = new Chart("Scatter Chart", null, null, false);
+		this.report = new Chart("Report", null, null, false);
 		
 		charts = Arrays.asList(getLine(), getTime(), getBar(), getPie(), getScatter(), getReport());
 	}		

@@ -2,24 +2,20 @@ package userInputObervers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import org.jfree.chart.ChartPanel;
 
 import analysisFactory.Analysis;
 import analysisFactory.AnalysisFactory;
 import mainGUI.MainUI;
 import viewBuilders.Chart;
-import viewBuilders.View;
 
 public class ParametersSelector implements Selector {
 	
-	class Parameter {
-		String value;
-		Boolean valid;
+	public class Parameter {
+		public String value;
+		public Boolean valid;
 	}
 	
 	private Parameter analysis = new Parameter();

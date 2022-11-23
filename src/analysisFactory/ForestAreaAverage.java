@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import com.google.gson.JsonArray;
 
 import analysisStrategies.Average;
@@ -49,11 +52,17 @@ public class ForestAreaAverage extends Analysis {
 		Map<Integer, Float> forestValues = this.strategy.execute(forestData);	
 		List<Map<Integer, Float>> data = Arrays.asList(forestValues);
 		
-		Director director = new Director();
-		ViewBuilder builder = new OneSeriesViewBuilder();
-		director.constructRatioView(builder, data, this.getWorldBankCodes());
-		
-		System.out.println("The average " + forestCode[1] + " for " + this.getCountry() + " from " 
-				+ this.getStartYear() + " to " + this.getEndYear() + " is " + forestValues.get(1));
+		if (forestValues.isEmpty()) {
+			JFrame frame = new JFrame("Invalid Selection");
+    		JOptionPane.showMessageDialog(frame, "No data is available for the selected analysis..",
+    	               "No Data", JOptionPane.ERROR_MESSAGE);
+		}
+			
+		else {
+			Director director = new Director();
+			ViewBuilder builder = new OneSeriesViewBuilder();
+			director.constructAverageView(builder, data, this.getWorldBankCodes());
+		}
+
 	}
 }

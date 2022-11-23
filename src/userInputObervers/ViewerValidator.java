@@ -22,7 +22,7 @@ public class ViewerValidator implements Validator {
     		List<Chart> charts = view.getCharts();
     		
 			for (Chart chart: charts) {
-				if (chart.getName() == params.getViewer().value && chart.getChart() == null) {
+				if (chart.getName() == params.getViewer().value && chart.getChart() == null && chart.getReport() == null) {
 				JFrame frame = new JFrame("Invalid Selection");
 				JOptionPane.showMessageDialog(frame,
 						params.getViewer().value + " is not permitted for the selected analysis.",
@@ -36,8 +36,10 @@ public class ViewerValidator implements Validator {
 	    	gui.revalidate();
 	    	
 			for (Chart chart: charts) {
-				if (chart.getDisplay() == true)
+				if (chart.getChart() != null && chart.getDisplay() == true)
 					gui.getWest().add(chart.getChart());
+				if (chart.getReport() != null && chart.getDisplay() == true)
+					gui.getWest().add(chart.getReport());
 			}
 	    	
 			gui.setVisible(true);

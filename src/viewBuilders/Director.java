@@ -3,11 +3,11 @@ package viewBuilders;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JPanel;
-
-import org.jfree.data.category.DefaultCategoryDataset;
-
 public class Director {
+	
+	final static private String RATIO = "Ratio";
+	final static private String PERCENT = "Annual Percentage Change";
+	final static private String AVERAGE = "Average";
 			
 	/* 
 	 * Each of the following methods will omit whichever chart views are not
@@ -17,21 +17,27 @@ public class Director {
 	 */
 	public void constructRatioView(ViewBuilder builder, List<Map<Integer, Float>> data, List<String[]> labels) {
 		builder.reset();
-		//builder.createLine(data);
-		//builder.createTime(data);
-		//builder.createBar(data);
-		//builder.createPie(data);
-		//builder.createScatter(data);
-		//builder.createReport(data);		
+		builder.createLine(data, labels, RATIO);
+		builder.createTime(data, labels, RATIO);
+		builder.createBar(data, labels, RATIO);
+		builder.createScatter(data, labels, RATIO);
+		builder.createReport(data, labels, RATIO);	
 	}
 	
 	public void constructAnnualPercentageView(ViewBuilder builder, List<Map<Integer, Float>> data, List<String[]> labels) {
-		builder.createScatter(data, labels, "Annual Percentage Change");
-		builder.createBar(data, labels, "Annual Percentage Change");
+		builder.reset();
+		builder.createLine(data, labels, PERCENT);
+		builder.createTime(data, labels, PERCENT);
+		builder.createBar(data, labels, PERCENT);
+		builder.createScatter(data, labels, PERCENT);
+		builder.createReport(data, labels, PERCENT);
+
 	}
 	
-	public void concstructAverageView(ViewBuilder builder, List<Map<Integer, Float>> data, List<String[]> labels) {
-		// TODO: build appropriate charts
+	public void constructAverageView(ViewBuilder builder, List<Map<Integer, Float>> data, List<String[]> labels) {
+		builder.reset();
+		builder.createPie(data, labels, AVERAGE);
+		builder.createReport(data, labels, AVERAGE);
 	}
 
 }

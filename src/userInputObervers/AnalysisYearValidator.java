@@ -11,6 +11,8 @@ import mainGUI.MainUI;
 
 public class AnalysisYearValidator implements Validator {
 	
+	private int invalid;
+	
 	public void update() {
 		
 		ParametersSelector params = MainUI.getInstance().getParams();	
@@ -36,7 +38,7 @@ public class AnalysisYearValidator implements Validator {
 
     		params.setAnalysisValid(false);
     		JFrame frame = new JFrame("Invalid Selection");
-    		JOptionPane.showMessageDialog(frame, "Analysis is not available for the selected years. Please choose another option.",
+    		JOptionPane.showMessageDialog(frame, "Selected analysis is not available for the year " + this.invalid + ". Please choose another option.",
     	               "Invalid Selection", JOptionPane.ERROR_MESSAGE);
     	}
     	
@@ -63,6 +65,7 @@ public class AnalysisYearValidator implements Validator {
 			year = Integer.parseInt(s);
 			if (year > startYear && year < endYear){
 				valid = false;
+				this.invalid = year;
 				break;
 			}
 		}

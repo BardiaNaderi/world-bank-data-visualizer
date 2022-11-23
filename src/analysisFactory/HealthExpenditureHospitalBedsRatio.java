@@ -1,11 +1,18 @@
 package analysisFactory;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import com.google.gson.JsonArray;
 
 import analysisStrategies.Ratio;
+import viewBuilders.Director;
+import viewBuilders.TwoSeriesViewBuilder;
+import viewBuilders.ViewBuilder;
 
 public class HealthExpenditureHospitalBedsRatio extends Analysis {
 	
@@ -36,18 +43,20 @@ public class HealthExpenditureHospitalBedsRatio extends Analysis {
 		String[] healthCode = this.getWorldBankCodes().get(0);
 		String[] hospitalCode = this.getWorldBankCodes().get(1);
 	
-		JsonArray[] data = {fetcher.fetchData(this, healthCode), fetcher.fetchData(this, hospitalCode)};
+		JsonArray[] ratio = {fetcher.fetchData(this, healthCode), fetcher.fetchData(this, hospitalCode)};
+		Map<Integer, Float> values = this.strategy.execute(ratio);
+		List<Map<Integer, Float>> data = Arrays.asList(values);
 		
-		/*
-		 *  It is assumed that the data being fetched will need to be returned in some manner in order
-		 *  to be displayed to the user. For now the data is being returned as a HashMap and printed
-		 *  to the console, but the following lines are subject to change depending on the requirements 
-		 *  of Deliverables 2 and 3.
-		*/
-		Map<Integer, Float> values = this.strategy.execute(data);
-		
-		for (Map.Entry<Integer, Float> entry: values.entrySet()) {
-			System.out.println("The ratio of " + healthCode[1] + " to " + hospitalCode[1] + " for " + country + " in " + entry.getKey() + " is " + entry.getValue());
+		if (values.isEmpty()) {
+			JFrame frame = new JFrame("Invalid Selection");
+    		JOptionPane.showMessageDialog(frame, "No data is available for the selected analysis..",
+    	               "No Data", JOptionPane.ERROR_MESSAGE);
+		}
+			
+		else {
+			Director director = new Director();
+			ViewBuilder builder = new TwoSeriesViewBuilder();
+			director.constructRatioView(builder, data, this.getWorldBankCodes());
 		}
 	}
 }
