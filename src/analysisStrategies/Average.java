@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.google.gson.JsonArray;
 
+import mainGUI.MainUI;
+
 public class Average implements AnalysisStrategy {
 
 	/**
@@ -23,7 +25,8 @@ public class Average implements AnalysisStrategy {
 		float cummulative = 0;
 		int sizeOfResults = firstData.get(1).getAsJsonArray().size();
 		float average;
-		
+		int year = Integer.parseInt(MainUI.getInstance().getParams().getEndYear().value);
+				
 		for (int i = sizeOfResults - 1; i >= 0; i--) {
 			if (firstData.get(1).getAsJsonArray().get(i).getAsJsonObject().get("value").isJsonNull())
 				continue;
@@ -34,7 +37,9 @@ public class Average implements AnalysisStrategy {
 		}	
 		
 		average = cummulative / sizeOfResults;
-		values.put(1, average);		
+		
+		
+		values.put(year, average);		
 		return values;
 	}
 	
