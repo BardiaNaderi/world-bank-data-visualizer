@@ -1,6 +1,6 @@
 import java.io.IOException;
 
-import login.Registration;
+import userLogin.Registration;
 
 public class Main {
 
