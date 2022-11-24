@@ -45,7 +45,7 @@ public class AnalysisYearValidator implements Validator {
 
     		params.setAnalysisValid(false);
     		JFrame frame = new JFrame("Invalid Selection");
-    		JOptionPane.showMessageDialog(frame, "Selected analysis is not available for the year " + this.invalid + ". Please choose another option.",
+    		JOptionPane.showMessageDialog(frame, "Selected analysis is not available for the year " + this.invalid + ". Please select another range of dates that does not include this year",
     	               "Invalid Selection", JOptionPane.ERROR_MESSAGE);
     	}
     	
