@@ -2,16 +2,10 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
 import org.junit.jupiter.api.Test;
 
 import mainApplication.MainUI;
 import userInput.ParametersSelector;
-import userLogin.RegistrationLogin;
-import userLogin.RegistrationSignup;
-import userLogin.User;
 
 public class CountryValidatorTest {	
 	
@@ -22,7 +16,6 @@ public class CountryValidatorTest {
 		
         boolean expected = params.getCountry().valid;
         boolean actual = true;
-		
         assertEquals(expected, actual);		
 	}
 	
@@ -33,7 +26,6 @@ public class CountryValidatorTest {
 		
         boolean expected = params.getCountry().valid;
         boolean actual = false;
-		
         assertEquals(expected, actual);		
 	}
 	
