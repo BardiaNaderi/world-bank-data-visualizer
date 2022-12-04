@@ -32,7 +32,7 @@ public class AnalysisFactoryTest {
 	 * @result the correct class is returned for an analysis code of 0
 	 */
 	@Test
-	void factoryReturnsCorrectAnalysisForFirstSelection() {
+	void testFactoryReturnsCorrectAnalysisForFirstSelection() {
 		params.selectAnalysis("0");	
 		int analysis = Integer.parseInt(params.getAnalysis().value);
 
@@ -48,7 +48,7 @@ public class AnalysisFactoryTest {
 	 * @result the correct class is returned for an analysis code of 1
 	 */
 	@Test
-	void factoryReturnsCorrectAnalysisForSecondSelection() {
+	void testFactoryReturnsCorrectAnalysisForSecondSelection() {
 		params.selectAnalysis("1");
 		int analysis = Integer.parseInt(params.getAnalysis().value);
 
@@ -64,7 +64,7 @@ public class AnalysisFactoryTest {
 	 * @result the correct class is returned for an analysis code of 2
 	 */
 	@Test
-	void factoryReturnsCorrectAnalysisForThirdSelection() {
+	void testFactoryReturnsCorrectAnalysisForThirdSelection() {
 		params.selectAnalysis("2");
 		int analysis = Integer.parseInt(params.getAnalysis().value);
 
@@ -80,7 +80,7 @@ public class AnalysisFactoryTest {
 	 * @result the correct class is returned for an analysis code of 3
 	 */
 	@Test
-	void factoryReturnsCorrectAnalysisForFourthSelection() {
+	void testFactoryReturnsCorrectAnalysisForFourthSelection() {
 		params.selectAnalysis("3");
 		int analysis = Integer.parseInt(params.getAnalysis().value);
 
@@ -96,7 +96,7 @@ public class AnalysisFactoryTest {
 	 * @result the correct class is returned for an analysis code of 4
 	 */
 	@Test
-	void factoryReturnsCorrectAnalysisFoFifthSelection() {
+	void testFactoryReturnsCorrectAnalysisFoFifthSelection() {
 		params.selectAnalysis("4");
 		int analysis = Integer.parseInt(params.getAnalysis().value);
 
@@ -112,7 +112,7 @@ public class AnalysisFactoryTest {
 	 * @result the correct class is returned for an analysis code of 5
 	 */
 	@Test
-	void factoryReturnsCorrectAnalysisForSixthSelection() {
+	void testFactoryReturnsCorrectAnalysisForSixthSelection() {
 		params.selectAnalysis("5");
 		int analysis = Integer.parseInt(params.getAnalysis().value);
 
@@ -128,7 +128,7 @@ public class AnalysisFactoryTest {
 	 * @result the correct class is returned for an analysis code of 6
 	 */
 	@Test
-	void factoryReturnsCorrectAnalysisForSeventhSelection() {
+	void testFactoryReturnsCorrectAnalysisForSeventhSelection() {
 		params.selectAnalysis("6");
 		int analysis = Integer.parseInt(params.getAnalysis().value);
 
@@ -144,7 +144,7 @@ public class AnalysisFactoryTest {
 	 * @result the correct class is returned for an analysis code of 7
 	 */
 	@Test
-	void factoryReturnsCorrectAnalysisForEighthSelection() {
+	void testFactoryReturnsCorrectAnalysisForEighthSelection() {
 		params.selectAnalysis("7");
 		int analysis = Integer.parseInt(params.getAnalysis().value);
 
