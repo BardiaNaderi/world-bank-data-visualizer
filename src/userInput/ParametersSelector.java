@@ -307,7 +307,7 @@ public class ParametersSelector implements Selector {
      * It first checks to make sure all of the valid flags are set to true, and if they are not an error
      * message is thrown and the analysis does not proceed.
      */
-    public void recalculate() {  	
+    public Boolean recalculate() {  	
     	
     	if (country.valid == true && startYear.valid == true && endYear.valid == true && analysis.valid == true) {
     		MainUI gui = MainUI.getInstance();
@@ -323,6 +323,7 @@ public class ParametersSelector implements Selector {
     		
     		Analysis newAnalysis = AnalysisFactory.createAnalysis(analysis, country, startYear, endYear);
     		newAnalysis.executeAnalysis();
+    		return true;
     	}
     	
     	else {
@@ -330,6 +331,7 @@ public class ParametersSelector implements Selector {
 			JOptionPane.showMessageDialog(frame,
 					"Please choose valid parameters to proceed with the analysis.",
 					"Invalid Selection", JOptionPane.ERROR_MESSAGE);
+			return false;
     	}
 
     }
