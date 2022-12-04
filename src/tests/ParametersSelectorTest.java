@@ -40,5 +40,39 @@ public class ParametersSelectorTest {
 		boolean actual = params.recalculate();
 		assertEquals(expected, actual);	
 	}
+	
+	@Test
+	void recalculateWillProceedWithDefaultAnalysisIfNoAnalysisSelected() {
+		ParametersSelector params = new ParametersSelector();
+
+		String expectedAnalysis = "0";
+		String actualAnalysis = params.getAnalysis().value;
+		assertEquals(expectedAnalysis, actualAnalysis);	
+		
+		boolean expected = true;
+		boolean actual = params.recalculate();
+		assertEquals(expected, actual);	
+	}
+	
+	@Test
+	void recalculateWillProceedIfAnalysisIsValid() {
+		ParametersSelector params = new ParametersSelector();
+		params.setAnalysisValid(true);
+		
+		boolean expected = true;
+		boolean actual = params.recalculate();
+		assertEquals(expected, actual);	
+	}
+	
+	@Test
+	void recalculateWillNotProceedIfAnalysisIsInvaild() {
+		ParametersSelector params = new ParametersSelector();
+		params.setAnalysisValid(false);
+		
+		boolean expected = false;
+		boolean actual = params.recalculate();
+		assertEquals(expected, actual);	
+	}
+
 
 }
