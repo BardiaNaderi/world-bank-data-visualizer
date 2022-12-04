@@ -1,4 +1,4 @@
-package userLogin;
+package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,6 +6,10 @@ import java.io.FileNotFoundException;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import userLogin.RegistrationContext;
+import userLogin.RegistrationLogin;
+import userLogin.State;
 
 class RegistrationLoginTest {
 
