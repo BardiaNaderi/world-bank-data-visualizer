@@ -92,6 +92,50 @@ public class ParametersSelectorTest {
 		boolean actual = params.recalculate();
 		assertEquals(expected, actual);	
 	}
+	
+	@Test
+	void recalculateWillProceedWithDefaultStartYearIfNoStartYearSelected() {
+		ParametersSelector params = new ParametersSelector();
 
+		String expectedStartYear = "2021";
+		String actualStartYear = params.getStartYear().value;
+		assertEquals(expectedStartYear, actualStartYear);	
+		
+		boolean expected = true;
+		boolean actual = params.recalculate();
+		assertEquals(expected, actual);	
+	}
+	
+	@Test
+	void recalculateWillProceedWithDefaultEndYearIfNoEndYearSelected() {
+		ParametersSelector params = new ParametersSelector();
 
+		String expectedEndYear = "2021";
+		String actualEndYear = params.getEndYear().value;
+		assertEquals(expectedEndYear, actualEndYear);	
+		
+		boolean expected = true;
+		boolean actual = params.recalculate();
+		assertEquals(expected, actual);	
+	}
+	
+	@Test
+	void recalculateWillProceedIfStartYearIsValid() {
+		ParametersSelector params = new ParametersSelector();
+		params.setStartYearValid(true);
+		
+		boolean expected = true;
+		boolean actual = params.recalculate();
+		assertEquals(expected, actual);	
+	}
+	
+	@Test
+	void recalculateWillNotProceedIfStartYearIsInvaild() {
+		ParametersSelector params = new ParametersSelector();
+		params.setStartYearValid(false);
+		
+		boolean expected = false;
+		boolean actual = params.recalculate();
+		assertEquals(expected, actual);	
+	}
 }
