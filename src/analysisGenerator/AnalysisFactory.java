@@ -31,7 +31,7 @@ public class AnalysisFactory {
 		case 7:
 			return new EducationExpenditureHealthExpenditureAnnualPercentage(country, startYear, endYear);
 		default:
-			throw new IllegalArgumentException("Invaid Analysis code: " + analysis);
+			throw new IndexOutOfBoundsException("Invaid Analysis code: " + analysis);
 		}
 	}
 }
