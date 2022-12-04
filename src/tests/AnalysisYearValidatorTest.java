@@ -32,5 +32,17 @@ class AnalysisYearValidatorTest {
         boolean actual = true;
         assertEquals(expected, actual);		
 	}
+	
+	@Test
+	void analysisSetToFalseWhenStartYearIsGreaterThanEndYear() {
+		ParametersSelector params = MainUI.getInstance().getParams();
+		params.selectStartYear("2006");
+		params.selectEndYear("2005");
+		params.selectAnalysis("0");
+		
+        boolean expected = params.getStartYear().valid;
+        boolean actual = false;
+        assertEquals(expected, actual);		
+	}
 
 }
