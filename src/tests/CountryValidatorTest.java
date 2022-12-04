@@ -9,8 +9,13 @@ import userInput.ParametersSelector;
 
 public class CountryValidatorTest {	
 	
+	/**
+	 * Set the country's valid parameter to true when a valid country is selected
+	 * 
+	 * @result the valid parameter for the country is true when the value is valid 
+	 */
 	@Test
-	void countrySetToTrueWhenValidCountrySelected() {
+	void testCountrySetToTrueWhenValidCountrySelected() {
 		ParametersSelector params = MainUI.getInstance().getParams();
 		params.selectCountry("Canada");
 		
@@ -19,8 +24,13 @@ public class CountryValidatorTest {
         assertEquals(expected, actual);		
 	}
 	
+	/**
+	 * Set the country's valid parameter to false when an invalid country is selected
+	 * 
+	 * @result the valid parameter for the country is false when the value is valid 
+	 */
 	@Test
-	void countrySetToFalseWhenInvalidCountrySelected() {
+	void testCountrySetToFalseWhenInvalidCountrySelected() {
 		ParametersSelector params = MainUI.getInstance().getParams();
 		params.selectCountry("United Arab Emirates");
 		
