@@ -1,14 +1,11 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.io.FileNotFoundException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 import mainApplication.MainUI;
 import userInput.ParametersSelector;
-import userLogin.RegistrationLogin;
 
 class AnalysisValidatorTest {
 
@@ -22,13 +19,7 @@ class AnalysisValidatorTest {
         assertEquals(expected, actual);		
 	}
 	
-	@Test
-	void analysisThrowsExceptionWhenInvalidAnalysisSelected() {
-		ParametersSelector params = MainUI.getInstance().getParams();
-			
-        assertThrows(IndexOutOfBoundsException.class,
-                ()->{                    
-            		params.selectAnalysis("-1");
-                });
-	}
 }
+
+
+
