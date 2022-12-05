@@ -29,11 +29,11 @@ public class ViewerValidator implements Validator {
     		
 			for (Chart chart: charts) {
 				if (chart.getName() == params.getViewer().value && chart.getChart() == null && chart.getReport() == null) {
-				JFrame frame = new JFrame("Invalid Selection");
-				JOptionPane.showMessageDialog(frame,
-						params.getViewer().value + " is not permitted for the selected analysis.",
-						"Invalid Selection", JOptionPane.ERROR_MESSAGE);
-				return;
+					JFrame frame = new JFrame("Invalid Selection");
+					JOptionPane.showMessageDialog(frame,
+							params.getViewer().value + " is not permitted for the selected analysis.",
+							"Invalid Selection", JOptionPane.ERROR_MESSAGE);
+					return;
 				}
 	    	}  	
 
