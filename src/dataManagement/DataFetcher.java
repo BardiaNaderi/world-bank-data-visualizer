@@ -43,7 +43,7 @@ public class DataFetcher {
 	 * @param worldBankCode the desired World Bank indicator code to communicate with the API
 	 * @return a JSON array containing all of the information fetched from the World Bank's API
 	 */
-	public  JsonArray fetchData(Analysis analysis, String[] worldBankCode) {
+	public JsonArray fetchData(Analysis analysis, String[] worldBankCode) {
 			
 		String country = analysis.getCountry();
 		String[] code = worldBankCode;
