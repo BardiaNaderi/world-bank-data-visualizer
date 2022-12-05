@@ -16,12 +16,6 @@ import graphBuilders.ViewBuilder;
 
 public class CO2EmissionsEnergyUsePollutionAnnualPercentage extends Analysis {
 	
-	private String title = "CO2 Emissions VS Energy Use VS Air Polluion";
-	
-	public String getTitle() {
-		return this.title;
-	}
-	
 	/**
 	 * Constructor class which sets three parameters dynamically and two statically.
 	 * The strategy and worldBankCodes parameters are determined during the creation 

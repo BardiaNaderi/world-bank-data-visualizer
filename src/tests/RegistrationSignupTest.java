@@ -17,7 +17,7 @@ import userLogin.User;
 
 class RegistrationSignupTest {
         
-        String usernameFinal = "Roberto";
+    String usernameFinal = "Roberto";
     String emailFinal = "roberto@gmail.com";
     String passwordFinal = "roberto1234";
     String filePath = "src/dataManagement/signUpTest.csv";
