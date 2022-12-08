@@ -12,6 +12,8 @@ import dataManagement.DataFetcher;
 public class DataFetcherTest {
 
 	/**
+	 * Use Case 7: Test 09
+	 * 
 	 * Tests if the DataFetcher returns the correct value for the specified parameters
 	 * 
 	 * @result returns true if the results match what is expected after manually fetching

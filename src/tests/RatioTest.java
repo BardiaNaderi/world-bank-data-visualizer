@@ -17,6 +17,8 @@ import dataManagement.DataFetcher;
 public class RatioTest {
 	
 	/**
+	 * Use Case 7: Test 07
+	 * 
 	 * Test to ensure that the correct Map values are returned after the Ratio
 	 * calculations are performed on the CO2EmissionsGDPRatio analysis
 	 * 
@@ -41,6 +43,8 @@ public class RatioTest {
 	}
 	
 	/**
+	 * Use Case 7: Test 08
+	 * 
 	 * Test to ensure that the correct Map values are returned after the Ratio
 	 * calculations are performed on the CO2EmissionsGDPRatio analysis
 	 * 

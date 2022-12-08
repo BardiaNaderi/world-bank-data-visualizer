@@ -18,6 +18,8 @@ import mainApplication.MainUI;
 public class AverageTest {
 	
 	/**
+	 * Use Case 7: Test 05
+	 * 
 	 * Test to ensure that the correct Map values are returned after the Average
 	 * calculations are performed on the EducationExpenditureAverage analysis
 	 * 
@@ -43,6 +45,8 @@ public class AverageTest {
 	}
 	
 	/**
+	 * Use Case 7: Test 06
+	 * 
 	 * Test to ensure that the correct Map values are returned after the Average
 	 * calculations are performed on the ForestAreaAverage analysis
 	 * 

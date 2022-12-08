@@ -29,7 +29,9 @@ class RegistrationLoginTest {
         context.doAction();
 	}
 
-        /**
+    /**
+     * Use Case 1: Test 01
+     * 
 	 * Checking if the user's info inputted to login is verified through the database csv files
 	 * 
 	 * @result the user is verified and the value returned from the method is false
@@ -41,7 +43,9 @@ class RegistrationLoginTest {
         assertEquals(expected, actual);
 	}
 
-        /**
+    /**
+     * Use Case 1: Test 02
+     * 
 	 * Checking if the user's info inputted to login is not verified through the database csv files
 	 * 
 	 * @result the user is not verified and the value returned from the method is true
@@ -53,9 +57,11 @@ class RegistrationLoginTest {
         assertEquals(expected, actual);
 	}
 
-        /**
+    /**
+     * Use Case 1: Test 03
+     * 
 	 * Checking if the value for the database csv file is incorrect
-         * 
+     * 
 	 * @result throws a FileNotFoundException when the file path is incorrect and does not exist
 	 */
 	@Test

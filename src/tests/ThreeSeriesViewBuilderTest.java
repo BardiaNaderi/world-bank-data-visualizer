@@ -52,6 +52,8 @@ public class ThreeSeriesViewBuilderTest {
 	}
 
 	/**
+	 * Use Case 8: Test 16
+	 * 
 	 * Check the View of the MainUI after using the ThreeSeriesViewBuilder to 
 	 * generate a Line Chart to make sure there is a new Line Chart saved to the View
 	 * 
@@ -66,6 +68,8 @@ public class ThreeSeriesViewBuilderTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 17
+	 * 
 	 * Check the View of the MainUI after using the ThreeSeriesViewBuilder to 
 	 * generate a Time Chart to make sure there is a new Time Chart saved to the View
 	 * 
@@ -80,6 +84,8 @@ public class ThreeSeriesViewBuilderTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 18
+	 * 
 	 * Check the View of the MainUI after using the ThreeSeriesViewBuilder to 
 	 * generate a bar Chart to make sure there is a new Bar Chart saved to the View
 	 * 
@@ -94,6 +100,8 @@ public class ThreeSeriesViewBuilderTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 19
+	 * 
 	 * Check the View of the MainUI after using the ThreeSeriesViewBuilder to 
 	 * generate a Pie Chart to make sure there is a new Pie Chart saved to the View
 	 * 
@@ -109,6 +117,8 @@ public class ThreeSeriesViewBuilderTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 20
+	 * 
 	 * Check the View of the MainUI after using the ThreeSeriesViewBuilder to 
 	 * generate a Scatter Chart to make sure there is a new Scatter Chart saved to the View
 	 * 
@@ -123,6 +133,8 @@ public class ThreeSeriesViewBuilderTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 21
+	 * 
 	 * Check the View of the MainUI after using the ThreeSeriesViewBuilder to 
 	 * generate a Report to make sure there is a new Report saved to the View
 	 * 

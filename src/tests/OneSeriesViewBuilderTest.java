@@ -40,6 +40,8 @@ public class OneSeriesViewBuilderTest {
 	}
 
 	/**
+	 * Use Case 8: Test 04
+	 * 
 	 * Check the View of the MainUI after using the OneSeriesViewBuilder to 
 	 * generate a Line Chart to make sure there is a new Line Chart saved to the View
 	 * 
@@ -54,6 +56,8 @@ public class OneSeriesViewBuilderTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 05
+	 * 
 	 * Check the View of the MainUI after using the OneSeriesViewBuilder to 
 	 * generate a Time Chart to make sure there is a new Time Chart saved to the View
 	 * 
@@ -68,6 +72,8 @@ public class OneSeriesViewBuilderTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 06
+	 * 
 	 * Check the View of the MainUI after using the OneSeriesViewBuilder to 
 	 * generate a bar Chart to make sure there is a new Bar Chart saved to the View
 	 * 
@@ -82,6 +88,8 @@ public class OneSeriesViewBuilderTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 07
+	 * 
 	 * Check the View of the MainUI after using the OneSeriesViewBuilder to 
 	 * generate a Pie Chart to make sure there is a new Pie Chart saved to the View
 	 * 
@@ -97,6 +105,8 @@ public class OneSeriesViewBuilderTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 08
+	 * 
 	 * Check the View of the MainUI after using the OneSeriesViewBuilder to 
 	 * generate a Scatter Chart to make sure there is a new Scatter Chart saved to the View
 	 * 
@@ -111,6 +121,8 @@ public class OneSeriesViewBuilderTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 09
+	 * 
 	 * Check the View of the MainUI after using the OneSeriesViewBuilder to 
 	 * generate a Report to make sure there is a new Report saved to the View
 	 * 

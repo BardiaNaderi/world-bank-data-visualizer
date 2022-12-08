@@ -9,6 +9,8 @@ import userInput.ParametersSelector;
 public class ParametersSelectorTest {
 	
 	/**
+	 * Use Case 2: Test 03
+	 * 
 	 * The recalculate method will proceed with the default country if a user
 	 * presses the button without selecting a country from the drop down menu
 	 * 
@@ -29,6 +31,8 @@ public class ParametersSelectorTest {
 	}
 	
 	/**
+	 * Use Case 2: Test 04
+	 * 
 	 * The recalculate method will proceed if the selected country's valid parameter 
 	 * has been set to true
 	 * 
@@ -45,6 +49,8 @@ public class ParametersSelectorTest {
 	}
 	
 	/**
+	 * Use Case 2: Test 05
+	 * 
 	 * The recalculate method will not proceed if the selected country's valid parameter 
 	 * has been set to false
 	 * 
@@ -61,12 +67,14 @@ public class ParametersSelectorTest {
 	}
 	
 	/**
+	 * Use Case 3: Test 10
+	 * 
 	 * Checking if the default value for analysis is used when no analysis is selected and the recalculate method proceeds
 	 * 
 	 * @result the recalculate method will return true when the default analysis value is used
 	 */
 	@Test
-	void recalculateWillProceedWithDefaultAnalysisIfNoAnalysisSelected() {
+	void restRecalculateWillProceedWithDefaultAnalysisIfNoAnalysisSelected() {
 		ParametersSelector params = new ParametersSelector();
 
 		String expectedAnalysis = "0";
@@ -79,12 +87,14 @@ public class ParametersSelectorTest {
 	}
 	
 	/**
+	 * Use Case 3: Test 11
+	 * 
 	 * Checking if the value selected for analysis is valid and the recalculate method proceeds
 	 * 
 	 * @result the recalculate method will return true when the analysis value selected is valid
 	 */
 	@Test
-	void recalculateWillProceedIfAnalysisIsValid() {
+	void testRecalculateWillProceedIfAnalysisIsValid() {
 		ParametersSelector params = new ParametersSelector();
 		params.setAnalysisValid(true);
 		
@@ -94,12 +104,14 @@ public class ParametersSelectorTest {
 	}
 	
 	/**
+	 * Use Case 3: Test 12
+	 * 
 	 * Checking if the value selected for analysis is not valid and the recalculate method does not proceed
 	 * 
 	 * @result the recalculate method will return false when the analysis value selected is invalid
 	 */
 	@Test
-	void recalculateWillNotProceedIfAnalysisIsInvaild() {
+	void testRecalculateWillNotProceedIfAnalysisIsInvaild() {
 		ParametersSelector params = new ParametersSelector();
 		params.setAnalysisValid(false);
 		
@@ -109,12 +121,14 @@ public class ParametersSelectorTest {
 	}
 	
 	/**
+	 * Use Case 4: Test 04
+	 * 
 	 * Checking if the default value for start year is used when no start year is selected and the recalculate method proceeds
 	 * 
 	 * @result the recalculate method will return true when the default start year value is used
 	 */
 	@Test
-	void recalculateWillProceedWithDefaultStartYearIfNoStartYearSelected() {
+	void testRecalculateWillProceedWithDefaultStartYearIfNoStartYearSelected() {
 		ParametersSelector params = new ParametersSelector();
 
 		String expectedStartYear = "2021";
@@ -127,12 +141,14 @@ public class ParametersSelectorTest {
 	}
 	
 	/**
+	 * Use Case 4: Test 05
+	 * 
 	 * Checking if the default value for end year is used when no end year is selected and the recalculate method proceeds
 	 * 
 	 * @result the recalculate method will return true when the default end year value is used
 	 */
 	@Test
-	void recalculateWillProceedWithDefaultEndYearIfNoEndYearSelected() {
+	void testRecalculateWillProceedWithDefaultEndYearIfNoEndYearSelected() {
 		ParametersSelector params = new ParametersSelector();
 
 		String expectedEndYear = "2021";
@@ -145,12 +161,14 @@ public class ParametersSelectorTest {
 	}
 	
 	/**
+	 * Use Case 4: Test 06
+	 * 
 	 * Checking if the value selected for start year is valid and the recalculate method proceeds
 	 * 
 	 * @result the recalculate method will return true when the start year value selected is valid
 	 */
 	@Test
-	void recalculateWillProceedIfStartYearIsValid() {
+	void testRecalculateWillProceedIfStartYearIsValid() {
 		ParametersSelector params = new ParametersSelector();
 		params.setStartYearValid(true);
 		
@@ -160,12 +178,14 @@ public class ParametersSelectorTest {
 	}
 	
 	/**
+	 * Use Case 4: Test 07
+	 * 
 	 * Checking if the value selected for start year is invalid and the recalculate method does not proceed
 	 * 
 	 * @result the recalculate method will return false when the start year value selected is invalid
 	 */
 	@Test
-	void recalculateWillNotProceedIfStartYearIsInvalid() {
+	void testRecalculateWillNotProceedIfStartYearIsInvalid() {
 		ParametersSelector params = new ParametersSelector();
 		params.setStartYearValid(false);
 		
