@@ -29,6 +29,11 @@ class RegistrationLoginTest {
         context.doAction();
 	}
 
+        /**
+	 * Checking if the user's info inputted to login is verified through the database csv files
+	 * 
+	 * @result the user is verified and the value returned from the method is false
+	 */
 	@Test
 	void testAcceptedLogin() throws FileNotFoundException {
         boolean expected = RegistrationLogin.verify(emailFinal, correctPasswordFinal, correctFilePath);
@@ -36,6 +41,11 @@ class RegistrationLoginTest {
         assertEquals(expected, actual);
 	}
 
+        /**
+	 * Checking if the user's info inputted to login is not verified through the database csv files
+	 * 
+	 * @result the user is not verified and the value returned from the method is true
+	 */
 	@Test
 	void testRejectedLogin() throws FileNotFoundException {
         boolean expected = RegistrationLogin.verify(emailFinal, wrongPasswordFinal, correctFilePath);
@@ -43,6 +53,11 @@ class RegistrationLoginTest {
         assertEquals(expected, actual);
 	}
 
+        /**
+	 * Checking if the value for the database csv file is incorrect
+         * 
+	 * @result throws a FileNotFoundException when the file path is incorrect and does not exist
+	 */
 	@Test
 	void testIncorrectFilePath() throws FileNotFoundException {
         assertThrows(FileNotFoundException.class,
