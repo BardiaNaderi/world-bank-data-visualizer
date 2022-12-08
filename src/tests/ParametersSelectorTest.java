@@ -74,7 +74,7 @@ public class ParametersSelectorTest {
 	 * @result the recalculate method will return true when the default analysis value is used
 	 */
 	@Test
-	void restRecalculateWillProceedWithDefaultAnalysisIfNoAnalysisSelected() {
+	void testRecalculateWillProceedWithDefaultAnalysisIfNoAnalysisSelected() {
 		ParametersSelector params = new ParametersSelector();
 
 		String expectedAnalysis = "0";
