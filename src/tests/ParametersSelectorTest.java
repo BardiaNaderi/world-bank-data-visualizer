@@ -60,6 +60,11 @@ public class ParametersSelectorTest {
 		assertEquals(expected, actual);	
 	}
 	
+	/**
+	 * Checking if the default value for analysis is used when no analysis is selected and the recalculate method proceeds
+	 * 
+	 * @result the recalculate method will return true when the default analysis value is used
+	 */
 	@Test
 	void recalculateWillProceedWithDefaultAnalysisIfNoAnalysisSelected() {
 		ParametersSelector params = new ParametersSelector();
@@ -73,6 +78,11 @@ public class ParametersSelectorTest {
 		assertEquals(expected, actual);	
 	}
 	
+	/**
+	 * Checking if the value selected for analysis is valid and the recalculate method proceeds
+	 * 
+	 * @result the recalculate method will return true when the analysis value selected is valid
+	 */
 	@Test
 	void recalculateWillProceedIfAnalysisIsValid() {
 		ParametersSelector params = new ParametersSelector();
@@ -83,6 +93,11 @@ public class ParametersSelectorTest {
 		assertEquals(expected, actual);	
 	}
 	
+	/**
+	 * Checking if the value selected for analysis is not valid and the recalculate method does not proceed
+	 * 
+	 * @result the recalculate method will return false when the analysis value selected is invalid
+	 */
 	@Test
 	void recalculateWillNotProceedIfAnalysisIsInvaild() {
 		ParametersSelector params = new ParametersSelector();
@@ -93,6 +108,11 @@ public class ParametersSelectorTest {
 		assertEquals(expected, actual);	
 	}
 	
+	/**
+	 * Checking if the default value for start year is used when no start year is selected and the recalculate method proceeds
+	 * 
+	 * @result the recalculate method will return true when the default start year value is used
+	 */
 	@Test
 	void recalculateWillProceedWithDefaultStartYearIfNoStartYearSelected() {
 		ParametersSelector params = new ParametersSelector();
@@ -106,6 +126,11 @@ public class ParametersSelectorTest {
 		assertEquals(expected, actual);	
 	}
 	
+	/**
+	 * Checking if the default value for end year is used when no end year is selected and the recalculate method proceeds
+	 * 
+	 * @result the recalculate method will return true when the default end year value is used
+	 */
 	@Test
 	void recalculateWillProceedWithDefaultEndYearIfNoEndYearSelected() {
 		ParametersSelector params = new ParametersSelector();
@@ -119,6 +144,11 @@ public class ParametersSelectorTest {
 		assertEquals(expected, actual);	
 	}
 	
+	/**
+	 * Checking if the value selected for start year is valid and the recalculate method proceeds
+	 * 
+	 * @result the recalculate method will return true when the start year value selected is valid
+	 */
 	@Test
 	void recalculateWillProceedIfStartYearIsValid() {
 		ParametersSelector params = new ParametersSelector();
@@ -129,8 +159,13 @@ public class ParametersSelectorTest {
 		assertEquals(expected, actual);	
 	}
 	
+	/**
+	 * Checking if the value selected for start year is invalid and the recalculate method does not proceed
+	 * 
+	 * @result the recalculate method will return false when the start year value selected is invalid
+	 */
 	@Test
-	void recalculateWillNotProceedIfStartYearIsInvaild() {
+	void recalculateWillNotProceedIfStartYearIsInvalid() {
 		ParametersSelector params = new ParametersSelector();
 		params.setStartYearValid(false);
 		

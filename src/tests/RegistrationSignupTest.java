@@ -32,6 +32,11 @@ class RegistrationSignupTest {
         context.doAction();
         }
 
+        /**
+	 * Checking if the user object is created with the correct values when all of the values are inputted
+         * 
+	 * @result returns true when all of the values in the user object match the values inputted by the user
+	 */
         @Test
         void testUserCreation() throws FileNotFoundException {
         User account = new User(usernameFinal, id, emailFinal, passwordFinal);
@@ -48,6 +53,11 @@ class RegistrationSignupTest {
         assertEquals(expected, actual);
         }
 
+        /**
+	 * Checking if the values of the user object are written to the database and the account is created
+         * 
+	 * @result returns false if the account is verified that it is stored in the database after being written with the correct values
+	 */
         @Test
         void testWriteToDatabase() throws IOException {
         id = RegistrationSignup.idCount(filePath);
