@@ -12,7 +12,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test01() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test01");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test01");
         // The following exception was thrown during execution in test generation
         try {
             boolean boolean3 = userLogin.RegistrationLogin.verify("hi!", "", "");
@@ -25,7 +25,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test02() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test02");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test02");
         // The following exception was thrown during execution in test generation
         try {
             boolean boolean3 = userLogin.RegistrationLogin.verify("hi!", "hi!", "");
@@ -38,7 +38,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test03() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test03");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test03");
         // The following exception was thrown during execution in test generation
         try {
             boolean boolean3 = userLogin.RegistrationLogin.verify("hi!", "hi!", "hi!");
@@ -51,7 +51,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test04() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test04");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test04");
         // The following exception was thrown during execution in test generation
         try {
             boolean boolean3 = userLogin.RegistrationLogin.verify("", "hi!", "");
@@ -64,7 +64,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test05() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test05");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test05");
         // The following exception was thrown during execution in test generation
         try {
             boolean boolean3 = userLogin.RegistrationLogin.verify("hi!", "", "hi!");
@@ -77,7 +77,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test06() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test06");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test06");
         java.lang.Object obj0 = new java.lang.Object();
         java.lang.Class<?> wildcardClass1 = obj0.getClass();
         // Regression assertion (captures the current behavior of the code)
@@ -87,7 +87,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test07() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test07");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test07");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         java.lang.Class<?> wildcardClass1 = registrationLogin0.getClass();
         // Regression assertion (captures the current behavior of the code)
@@ -97,7 +97,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test08() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test08");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test08");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -109,7 +109,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test09() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test09");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test09");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         java.lang.Class<?> wildcardClass2 = registrationLogin0.getClass();
@@ -120,7 +120,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test10() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test10");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test10");
         // The following exception was thrown during execution in test generation
         try {
             boolean boolean3 = userLogin.RegistrationLogin.verify("", "hi!", "hi!");
@@ -133,7 +133,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test11() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test11");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test11");
         // The following exception was thrown during execution in test generation
         try {
             boolean boolean3 = userLogin.RegistrationLogin.verify("", "", "");
@@ -146,7 +146,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test12() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test12");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test12");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -159,7 +159,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test13() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test13");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test13");
         // The following exception was thrown during execution in test generation
         try {
             boolean boolean3 = userLogin.RegistrationLogin.verify("", "", "hi!");
@@ -172,7 +172,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test14() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test14");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test14");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -186,7 +186,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test15() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test15");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test15");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -201,7 +201,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test16() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test16");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test16");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -217,7 +217,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test17() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test17");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test17");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -235,7 +235,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test18() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test18");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test18");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -252,7 +252,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test19() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test19");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test19");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -271,7 +271,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test20() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test20");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test20");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -292,7 +292,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test21() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test21");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test21");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -315,7 +315,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test22() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test22");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test22");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -337,7 +337,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test23() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test23");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test23");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -357,7 +357,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test24() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test24");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test24");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -381,7 +381,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test25() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test25");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test25");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -406,7 +406,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test26() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test26");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test26");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -433,7 +433,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test27() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test27");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test27");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -459,7 +459,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test28() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test28");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test28");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();
@@ -487,7 +487,7 @@ public class RegistrationLoginRandoopTest {
     @Test
     public void test29() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test29");
+            System.out.format("%n%s%n", "RegistrationLoginRandoopTest.test29");
         userLogin.RegistrationLogin registrationLogin0 = new userLogin.RegistrationLogin();
         registrationLogin0.doAction();
         registrationLogin0.doAction();

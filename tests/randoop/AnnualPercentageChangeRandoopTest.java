@@ -12,7 +12,7 @@ public class AnnualPercentageChangeRandoopTest {
     @Test
     public void test1() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test1");
+            System.out.format("%n%s%n", "AnnualPercentageChangeRandoopTest.test1");
         java.lang.Object obj0 = new java.lang.Object();
         java.lang.Class<?> wildcardClass1 = obj0.getClass();
         // Regression assertion (captures the current behavior of the code)
@@ -22,7 +22,7 @@ public class AnnualPercentageChangeRandoopTest {
     @Test
     public void test2() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test2");
+            System.out.format("%n%s%n", "AnnualPercentageChangeRandoopTest.test2");
         calculations.AnnualPercentageChange annualPercentageChange0 = new calculations.AnnualPercentageChange();
         java.lang.Class<?> wildcardClass1 = annualPercentageChange0.getClass();
         // Regression assertion (captures the current behavior of the code)
@@ -32,7 +32,7 @@ public class AnnualPercentageChangeRandoopTest {
     @Test
     public void test3() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test3");
+            System.out.format("%n%s%n", "AnnualPercentageChangeRandoopTest.test3");
         calculations.AnnualPercentageChange annualPercentageChange0 = new calculations.AnnualPercentageChange();
         com.google.gson.JsonArray[] jsonArrayArray1 = new com.google.gson.JsonArray[] {};
         // The following exception was thrown during execution in test generation
@@ -49,7 +49,7 @@ public class AnnualPercentageChangeRandoopTest {
     @Test
     public void test4() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test4");
+            System.out.format("%n%s%n", "AnnualPercentageChangeRandoopTest.test4");
         calculations.AnnualPercentageChange annualPercentageChange0 = new calculations.AnnualPercentageChange();
         com.google.gson.JsonArray jsonArray1 = null;
         com.google.gson.JsonArray[] jsonArrayArray2 = new com.google.gson.JsonArray[] { jsonArray1 };
@@ -67,7 +67,7 @@ public class AnnualPercentageChangeRandoopTest {
     @Test
     public void test5() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test5");
+            System.out.format("%n%s%n", "AnnualPercentageChangeRandoopTest.test5");
         calculations.AnnualPercentageChange annualPercentageChange0 = new calculations.AnnualPercentageChange();
         com.google.gson.JsonArray[] jsonArrayArray1 = null;
         // The following exception was thrown during execution in test generation
