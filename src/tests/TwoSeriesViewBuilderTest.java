@@ -46,6 +46,8 @@ public class TwoSeriesViewBuilderTest {
 	}
 
 	/**
+	 * Use Case 8: Test 10
+	 * 
 	 * Check the View of the MainUI after using the TwoSeriesViewBuilder to 
 	 * generate a Line Chart to make sure there is a new Line Chart saved to the View
 	 * 
@@ -60,6 +62,8 @@ public class TwoSeriesViewBuilderTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 11
+	 * 
 	 * Check the View of the MainUI after using the TwoSeriesViewBuilder to 
 	 * generate a Time Chart to make sure there is a new Time Chart saved to the View
 	 * 
@@ -74,6 +78,8 @@ public class TwoSeriesViewBuilderTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 12
+	 * 
 	 * Check the View of the MainUI after using the TwoSeriesViewBuilder to 
 	 * generate a bar Chart to make sure there is a new Bar Chart saved to the View
 	 * 
@@ -88,6 +94,8 @@ public class TwoSeriesViewBuilderTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 13
+	 * 
 	 * Check the View of the MainUI after using the TwoSeriesViewBuilder to 
 	 * generate a Pie Chart to make sure there is a new Pie Chart saved to the View
 	 * 
@@ -103,6 +111,8 @@ public class TwoSeriesViewBuilderTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 14
+	 * 
 	 * Check the View of the MainUI after using the TwoSeriesViewBuilder to 
 	 * generate a Scatter Chart to make sure there is a new Scatter Chart saved to the View
 	 * 
@@ -117,6 +127,8 @@ public class TwoSeriesViewBuilderTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 15
+	 * 
 	 * Check the View of the MainUI after using the TwoSeriesViewBuilder to 
 	 * generate a Report to make sure there is a new Report saved to the View
 	 * 

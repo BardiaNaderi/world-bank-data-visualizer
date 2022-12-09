@@ -19,6 +19,8 @@ import dataManagement.DataFetcher;
 public class AnnualPercentageChangeTest {
 	
 	/**
+	 * Use Case 7: Test 01
+	 * 
 	 * Test to ensure that the correct Map values are returned after the AnnualPercentageChange
 	 * calculations are performed on the CO2EmissionsEnergyUsePollutionAnnualPercentage analysis
 	 * 
@@ -60,6 +62,8 @@ public class AnnualPercentageChangeTest {
 	}
 	
 	/**
+	 * Use Case 7: Test 02
+	 * 
 	 * Test to ensure that the correct Map values are returned after the AnnualPercentageChange
 	 * calculations are performed on the PollutionForestAreaAnnualPercentage analysis
 	 * 
@@ -90,6 +94,8 @@ public class AnnualPercentageChangeTest {
 	}
 	
 	/**
+	 * Use Case 7: Test 03
+	 * 
 	 * Test to ensure that the correct Map values are returned after the AnnualPercentageChange
 	 * calculations are performed on the AccessingHealthCareInfantMortalityAnnualPercentage analysis
 	 * 
@@ -119,6 +125,8 @@ public class AnnualPercentageChangeTest {
 	}
 	
 	/**
+	 * Use Case 7: Test 04
+	 * 
 	 * Test to ensure that the correct Map values are returned after the AnnualPercentageChange
 	 * calculations are performed on the EducationExpenditureHealthExpenditureAnnualPercentage analysis
 	 * 

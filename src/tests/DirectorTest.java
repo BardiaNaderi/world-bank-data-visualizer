@@ -40,6 +40,8 @@ public class DirectorTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 01
+	 * 
 	 * Test that all of the expected charts are generated when the 
 	 * constructRatioView method is called, and that any other charts
 	 * remain null
@@ -68,6 +70,8 @@ public class DirectorTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 02
+	 * 
 	 * Test that all of the expected charts are generated when the 
 	 * constructAnnualPercentageChangeView method is called, and that
 	 * any other charts remain null
@@ -96,6 +100,8 @@ public class DirectorTest {
 	}
 	
 	/**
+	 * Use Case 8: Test 03
+	 * 
 	 * Test that all of the expected charts are generated when the 
 	 * constructAverageView method is called, and that any other charts
 	 * remain null

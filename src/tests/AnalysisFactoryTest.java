@@ -26,6 +26,8 @@ public class AnalysisFactoryTest {
 	int endYear = Integer.parseInt(params.getEndYear().value);
 	
 	/**
+	 * Use Case 3: Test 01
+	 * 
 	 * Them Analysis Factory returns an instance of the CO2EmissionsEnergyUsePollutionAnnualPercentage
 	 * class when the first option is selected from the drop down menu
 	 * 
@@ -42,6 +44,8 @@ public class AnalysisFactoryTest {
 	}
 	
 	/**
+	 * Use Case 3: Test 02
+	 * 
 	 * Them Analysis Factory returns an instance of the PollutionForestAreaAnnualPercentage
 	 * class when the second option is selected from the drop down menu
 	 * 
@@ -58,6 +62,8 @@ public class AnalysisFactoryTest {
 	}
 	
 	/**
+	 * Use Case 3: Test 03
+	 * 
 	 * Them Analysis Factory returns an instance of the CO2EmissionsGDPRatio
 	 * class when the third option is selected from the drop down menu
 	 * 
@@ -74,6 +80,8 @@ public class AnalysisFactoryTest {
 	}
 
 	/**
+	 * Use Case 3: Test 04
+	 * 
 	 * Them Analysis Factory returns an instance of the ForestAreaAverage
 	 * class when the fourth option is selected from the drop down menu
 	 * 
@@ -90,6 +98,8 @@ public class AnalysisFactoryTest {
 	}
 	
 	/**
+	 * Use Case 3: Test 05
+	 * 
 	 * Them Analysis Factory returns an instance of the EducationExpenditureAverage
 	 * class when the fifth option is selected from the drop down menu
 	 * 
@@ -106,6 +116,8 @@ public class AnalysisFactoryTest {
 	}
 	
 	/**
+	 * Use Case 3: Test 06
+	 * 
 	 * Them Analysis Factory returns an instance of the HealthExpenditureHospitalBedsRatio
 	 * class when the sixth option is selected from the drop down menu
 	 * 
@@ -122,6 +134,8 @@ public class AnalysisFactoryTest {
 	}
 
 	/**
+	 * Use Case 3: Test 07
+	 * 
 	 * Them Analysis Factory returns an instance of the AccessingHealthCareInfantMortalityAnnualPercentage
 	 * class when the seventh option is selected from the drop down menu
 	 * 
@@ -138,6 +152,8 @@ public class AnalysisFactoryTest {
 	}
 	
 	/**
+	 * Use Case 3: Test 08
+	 * 
 	 * Them Analysis Factory returns an instance of the EducationExpenditureHealthExpenditureAnnualPercentage
 	 * class when the eighth option is selected from the drop down menu
 	 * 
@@ -154,6 +170,8 @@ public class AnalysisFactoryTest {
 	}
 	
 	/**
+	 * Use Case 3: Test 09
+	 * 
 	 * Them Analysis Factory throws an IndexOutOfBoundsException if an invalid analysis code is provided
 	 * 
 	 * @result IndexOutOfBoundsException is thrown when the analysis code is not between 0-7

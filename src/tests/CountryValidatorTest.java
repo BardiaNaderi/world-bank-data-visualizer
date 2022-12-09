@@ -10,6 +10,8 @@ import userInput.ParametersSelector;
 public class CountryValidatorTest {	
 	
 	/**
+	 * Use Case 2: Test 01
+	 * 
 	 * Set the country's valid parameter to true when a valid country is selected
 	 * 
 	 * @result the valid parameter for the country is true when the value is valid 
@@ -25,6 +27,8 @@ public class CountryValidatorTest {
 	}
 	
 	/**
+	 * Use Case 2: Test 02
+	 * 
 	 * Set the country's valid parameter to false when an invalid country is selected
 	 * 
 	 * @result the valid parameter for the country is false when the value is valid 
