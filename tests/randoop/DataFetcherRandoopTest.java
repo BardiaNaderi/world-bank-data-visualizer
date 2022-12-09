@@ -12,7 +12,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test01() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test01");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test01");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "hi!", "", "", "", "hi!", "hi!" };
@@ -32,7 +32,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test02() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test02");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test02");
         java.lang.Object obj0 = new java.lang.Object();
         java.lang.Class<?> wildcardClass1 = obj0.getClass();
         // Regression assertion (captures the current behavior of the code)
@@ -42,7 +42,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test03() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test03");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test03");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "", "hi!", "", "hi!", "hi!", "" };
@@ -62,7 +62,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test04() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test04");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test04");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray2 = null;
@@ -80,7 +80,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test05() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test05");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test05");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "", "hi!", "", "hi!", "hi!", "hi!" };
@@ -100,7 +100,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test06() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test06");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test06");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         java.lang.Class<?> wildcardClass1 = dataFetcher0.getClass();
         // Regression assertion (captures the current behavior of the code)
@@ -112,7 +112,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test07() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test07");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test07");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "hi!", "", "hi!", "", "hi!", "hi!" };
@@ -132,7 +132,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test08() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test08");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test08");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "hi!", "", "hi!", "hi!", "", "hi!" };
@@ -152,7 +152,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test09() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test09");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test09");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray2 = new java.lang.String[] {};
@@ -172,7 +172,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test10() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test10");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test10");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray6 = new java.lang.String[] { "hi!", "hi!", "hi!", "hi!" };
@@ -192,7 +192,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test11() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test11");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test11");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray4 = new java.lang.String[] { "", "" };
@@ -212,7 +212,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test12() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test12");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test12");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray6 = new java.lang.String[] { "", "", "", "" };
@@ -232,7 +232,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test13() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test13");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test13");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray6 = new java.lang.String[] { "hi!", "hi!", "", "hi!" };
@@ -252,7 +252,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test14() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test14");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test14");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray6 = new java.lang.String[] { "", "", "hi!", "hi!" };
@@ -272,7 +272,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test15() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test15");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test15");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "", "", "hi!", "hi!", "", "" };
@@ -292,7 +292,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test16() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test16");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test16");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray6 = new java.lang.String[] { "hi!", "", "", "hi!" };
@@ -312,7 +312,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test17() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test17");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test17");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray4 = new java.lang.String[] { "hi!", "" };
@@ -332,7 +332,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test18() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test18");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test18");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray3 = new java.lang.String[] { "hi!" };
@@ -352,7 +352,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test19() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test19");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test19");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray4 = new java.lang.String[] { "", "hi!" };
@@ -372,7 +372,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test20() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test20");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test20");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray7 = new java.lang.String[] { "", "", "hi!", "", "" };
@@ -392,7 +392,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test21() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test21");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test21");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray7 = new java.lang.String[] { "hi!", "hi!", "hi!", "", "" };
@@ -412,7 +412,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test22() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test22");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test22");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray7 = new java.lang.String[] { "hi!", "", "hi!", "hi!", "" };
@@ -432,7 +432,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test23() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test23");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test23");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray5 = new java.lang.String[] { "", "", "" };
@@ -452,7 +452,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test24() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test24");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test24");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray5 = new java.lang.String[] { "", "", "hi!" };
@@ -472,7 +472,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test25() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test25");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test25");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray5 = new java.lang.String[] { "hi!", "hi!", "hi!" };
@@ -492,7 +492,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test26() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test26");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test26");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray3 = new java.lang.String[] { "" };
@@ -512,7 +512,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test27() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test27");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test27");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray6 = new java.lang.String[] { "", "hi!", "hi!", "hi!" };
@@ -532,7 +532,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test28() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test28");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test28");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray5 = new java.lang.String[] { "hi!", "hi!", "" };
@@ -552,7 +552,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test29() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test29");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test29");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "hi!", "", "", "", "", "" };
@@ -572,7 +572,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test30() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test30");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test30");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "hi!", "hi!", "hi!", "", "hi!", "hi!" };
@@ -592,7 +592,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test31() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test31");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test31");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "", "hi!", "hi!", "", "hi!", "hi!" };
@@ -612,7 +612,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test32() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test32");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test32");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray5 = new java.lang.String[] { "hi!", "", "" };
@@ -632,7 +632,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test33() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test33");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test33");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "hi!", "hi!", "", "hi!", "hi!", "hi!" };
@@ -652,7 +652,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test34() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test34");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test34");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "hi!", "hi!", "", "", "hi!", "" };
@@ -672,7 +672,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test35() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test35");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test35");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray6 = new java.lang.String[] { "", "", "", "hi!" };
@@ -692,7 +692,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test36() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test36");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test36");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "", "hi!", "hi!", "hi!", "hi!", "hi!" };
@@ -712,7 +712,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test37() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test37");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test37");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray4 = new java.lang.String[] { "hi!", "hi!" };
@@ -732,7 +732,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test38() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test38");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test38");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray7 = new java.lang.String[] { "hi!", "hi!", "hi!", "", "hi!" };
@@ -752,7 +752,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test39() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test39");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test39");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray5 = new java.lang.String[] { "", "hi!", "hi!" };
@@ -772,7 +772,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test40() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test40");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test40");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "hi!", "", "hi!", "hi!", "", "" };
@@ -792,7 +792,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test41() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test41");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test41");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray7 = new java.lang.String[] { "hi!", "", "hi!", "", "" };
@@ -812,7 +812,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test42() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test42");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test42");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray7 = new java.lang.String[] { "", "hi!", "hi!", "", "" };
@@ -832,7 +832,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test43() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test43");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test43");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray7 = new java.lang.String[] { "", "hi!", "hi!", "hi!", "" };
@@ -852,7 +852,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test44() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test44");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test44");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "", "", "", "", "hi!", "hi!" };
@@ -872,7 +872,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test45() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test45");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test45");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray7 = new java.lang.String[] { "", "", "", "hi!", "hi!" };
@@ -892,7 +892,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test46() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test46");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test46");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray6 = new java.lang.String[] { "", "", "hi!", "" };
@@ -912,7 +912,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test47() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test47");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test47");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "", "", "", "hi!", "hi!", "" };
@@ -932,7 +932,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test48() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test48");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test48");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray8 = new java.lang.String[] { "hi!", "hi!", "hi!", "hi!", "", "hi!" };
@@ -952,7 +952,7 @@ public class DataFetcherRandoopTest {
     @Test
     public void test49() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test49");
+            System.out.format("%n%s%n", "DataFetcherRandoopTest.test49");
         dataManagement.DataFetcher dataFetcher0 = dataManagement.DataFetcher.getFetcher();
         analysisGenerator.Analysis analysis1 = null;
         java.lang.String[] strArray7 = new java.lang.String[] { "hi!", "", "", "hi!", "" };
