@@ -1,1 +1,1 @@
-# eecs3311-project
+# World Bank Data Visualizer
